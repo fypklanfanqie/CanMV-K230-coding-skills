@@ -1,0 +1,4614 @@
+
+
+===== PAGE 1/160 =====
+
+5. AI视觉课程
+ 
+5. AI视觉课程
+5.1 人脸检测 
+5.1.1 实验简介
+5.1.2 准备工作
+5.1.3 程序运行及下载
+5.1.4 运行效果
+5.1.5 程序分析
+5.1.6 绘制检测结果 
+5.2 人脸关键部位检测 
+5.2.1实验简介
+5.2.2 准备工作
+5.2.3 程序运行及下载
+5.2.4 运行效果
+5.2.5 程序分析
+5.3 人脸3D网络 
+5.3.1 实验简介
+5.3.2 准备工作
+5.3.3 程序运行及下载
+5.3.4 运行效果
+5.3.5 程序分析
+5.4 人脸姿态 
+5.4.1 实验简介
+5.4.2 准备工作
+5.4.3 程序运行及下载
+5.4.4 运行效果
+5.4.5 程序分析
+5.5 人脸注册
+5.5.1 实验简介
+5.5.2 准备工作
+5.5.3 程序运行及下载
+5.5.4 运行效果
+5.5.5 程序分析
+5.6 人脸识别 
+5.6.1 实验简介
+5.6.2 准备工作
+5.6.3 程序运行及下载
+5.6.4 运行效果
+5.6.5 程序分析
+5.7 人体检测
+5.7.1 实验简介
+5.7.2 准备工作
+5.7.3 程序运行及下载
+5.7.4 运行效果
+5.7.5 程序分析
+5.8 人体关键点检测 
+5.8.1 实验简介
+5.8.2 准备工作
+5.8.3 程序运行及下载
+5.8.4 运行效果
+
+
+===== PAGE 2/160 =====
+
+5.8.5 程序分析
+5.9 跌倒检测 
+5.9.1 实验简介
+5.9.2 准备工作
+5.9.3 程序运行及下载
+5.9.4 运行效果
+5.9.5 程序分析
+5.10 手掌识别 
+5.10.1 实验简介 
+5.10.2 准备工作
+5.10.3 程序运行及下载
+5.10.4 运行效果
+5.10.5 程序分析
+5.11 手掌关键点检测 
+5.11.1 实验简介
+5.11.2 准备工作
+5.11.3 程序运行及下载
+5.11.4 运行效果
+5.11.5 程序分析
+5.12 手掌关键点分类 
+5.12.1 实验简介
+5.12.2 准备工作
+5.12.3 程序运行及下载
+5.12.4 运行效果
+5.12.5 程序分析
+5.13 动态手势识别实验 
+5.13.1 实验简介
+5.13.2 准备工作
+5.13.3 程序运行及下载
+5.13.3 运行效果
+5.13.4 程序分析
+5.14 剪头石头布实验 
+5.14.1 实验简介
+5.14.2 准备工作
+5.14.3 程序运行及下载
+5.14.4 运行效果
+5.14.5 程序分析
+5.15 车牌检测
+5.15.1 实验简介
+5.15.2 准备工作
+5.15.3 程序运行及下载
+5.15.4 运行效果
+5.15.5 程序分析
+5.16 车牌识别
+5.16.1 实验简介
+5.16.2 准备工作
+5.16.3 程序运行及下载
+5.16.4 运行效果
+5.16.5 程序分析
+5.17 字符检测
+5.17.1 实验简介
+5.17.2 准备工作
+5.17.3 程序运行及下载
+
+
+===== PAGE 3/160 =====
+
+5.17.4 运行效果
+5.17.5 程序分析
+5.18 字符识别 
+5.18.1 实验简介
+5.18.2 准备工作
+5.18.3 程序运行及下载
+5.18.4 运行效果
+5.18.5 程序分析
+5.19 自学习玩法 
+5.19.1 实验简介
+5.19.2 准备工作
+5.19.3 程序运行及下载
+5.19.4 运行效果
+5.19.5 程序分析
+5.20 物品检测 
+5.20.1 实验简介
+5.20.2 准备工作
+5.20.3 程序运行及下载
+5.20.4 运行效果
+5.20.5 程序分析
+5.21 物品分割实验 
+5.21.1 实验简介 
+5.21.2 准备工作
+5.21.3 程序运行及下载
+5.21.4 运行效果
+5.21.5程序分析
+5.22 目标追踪玩法
+5.22.1 实验简介
+5.22.2 准备工作
+5.22.3 程序运行及下载
+5.22.4 运行效果
+5.22.5 程序分析
+ 
+5.1 人脸检测 
+ 
+5.1.1 实验简介
+ 
+本节通过程序学习k230开发板的人脸检测功能。
+5.1.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 4/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 5/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.1.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“face_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 6/160 =====
+
+脱机运行：
+1. 连接后将程序“face_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前
+打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 7/160 =====
+
+5.1.4 运行效果
+ 
+在回传画面，实时进行人脸识别，并且将人脸用紫色的框框起来。
+5.1.5 程序分析
+ 
+导入对应库文件
+FaceDetectionApp 类
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+from media.display import Display
+import os, sys, ujson, gc, math
+from media.media import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+class FaceDetectionApp(AIBase):
+
+
+===== PAGE 8/160 =====
+
+1. 初始化模型路径、输入大小、anchors、阈值、显示分辨率等。
+2. model_input_size : 模型输入的尺寸。
+3. anchors : 存储框信息。
+4. confidence_threshold , nms_threshold : 用于后处理的参数。
+5. rgb888p_size , display_size : 输入图像的尺寸与显示分辨率。
+6. debug_mode : 是否启用调试模式。
+图像预处理
+1. 填充：将图像填充至目标大小，保持图像比例不变。
+2. 调整大小：使用双线性插值将图像大小调整为模型输入的大小。
+图像后处理
+    def __init__(self, kmodel_path, model_input_size, anchors,
+                 confidence_threshold=0.5, nms_threshold=0.2,
+                 rgb888p_size=[224, 224], display_size=[1920, 1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.anchors = anchors
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(
+            nn.ai2d_format.NCHW_FMT,
+            nn.ai2d_format.NCHW_FMT,
+            np.uint8, np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right,_ = letterbox_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0,0,0,0, top, bottom, left, right], 0, [104,117,123])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build(
+                [1,3,ai2d_input_size[1], ai2d_input_size[0]],
+                [1,3,self.model_input_size[1], self.model_input_size[0]])
+
+
+===== PAGE 9/160 =====
+
+1. 置信度过滤：只保留置信度大于阈值的人脸框。
+2. 非极大值抑制（NMS）：去除重叠度高的检测框。
+5.1.6 绘制检测结果 
+ 
+将检测到的人脸框绘制在图像上，绘制矩形框来圈住人脸，并清除旧的框。
+5.2 人脸关键部位检测 
+ 
+5.2.1实验简介
+ 
+本节通过程序示例，学习K230开发板的人脸关键部位检测功能。
+5.2.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            post_ret = aidemo.face_det_post_process(
+                self.confidence_threshold,
+                self.nms_threshold,
+                self.model_input_size[1],
+                self.anchors,
+                self.rgb888p_size,
+                results)
+            if len(post_ret) == 0:
+                return post_ret
+            else:
+                return post_ret[0]
+    def draw_result(self, pl, dets):
+        with ScopedTiming("display_draw", self.debug_mode > 0):
+            if dets:
+                pl.osd_img.clear()
+                for det in dets:
+                    x,y,w,h = map(lambda x:int(round(x,0)), det[:4])
+                    x = x * self.display_size[0] // self.rgb888p_size[0]
+                    y = y * self.display_size[1] // self.rgb888p_size[1]
+                    w = w * self.display_size[0] // self.rgb888p_size[0]
+                    h = h * self.display_size[1] // self.rgb888p_size[1]
+                    pl.osd_img.draw_rectangle(x, y, w, h, color=(255,255,0,255), 
+thickness=2)
+            else:
+                pl.osd_img.clear()
+
+
+===== PAGE 10/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 11/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.2.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“face_landmark.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 12/160 =====
+
+脱机运行：
+1. 连接后将程序“face_landmark.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前
+打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 13/160 =====
+
+5.2.4 运行效果
+ 
+在回传画面，首先识别图像中的人脸位置，然后识别每张人脸的关键点（如眼睛、眉毛、嘴巴等），最后将检测框和关
+键点绘制在屏幕上
+5.2.5 程序分析
+ 
+导入对应库文件
+人脸检测
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+class FaceDetApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, anchors,
+                 confidence_threshold=0.25, nms_threshold=0.3,
+                 rgb888p_size=[1280,720], display_size=[1920,1080], debug_mode=0):
+
+
+===== PAGE 14/160 =====
+
+1. FaceDetApp ：加载人脸检测模型并进行人脸检测
+2. kmodel_path ：人脸检测模型的路径。
+3. model_input_size ：该模型所要求的输入图像尺寸。
+4. anchors ：锚框，目标检测模型通常使用不同尺度的锚框来匹配真实目标。
+5. confidence_threshold ：置信度阈值，只有当模型预测的人脸框的置信度超过这个阈值时才会被视为有效人
+脸。
+6. nms_threshold ：非极大值抑制阈值，用于消除重叠的检测框。它可以去除那些重叠度高于设定阈值的重复
+框。
+图像预处理
+1. 图像预处理的目的是将原始输入图像转换成适合模型的格式。调整图像的尺寸、颜色转换、归一化、数据增强等
+操作。
+2. letterbox_pad_param ：根据输入图像的尺寸与模型的输入尺寸（计算所需的填充），确保图像按比例缩放并填
+充到目标尺寸。
+3. self.ai2d.pad ：对图像进行填充处理，填充的颜色为[104,117,123]，进行图像预处理时调整输入大小，并防
+止模型因为图像尺寸不一致而出错。
+4. self.ai2d.resize ：调整图像尺寸，以适应模型的输入大小。
+返回有效框
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.anchors = anchors
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                nn.ai2d_format.NCHW_FMT,
+                                np.uint8,
+                                np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = letterbox_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [104, 117, 123])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+                            [1,3,self.model_input_size[1],self.model_input_size[0]])
+
+
+===== PAGE 15/160 =====
+
+postprocess ：对模型的输出进行后处理。使用置信度阈值和NMS算法筛选检测框，并返回有效的检测框。
+人脸关键点识别
+负责加载和配置人脸关键点识别模型，并设置仿射变换矩阵。
+1. kmodel_path ：人脸关键点识别模型的路径。
+2. model_input_size ：关键点识别模型的输入尺寸。
+3. rgb888p_size ：输入图像的分辨率。
+4. display_size ：显示图像的尺寸。
+图像绘制
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            res = aidemo.face_det_post_process(
+                self.confidence_threshold,
+                self.nms_threshold,
+                self.model_input_size[0],
+                self.anchors,
+                self.rgb888p_size,
+                results)
+            if len(res) == 0:
+                return res
+            else:
+                return res[0]
+class FaceLandMarkApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size,
+                 rgb888p_size=[1920,1080], display_size=[1920,1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.matrix_dst = None
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                nn.ai2d_format.NCHW_FMT,
+                                np.uint8,
+                                np.uint8)
+    def draw_result(self, pl, dets, landmark_res):
+        pl.osd_img.clear()
+        if dets:
+            draw_img_np = np.zeros((self.display_size[1], self.display_size[0], 4), 
+dtype=np.uint8)
+            draw_img = image.Image(self.display_size[0], self.display_size[1], 
+image.ARGB8888,
+                                   alloc=image.ALLOC_REF, data=draw_img_np)
+
+
+===== PAGE 16/160 =====
+
+在图像上绘制人脸框和面部关键点。
+1. pl ：图像显示管道。
+2. dets ：人脸框数组。
+3. landmark_res ：关键点结果数组。
+5.3 人脸3D网络 
+ 
+5.3.1 实验简介
+ 
+本节通过编程实践学习k230开发板上的人脸3D网格绘制技术，当检测到人脸时，用密集的特征点勾勒整个面部轮廓，
+将人脸轮廓以网格状结构精准呈现，支持单个人脸与多个人脸的同时处理。
+5.3.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+            for pred in landmark_res:
+                for sub_part_index in range(len(self.dict_kp_seq)):
+                    sub_part = self.dict_kp_seq[sub_part_index]
+                    face_sub_part_point_set = []
+                    for kp_index in range(len(sub_part)):
+                        real_kp_index = sub_part[kp_index]
+                        x, y = pred[real_kp_index*2], pred[real_kp_index*2+1]
+                        x = int(x * self.display_size[0] // self.rgb888p_size[0])
+                        y = int(y * self.display_size[1] // self.rgb888p_size[1])
+                        face_sub_part_point_set.append((x, y))
+                    if sub_part_index in (9, 6):
+                        color = np.array(self.color_list_for_osd_kp[sub_part_index], 
+dtype=np.uint8)
+                        face_sub_part_point_set = np.array(face_sub_part_point_set)
+                        aidemo.polylines(draw_img_np, face_sub_part_point_set, False, color, 
+5, 8, 0)
+                    elif sub_part_index == 4:
+                        color = self.color_list_for_osd_kp[sub_part_index]
+                        for kp in face_sub_part_point_set:
+                            draw_img.draw_circle(kp[0], kp[1], 2, color, 1)
+                    else:
+                        color = np.array(self.color_list_for_osd_kp[sub_part_index], 
+dtype=np.uint8)
+                        face_sub_part_point_set = np.array(face_sub_part_point_set)
+                        aidemo.contours(draw_img_np, face_sub_part_point_set, -1, color, 2, 
+8)
+            pl.osd_img.copy_from(draw_img)
+
+
+===== PAGE 17/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 18/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.3.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“face_mesh.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 19/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“face_mesh.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择
+“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 20/160 =====
+
+5.3.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的人脸描绘出3D网格效果，支持单个和多个人脸。
+5.3.5 程序分析
+ 
+导入对应库文件
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os
+import sys
+import ujson
+import gc
+import math
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+
+
+===== PAGE 21/160 =====
+
+人脸检测
+FaceDetApp加载和执行人脸检测模型，输入图像后，输出检测框位置。
+1. kmodel_path ：人脸检测模型的路径。
+2. model_input_size ：人脸检测模型的输入尺寸。
+3. anchors ：用于预测框的锚框。
+4. confidence_threshold ：置信度阈值，筛选低置信度的检测框。
+5. nms_threshold ：非极大值抑制阈值，去除冗余的重叠框。
+6. rgb888p_size ：输入图像的尺寸。
+7. display_size ：输出图像的显示尺寸。
+图像预处理
+1. 图像预处理步骤，包括填充和缩放，以确保输入图像符合模型的要求。
+2. input_image_size ：输入图像的尺寸
+class FaceDetApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, anchors,
+                 confidence_threshold=0.25, nms_threshold=0.3,
+                 rgb888p_size=[1280,720], display_size=[1920,1080],
+                 debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.anchors = anchors
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(
+            nn.ai2d_format.NCHW_FMT,
+            nn.ai2d_format.NCHW_FMT,
+            np.uint8,
+            np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = letterbox_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0,0,0,0, top, bottom, left, right], 0, [104,117,123])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build(
+                [1,3,ai2d_input_size[1], ai2d_input_size[0]],
+                [1,3,self.model_input_size[1], self.model_input_size[0]])
+
+
+===== PAGE 22/160 =====
+
+人脸网格关键点识别
+FaceMeshApp  类人脸检测框中提取面部关键点，通过网络模型生成面部网格。
+1. kmodel_path ：人脸网格识别模型路径。
+2. model_input_size ：网格模型的输入尺寸。
+3. rgb888p_size ：输入图像的分辨率。
+4. display_size ：显示图像的分辨率。
+5. debug_mode ：调试模式，0 为关闭，1 为开启。
+图像后处理和仿射变换
+FaceMeshPostApp 从 FaceMeshApp 获取到的网格关键点，并进行坐标变换及显示。
+1. kmodel_path ：后处理模型的路径。
+2. model_input_size ：后处理模型的输入尺寸。
+3. rgb888p_size ：输入图像分辨率。
+4. display_size ：显示设备的分辨率。
+5. debug_mode ：调试模式。
+class FaceMeshApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size,
+                 rgb888p_size=[1920,1080], display_size=[1920,1080],
+                 debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.param_mean = np.array([
+class FaceMeshPostApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size,
+                 rgb888p_size=[1920,1080], display_size=[1920,1080],
+                 debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(
+            nn.ai2d_format.NCHW_FMT,
+            nn.ai2d_format.NCHW_FMT,
+            np.uint8,
+            np.uint8)
+
+
+===== PAGE 23/160 =====
+
+检测出人脸并输出关键点网格
+FaceMesh 负责将多个模型（人脸检测、面部网格识别、网格后处理）串联起来，执行全流程的人脸识别和面部网格
+绘制。通过run() 方法实现从输入图像中检测出人脸并输出关键点网格。
+1. face_det_kmodel ：人脸检测模型路径。
+2. face_mesh_kmodel ：面部网格识别模型路径。
+3. mesh_post_kmodel ：面部网格后处理模型路径。
+4. det_input_size ：人脸检测模型输入尺寸。
+5. mesh_input_size ：面部网格识别模型输入尺寸。
+6. anchors ：锚框，用于检测框预测。
+7. confidence_threshold ：置信度阈值。
+8. nms_threshold ：非极大值抑制阈值。
+5.4 人脸姿态 
+ 
+5.4.1 实验简介
+ 
+本节通过程序学习k230开发板的人脸姿态学习，在检测到人脸后通过3D矩形框描绘出脸部朝向。
+5.4.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+class FaceMesh:
+    def __init__(self, face_det_kmodel, face_mesh_kmodel, mesh_post_kmodel,
+                 det_input_size, mesh_input_size, anchors,
+                 confidence_threshold=0.25, nms_threshold=0.3,
+                 rgb888p_size=[1920,1080], display_size=[1920,1080],
+                 debug_mode=0):
+        self.face_det_kmodel = face_det_kmodel
+        self.face_mesh_kmodel = face_mesh_kmodel
+        self.mesh_post_kmodel = mesh_post_kmodel
+        self.det_input_size = det_input_size
+        self.mesh_input_size = mesh_input_size
+        self.anchors = anchors
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+
+
+===== PAGE 24/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 25/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.4.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“face_pose.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 26/160 =====
+
+脱机运行：
+1. 连接后将程序“face_pose.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开的
+脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 27/160 =====
+
+5.4.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的人脸通过3D矩形框描绘出脸部朝向。
+5.4.5 程序分析
+ 
+导入对应库文件
+人脸检测
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+
+
+===== PAGE 28/160 =====
+
+FaceDetApp  加载人脸检测模型，并对输入图像进行预处理、推理，输出检测框。
+1. kmodel_path ：人脸检测模型的路径。
+2. model_input_size ：人脸检测模型的输入尺寸。
+3. anchors ：锚框，用于边界框的预测。
+4. confidence_threshold ：置信度阈值，过滤掉置信度低的检测框。
+5. nms_threshold ：非极大值抑制（NMS）阈值，用于去除重叠框。
+6. rgb888p_size ：输入图像的分辨率。
+7. display_size ：输出显示图像的尺寸。
+图像预处理
+配置图像的预处理，包括填充、缩放和调整为适应模型的输入尺寸。并且对检测结果进行后处理，筛选出有效的检测
+框。
+1. input_image_size ：输入图像的尺寸。
+2. results ：模型的输出结果，包含检测框。
+人脸姿势估计及进行射变换
+class FaceDetApp(AIBase):
+    def 
+__init__(self,kmodel_path,model_input_size,anchors,confidence_threshold=0.25,nms_threshold=0
+.3,rgb888p_size=[1280,720],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.confidence_threshold=confidence_threshold
+        self.nms_threshold=nms_threshold
+        self.anchors=anchors
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        
+self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8,np.uint8)
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            
+top,bottom,left,right,_=letterbox_pad_param(self.rgb888p_size,self.model_input_size)
+            self.ai2d.pad([0,0,0,0,top,bottom,left,right],0,[104,117,123])
+            self.ai2d.resize(nn.interp_method.tf_bilinear,nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+class FacePoseApp(AIBase):
+
+
+===== PAGE 29/160 =====
+
+FacePoseApp  根据人脸检测框，估计人脸的姿势（旋转矩阵和欧拉角）。然后通过基于检测到的人脸框，计算仿射变
+换矩阵，进行图像裁剪和缩放。最后将姿势估计的旋转矩阵转换为欧拉角（俯仰角、偏航角、滚转角）。
+获取人脸框，进行姿势估计
+    def __init__(self,kmodel_path,model_input_size,rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        
+self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8,np.uint8)
+    def config_preprocess(self,det,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            matrix_dst = self.get_affine_matrix(det)
+            self.ai2d.affine(nn.interp_method.cv2_bilinear,0,0,127,1,matrix_dst)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+    def postprocess(self,results):
+        with ScopedTiming("postprocess",self.debug_mode > 0):
+            R,eular = self.get_euler(results[0][0])
+            return R,eular
+class FacePose:
+    def 
+__init__(self,face_det_kmodel,face_pose_kmodel,det_input_size,pose_input_size,anchors,confid
+ence_threshold=0.25,nms_threshold=0.3,rgb888p_size=[1280,720],display_size=
+[1920,1080],debug_mode=0):
+        self.face_det_kmodel=face_det_kmodel
+        self.face_pose_kmodel=face_pose_kmodel
+        self.det_input_size=det_input_size
+        self.pose_input_size=pose_input_size
+        self.anchors=anchors
+        self.confidence_threshold=confidence_threshold
+        self.nms_threshold=nms_threshold
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        
+self.face_det=FaceDetApp(self.face_det_kmodel,model_input_size=self.det_input_size,anchors=s
+elf.anchors,confidence_threshold=self.confidence_threshold,nms_threshold=self.nms_threshold,
+rgb888p_size=self.rgb888p_size,display_size=self.display_size,debug_mode=debug_mode)
+        
+self.face_pose=FacePoseApp(self.face_pose_kmodel,model_input_size=self.pose_input_size,rgb88
+8p_size=self.rgb888p_size,display_size=self.display_size)
+
+
+===== PAGE 30/160 =====
+
+FacePose  将人脸检测和姿势功能组合起来，完成从图像获取人脸框，再进行姿势估计。
+1. face_det_kmodel ：人脸检测模型路径。
+2. face_pose_kmodel ：人脸姿势估计模型路径。
+3. det_input_size ：人脸检测模型输入尺寸。
+4. pose_input_size ：姿势估计模型输入尺寸。
+5. anchors ：锚框。
+6. confidence_threshold ：置信度阈值。
+7. nms_threshold ：非极大值抑制阈值。
+8. rgb888p_size ：输入图像尺寸。
+9. display_size ：显示图像尺寸。
+5.5 人脸注册
+ 
+5.5.1 实验简介
+ 
+本节通过程序学习k230开发板的人脸注册学习，对特定图片进行特征采集（注册），然后实现不同的人脸识别。
+5.5.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+        self.face_det.config_preprocess()
+
+
+===== PAGE 31/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 32/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.5.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“face_registration.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 33/160 =====
+
+脱机运行：
+1. 连接后将程序“face_registration.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当
+前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 34/160 =====
+
+5.5.4 运行效果
+ 
+1. 运行后，人脸注册代码会将"CanMV/sdcard/examples/utils/db_img/"目录下的人脸图片进行识别，可以看
+到里面预存了2张人脸图片，用户也可以放自己想识别的人脸。
+2. 运行后可以看到在"CanMV/sdcard/examples/utils/db/"目录下出现了2个人脸数据库：
+3. 至此，人脸注册完成。
+5.5.5 程序分析
+ 
+导入对应库文件
+
+
+===== PAGE 35/160 =====
+
+人脸检测
+FaceDetApp  加载人脸检测模型并对输入图像进行人脸检测。
+1. kmodel_path ：人脸检测模型的路径。
+2. model_input_size ：输入图像的尺寸。
+3. anchors ：用于预测的锚框。
+4. confidence_threshold ：置信度阈值，低于该值的检测框会被丢弃。
+5. nms_threshold ：非极大值抑制（NMS）阈值，用于去除重叠的检测框。
+图像预处理和后处理
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os,sys,ujson,gc,math
+from media.media import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+# 自定义人脸检测任务类
+class FaceDetApp(AIBase):
+    def 
+__init__(self,kmodel_path,model_input_size,anchors,confidence_threshold=0.25,nms_threshold=0
+.3,rgb888p_size=[1280,720],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        # kmodel路径
+        self.kmodel_path=kmodel_path
+        # 检测模型输入分辨率
+        self.model_input_size=model_input_size
+        # 置信度阈值
+        self.confidence_threshold=confidence_threshold
+    # 配置预处理操作，这里使用了pad和resize，Ai2d支持crop/shift/pad/resize/affine，具体代码请打
+开/sdcard/app/libs/AI2D.py查看
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            # 初始化ai2d预处理配置，默认为sensor给到AI的尺寸，可以通过设置input_image_size自行修改输入
+尺寸
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            self.image_size=[input_image_size[1],input_image_size[0]]
+            # 计算padding参数，并设置padding预处理
+            self.ai2d.pad(self.get_pad_param(ai2d_input_size), 0, [104,117,123])
+            # 设置resize预处理
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            # 构建预处理流程,参数为预处理输入tensor的shape和预处理输出的tensor的shape
+
+
+===== PAGE 36/160 =====
+
+使用 Ai2d  进行图像填充、缩放等预处理，确保输入符合模型要求，然后使用aidemo.face_det_post_process  对
+检测结果进行后处理，返回有效的人脸框和关键点。
+人脸注册
+FaceRegistrationApp  加载和运行人脸注册模型。通过输入图像计算和提取人脸的特征（28维的特征向量）。
+1. kmodel_path ：人脸注册模型路径。
+2. model_input_size ：人脸注册模型输入尺寸。
+3. 仿射变换：根据输入的关键点计算仿射变换矩阵，确保输入的脸部区域对齐。
+4. 后处理：提取注册结果（即人脸的特征向量）。
+5.6 人脸识别 
+ 
+5.6.1 实验简介
+ 
+本节通过程序学习k230开发板的人脸识别学习，对上一章节的特定图片进行特征采集（注册），然后实现不同的人脸
+识别。
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+    # 自定义后处理，results是模型输出的array列表，这里使用了aidemo库的face_det_post_process接口
+    def postprocess(self,results):
+        with ScopedTiming("postprocess",self.debug_mode > 0):
+            res = 
+aidemo.face_det_post_process(self.confidence_threshold,self.nms_threshold,self.model_input_s
+ize[0],self.anchors,self.image_size,results)
+            if len(res)==0:
+                return res
+            else:
+                return res[0],res[1]
+# 自定义人脸注册任务类
+class FaceRegistrationApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        # kmodel路径
+        self.kmodel_path=kmodel_path
+        # 人脸注册模型输入分辨率
+        self.model_input_size=model_input_size
+        # sensor给到AI的图像分辨率，宽16字节对齐
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        # 视频输出VO分辨率，宽16字节对齐
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        # debug模式
+        self.debug_mode=debug_mode
+        # 标准5官
+
+
+===== PAGE 37/160 =====
+
+5.6.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 38/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.6.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“face_recognition.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 39/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“face_recognition.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 40/160 =====
+
+5.6.4 运行效果
+ 
+运行后，人脸识别代码会将调用摄像头和/sdcard/examples/utils/db/目录下出现了2个人脸数据库进行对比，实现区
+分不同人脸。
+
+
+===== PAGE 41/160 =====
+
+5.6.5 程序分析
+ 
+导入对应库文件
+人脸检测
+import os,sys,ujson,gc,math
+import ulab.numpy as np
+import image
+import aidemo
+from media.display import *
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import * # 包含ALIGN_UP, ScopedTiming
+from media.media import * # 包含Display类
+# 自定义人脸检测任务类
+class FaceDetApp(AIBase):
+    def 
+__init__(self,kmodel_path,model_input_size,anchors,confidence_threshold=0.25,nms_threshold=0
+.3,rgb888p_size=[1920,1080],display_size=[1920,1080],debug_mode=0):
+
+
+===== PAGE 42/160 =====
+
+1. 先用给定的模型路径、输入尺寸和锚点配置，加载人脸检测模型。
+2. 然后输入图像进行预处理（如填充、缩放等），并使用检测模型进行推理，返回人脸框和关键点。
+3. 后处理结果通过aidemo.face_det_post_process 进行处理，以确定最终的有效人脸框。
+图像预处理和后处理
+1. 使用 Ai2d 进行图像填充、缩放等预处理，确保输入符合模型要求，然后使用aidemo.face_det_post_process 对
+检测结果进行后处理。
+2. 返回有效的人脸框和关键点config_preprocess ：配置图像预处理步骤，包括对图像进行填充和缩放。
+3. postprocess ：后处理函数，使用给定的置信度和NMS阈值来处理检测结果，过滤掉无效的人脸框。
+人脸注册对比
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        # kmodel路径
+        self.kmodel_path=kmodel_path
+        # 检测模型输入分辨率
+        self.model_input_size=model_input_size
+        # 置信度阈值
+        self.confidence_threshold=confidence_threshold
+        # nms阈值
+        self.nms_threshold=nms_threshold
+        self.anchors=anchors
+        # sensor给到AI的图像分辨率，宽16字节对齐
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        # 视频输出VO分辨率，宽16字节对齐，此分辨率用于绘制OSD
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        # debug模式
+        self.debug_mode=debug_mode
+        # 实例化Ai2d，用于实现模型预处理
+        self.ai2d=Ai2d(debug_mode)
+        # 设置Ai2d的输入输出格式和类型
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            # 初始化ai2d预处理配置，默认为sensor给到AI的尺寸，可以通过设置input_image_size自行修改输入
+尺寸
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right,_ 
+=letterbox_pad_param(self.rgb888p_size,self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [104, 117, 123])  # 填
+充边缘
+            # 设置resize预处理
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            # 构建预处理流程,参数为预处理输入tensor的shape和预处理输出的tensor的shape
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+
+
+===== PAGE 43/160 =====
+
+FaceRegistrationApp  用于人脸注册，将人脸图像与数据库中已有的人脸进行对比。
+1. 仿射变换：通过仿射变换对输入图像进行几何变换，使其符合标准面部特征点的标准位置。
+2. SVD ：用奇异值分解（SVD）对面部特征点进行对齐，确保图像的准确变换。
+3. __init__ ：初始化人脸注册应用，加载模型路径和输入大小。
+4. config_preprocess ：通过仿射变换对输入图像进行预处理。
+5. postprocess ：处理注册结果。
+# 自定义人脸注册任务类
+class FaceRegistrationApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        # kmodel路径
+        self.kmodel_path=kmodel_path
+        # 检测模型输入分辨率
+        self.model_input_size=model_input_size
+        # sensor给到AI的图像分辨率，宽16字节对齐
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        # 视频输出VO分辨率，宽16字节对齐
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        # debug模式
+        self.debug_mode=debug_mode
+        # 标准5官
+        self.umeyama_args_112 = [
+            38.2946 , 51.6963 ,
+            73.5318 , 51.5014 ,
+            56.0252 , 71.7366 ,
+            41.5493 , 92.3655 ,
+            70.7299 , 92.2041
+        ]
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    # 配置预处理操作，这里使用了affine，Ai2d支持crop/shift/pad/resize/affine，具体代码请打
+开/sdcard/app/libs/AI2D.py查看
+    def config_preprocess(self,landm,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            # 计算affine矩阵，并设置仿射变换预处理
+            affine_matrix = self.get_affine_matrix(landm)
+            self.ai2d.affine(nn.interp_method.cv2_bilinear,0, 0, 127, 1,affine_matrix)
+            # 构建预处理流程,参数为预处理输入tensor的shape和预处理输出的tensor的shape
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+    # 自定义后处理
+    def postprocess(self,results):
+        with ScopedTiming("postprocess",self.debug_mode > 0):
+            return results[0][0]
+
+
+===== PAGE 44/160 =====
+
+6. get_affine_matrix ：计算仿射变换矩阵。
+面部识别，绘制图像
+# 人脸识别任务类
+class FaceRecognition:
+    def 
+__init__(self,face_det_kmodel,face_reg_kmodel,det_input_size,reg_input_size,database_dir,anc
+hors,confidence_threshold=0.25,nms_threshold=0.3,face_recognition_threshold=0.75,rgb888p_siz
+e=[1280,720],display_size=[1920,1080],debug_mode=0):
+        # 人脸检测模型路径
+        self.face_det_kmodel=face_det_kmodel
+        # 人脸识别模型路径
+        self.face_reg_kmodel=face_reg_kmodel
+        # 人脸检测模型输入分辨率
+        self.det_input_size=det_input_size
+        # 人脸识别模型输入分辨率
+        self.reg_input_size=reg_input_size
+        self.database_dir=database_dir
+        # anchors
+        self.anchors=anchors
+        # 置信度阈值
+        self.confidence_threshold=confidence_threshold
+        # nms阈值
+        self.nms_threshold=nms_threshold
+        self.face_recognition_threshold=face_recognition_threshold
+        # sensor给到AI的图像分辨率，宽16字节对齐
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        # 视频输出VO分辨率，宽16字节对齐，此分辨率用于绘制OSD
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        # debug_mode模式
+        self.debug_mode=debug_mode
+        self.max_register_face = 100                  # 数据库最多人脸个数
+        self.feature_num = 128                        # 人脸识别特征维度
+        self.valid_register_face = 0                  # 已注册人脸数
+        self.db_name= []
+        self.db_data= []
+        # 将 display_size 传递给 FaceDetApp 和 FaceRegistrationApp
+        
+self.face_det=FaceDetApp(self.face_det_kmodel,model_input_size=self.det_input_size,anchors=s
+elf.anchors,confidence_threshold=self.confidence_threshold,nms_threshold=self.nms_threshold,
+rgb888p_size=self.rgb888p_size,display_size=self.display_size,debug_mode=0)
+        
+self.face_reg=FaceRegistrationApp(self.face_reg_kmodel,model_input_size=self.reg_input_size,
+rgb888p_size=self.rgb888p_size,display_size=self.display_size)
+        self.face_det.config_preprocess()
+        # 人脸数据库初始化
+        self.database_init()
+    # run函数
+    def run(self,input_np):
+        # 执行人脸检测
+        det_boxes,landms=self.face_det.run(input_np)
+
+
+===== PAGE 45/160 =====
+
+FaceRecognition  实现完整的面部识别系统。将输入的图像进行人脸检测，之后提取面部特征并与数据库中的已注
+册特征进行对比，最终输出识别结果。
+1. run ：执行人脸检测和识别。
+2. database_init ：初始化数据库，读取已注册的人脸特征文件。
+3. database_search ：将当前提取的特征与数据库中的特征进行匹配，返回最匹配的结果。
+4. draw_result ：将检测结果（例如框选的人脸和识别结果）绘制到图像上。
+5.7 人体检测
+ 
+5.7.1 实验简介
+ 
+本节通过程序学习k230开发板的人体检测功能。
+5.7.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+        recg_res = []
+        for landm in landms:
+            # 针对每个人脸五官点，推理得到人脸特征，并计算特征在数据库中相似度
+            self.face_reg.config_preprocess(landm)
+            feature=self.face_reg.run(input_np)
+            res = self.database_search(feature)
+            recg_res.append(res)
+        return det_boxes,recg_res
+
+
+===== PAGE 46/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 47/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.7.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过display=""参数选择"HDMI"、"LCD"或"LCD虚拟显示"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“person_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按
+钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 48/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“person_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 49/160 =====
+
+5.7.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的人体识别出来，并使用绿色的矩形圈出来。
+5.7.5 程序分析
+ 
+导入对应库文件
+导入对应库文件
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display   # 请确保SDK支持
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+
+
+===== PAGE 50/160 =====
+
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+导入对应库文件
+def init_display(select_display, width, height):
+    if select_display == 1:
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        Display.init(Display.ST7701, to_ide=True)
+        print("初始化LCD显示，默认分辨率800x480")
+    elif select_display == 3:
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+class PersonDetectionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, labels, anchors,
+                 confidence_threshold=0.2, nms_threshold=0.5, nms_option=False,
+                 strides=[8, 16, 32], rgb888p_size=[224, 224], display_size=[1920, 1080], 
+debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.labels = labels
+        self.anchors = anchors
+        self.strides = strides
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.nms_option = nms_option
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = center_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [0, 0, 0])
+            self.ai2d.resize(nn.interp_method.tf_bilinear,
+                             nn.interp_mode.half_pixel)
+            self.ai2d.build([1, 3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1, 3, self.model_input_size[1], self.model_input_size[0]])
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+
+
+===== PAGE 51/160 =====
+
+定义了一个用于人体目标检测任务的类 PersonDetectionApp ，继承自 AIBase，核心功能包括初始化模型及参数、
+图像预处理配置、模型推理后的后处理以及结果绘制。
+导入对应库文件
+1. 根据输入的数字 select_display  选择显示设备类型（HDMI、LCD、IDE虚拟显示），并设置对应的显示分辨
+率。默认模式为HDMI。
+            dets = aicube.anchorbasedet_post_process(results[0], results[1], results[2], 
+self.model_input_size,
+                                                     self.rgb888p_size, self.strides, 
+len(self.labels),
+                                                     self.confidence_threshold, 
+self.nms_threshold, self.anchors, self.nms_option)
+            return dets
+if __name__ == "__main__":
+    display_mode_map = {1: "hdmi", 2: "lcd", 3: "ide"}
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920, 1080]
+    elif display_mode == "lcd":
+        display_size = [800, 480]
+    else:
+        display_size = [1280, 720]
+    rgb888p_size = [1280, 720]
+    kmodel_path = "/sdcard/examples/kmodel/person_detect_yolov5n.kmodel"
+    confidence_threshold = 0.2
+    nms_threshold = 0.6
+    labels = ["person"]
+    anchors = [10, 13, 16, 30, 33, 23, 30, 61, 62, 45, 59, 119, 116, 90, 156, 198, 373, 326]
+    # 初始化显示
+    init_display(select_display, width=display_size[0], height=display_size[1])
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+    person_det = PersonDetectionApp(kmodel_path, model_input_size=[640, 640], labels=labels, 
+anchors=anchors,
+                                   confidence_threshold=confidence_threshold, 
+nms_threshold=nms_threshold, nms_option=False,
+                                   strides=[8, 16, 32], rgb888p_size=rgb888p_size, 
+display_size=display_size, debug_mode=0)
+    person_det.config_preprocess()
+
+
+===== PAGE 52/160 =====
+
+2. 设置输入图像尺寸，用于图像采集及处理匹配。指定YOLOv5轻量模型路径。设定检测置信度阈值和非极大值抑
+制阈值，保证结果过滤精度。定义检测类别（本例只检测人体）及相应锚框参数，方便后处理框的解码。
+3. 调用显示初始化函数，根据所选设备启动显示模块，分辨率匹配设置。
+4. 实例化管线，整合采集、处理、显示。调用 create() 初始化管线底层硬件与软件。获取当前管线对应的显示尺
+寸，动态同步后续绘制和显示参数。
+5. 加载YOLOv5模型，设置输入分辨率。提供标签、锚框、阈值和多层输出尺度步幅。调用配置预处理函数，建立
+图像预处理流水线。
+    rgb888p_size = [1280, 720]
+    kmodel_path = "/sdcard/examples/kmodel/person_detect_yolov5n.kmodel"
+    confidence_threshold = 0.2
+    nms_threshold = 0.6
+    labels = ["person"]
+    anchors = [10, 13, 16, 30, 33, 23, 30, 61, 62, 45, 59, 119, 116, 90, 156, 198, 373, 326]
+    # 初始化显示
+    init_display(select_display, width=display_size[0], height=display_size[1])
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+    person_det = PersonDetectionApp(kmodel_path, model_input_size=[640, 640], labels=labels, 
+anchors=anchors,
+                                   confidence_threshold=confidence_threshold, 
+nms_threshold=nms_threshold, nms_option=False,
+                                   strides=[8, 16, 32], rgb888p_size=rgb888p_size, 
+display_size=display_size, debug_mode=0)
+    person_det.config_preprocess()
+    try:
+        while True:
+            with ScopedTiming("total", 1):
+                img = pl.get_frame()
+                res = person_det.run(img)
+                person_det.draw_result(pl, res)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        person_det.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 53/160 =====
+
+6. 进入无限循环，实时采集图像并执行推理。使用计时管理器跟踪整体流程耗时。调用模型推断接口得到目标检测
+结果。将检测结果可视化绘制到显示画面上。手动进行垃圾收集防止内存泄漏。支持用户Ctrl+C退出，保证资源
+释放。
+5.8 人体关键点检测 
+ 
+5.8.1 实验简介
+ 
+本节通过程序学习k230开发板的人体关键点检测功能。
+5.8.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 54/160 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.8.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过display=""参数选择"HDMI"、"LCD"或"LCD虚拟显示"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+
+
+===== PAGE 55/160 =====
+
+本方式是连接后，将程序“person_kp_detect.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按
+钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“person_kp_detect.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+
+
+===== PAGE 56/160 =====
+
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+5.8.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的人体识别出来，并使用标注其对应的四肢关节。
+5.8.5 程序分析
+ 
+导入对应库文件
+
+
+===== PAGE 57/160 =====
+
+初始化显示屏的函数
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+人体检测类
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display  # 确保SDK支持
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+# ==================================================================
+# == 选择显示模式 (1: HDMI, 2: LCD, 3: IDE虚拟显示) ==
+# ==================================================================
+select_display = 3  # 1=HDMI，2=LCD，3=IDE虚拟显示
+def init_display(select_display, width, height):
+    if select_display == 1:
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        Display.init(Display.ST7701, to_ide=True)
+        print("初始化LCD显示，默认分辨率800x480")
+    elif select_display == 3:
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+# 自定义人体关键点检测类
+class PersonKeyPointApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size,
+                 confidence_threshold=0.2, nms_threshold=0.5,
+                 rgb888p_size=[1280, 720], display_size=[1920, 1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+
+
+===== PAGE 58/160 =====
+
+定义了一个基于YOLOv5及后续姿态估计模型的人体关键点检测任务类 PersonKeyPointApp 。它实现了模型初始
+化、图像预处理、模型输出后处理和检测结果的绘制。
+主程序
+1. 通过字典将select_display 数值映射到对应显示设备名。根据显示设备，设置不同的分辨率：HDMI为1080p
+全高清。LCD为800×480，常见中小尺寸液晶屏。IDE虚拟显示为1280×720。
+2. 设定AI模型输入分辨率为320×320，较小方便实时推理。加载YOLOv8轻量级姿态估计模型（yolov8n-
+pose.kmodel）。置信度0.2过滤低置信检测。非极大值抑制门限0.5用于去重。
+3. 创建Pipeline 实例，设定采集和显示的参数。调用create方法初始化采集、AI预处理及显示设备驱动。获取当
+前显示设备的实际分辨率。
+        # 骨骼连接定义
+        self.SKELETON = [
+            (16, 14), (14, 12), (17, 15), (15, 13), (12, 13), (6, 12), (7, 13),
+            (6, 7), (6, 8), (7, 9), (8, 10), (9, 11), (2, 3), (1, 2),
+            (1, 3), (2, 4), (3, 5), (4, 6), (5, 7)
+        ]
+        # 肢体颜色
+        self.LIMB_COLORS = [
+            (255, 51, 153, 255), (255, 51, 153, 255), (255, 51, 153, 255),
+            (255, 51, 153, 255), (255, 255, 51, 255), (255, 255, 51, 255),
+            (255, 255, 51, 255), (255, 255, 128, 0), (255, 255, 128, 0),
+            (255, 255, 128, 0), (255, 255, 128, 0), (255, 255, 128, 0),
+            (255, 0, 255, 0), (255, 0, 255, 0), (255, 0, 255, 0),
+            (255, 0, 255, 0), (255, 0, 255, 0), (255, 0, 255, 0),
+            (255, 0, 255, 0)
+        ]
+    display_mode_map = {1: "hdmi", 2: "lcd", 3: "ide"}
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920, 1080]
+    elif display_mode == "lcd":
+        display_size = [800, 480]
+    else:
+        display_size = [1280, 720]
+    rgb888p_size = [320, 320]
+    kmodel_path = "/sdcard/examples/kmodel/yolov8n-pose.kmodel"
+    confidence_threshold = 0.2
+    nms_threshold = 0.5
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+
+
+===== PAGE 59/160 =====
+
+4. 初始化PersonKeyPointApp 任务，绑定模型参数、阈值及图像尺寸。调用预处理配置方法，建立图像预处理流
+水线（如pad及resize）。
+5. 循环持续采集图像并执行推理。使用ScopedTiming 统计整个帧处理时间（包括采集、推理和绘制）。绘制人体
+关键点（姿态）及连线骨架，实时显示到指定屏幕。使用 gc.collect()  主动触发垃圾回收，确保系统稳定运
+行。支持键盘中断(如Ctrl+C)安全退出程序。
+5.9 跌倒检测 
+ 
+5.9.1 实验简介
+ 
+本节通过程序学习k230开发板的跌倒检测功能。
+5.9.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+    person_kp = PersonKeyPointApp(
+        kmodel_path,
+        model_input_size=[320, 320],
+        confidence_threshold=confidence_threshold,
+        nms_threshold=nms_threshold,
+        rgb888p_size=rgb888p_size,
+        display_size=display_size,
+        debug_mode=0
+    )
+    person_kp.config_preprocess()
+    try:
+        while True:
+            with ScopedTiming("total", 1):
+                img = pl.get_frame()
+                res = person_kp.run(img)
+                person_kp.draw_result(pl, res)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        person_kp.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 60/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 61/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.9.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过display=""参数选择"HDMI"、"LCD"或"LCD虚拟显示"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“falldown_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行
+按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 62/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“falldown_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 63/160 =====
+
+5.9.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的人体识别出来，并使判断出跌倒的人员与非跌倒的人员。
+5.9.5 程序分析
+ 
+导入对应库文件
+
+
+===== PAGE 64/160 =====
+
+初始化显示屏的函数
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+人体检测类
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display   # 确保SDK支持
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+def init_display(select_display, width, height):
+    if select_display == 1:
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        Display.init(Display.ST7701, to_ide=True)
+        print("初始化LCD显示，默认分辨率800x480")
+    elif select_display == 3:
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+def deinit_display():
+    Display.deinit()
+    print("释放显示资源")
+# 自定义跌倒检测类
+class FallDetectionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, labels, anchors,
+                 confidence_threshold=0.2, nms_threshold=0.5, nms_option=False,
+                 strides=[8,16,32], rgb888p_size=[224,224], display_size=[1920,1080],
+                 debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.labels = labels
+        self.anchors = anchors
+        self.strides = strides
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.nms_option = nms_option
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+
+
+===== PAGE 65/160 =====
+
+定义了一个用于人体目标检测任务的类 FallDetectionApp ，继承自 AIBase，核心功能包括初始化模型及参数、图
+像预处理配置、模型推理后的后处理以及结果绘制。
+主程序
+1. 根据输入的数字 select_display  选择显示设备类型（HDMI、LCD、IDE虚拟显示），并设置对应的显示分辨
+率。默认模式为HDMI。
+2. 设置输入图像尺寸，用于图像采集及处理匹配。指定YOLOv5轻量模型路径。设定检测置信度阈值和非极大值抑
+制阈值，保证结果过滤精度。定义检测类别（本例只检测人体）及相应锚框参数，方便后处理框的解码。
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.color = [(255,0, 0, 255), (255,0, 255, 0), (255,255,0, 0), (255,255,0, 255)]
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = center_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [0,0,0])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1,3,self.model_input_size[1], self.model_input_size[0]])
+if __name__ == "__main__":
+    display_mode_map = {1:"hdmi", 2:"lcd", 3:"ide"}
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920,1080]
+    elif display_mode == "lcd":
+        display_size = [800,480]
+    else:
+        display_size = [1280,720]
+    rgb888p_size = [1280,720]
+    kmodel_path = "/sdcard/examples/kmodel/yolov5n-falldown.kmodel"
+    confidence_threshold = 0.3
+    nms_threshold = 0.45
+    labels = ["Fall", "NoFall"]
+    anchors = [10, 13, 16, 30, 33, 23, 30, 61, 62, 45, 59, 119, 116, 90, 156, 198, 373, 326]
+    init_display(select_display, width=display_size[0], height=display_size[1])
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+
+
+===== PAGE 66/160 =====
+
+3. 调用显示初始化函数，根据所选设备启动显示模块，分辨率匹配设置。
+4. 实例化管线，整合采集、处理、显示。调用 create()  初始化管线底层硬件与软件。获取当前管线对应的显示
+尺寸，动态同步后续绘制和显示参数。
+5. 加载YOLOv5模型，设置输入分辨率。提供标签、锚框、阈值和多层输出尺度步幅。调用配置预处理函数，建立
+图像预处理流水线。
+6. 进入无限循环，实时采集图像并执行推理。使用计时管理器跟踪整体流程耗时。调用模型推断接口得到目标检测
+结果。将检测结果可视化绘制到显示画面上。手动进行垃圾收集防止内存泄漏。支持用户Ctrl+C退出，保证资源
+释放。
+5.10 手掌识别 
+ 
+5.10.1 实验简介 
+ 
+本节通过程序学习k230开发板的手掌识别功能。
+    fall_det = FallDetectionApp(
+        kmodel_path,
+        model_input_size=[640,640],
+        labels=labels,
+        anchors=anchors,
+        confidence_threshold=confidence_threshold,
+        nms_threshold=nms_threshold,
+        nms_option=False,
+        strides=[8,16,32],
+        rgb888p_size=rgb888p_size,
+        display_size=display_size,
+        debug_mode=0
+    )
+    fall_det.config_preprocess()
+    try:
+        while True:
+            with ScopedTiming("total",1):
+                img = pl.get_frame()
+                res = fall_det.run(img)
+                fall_det.draw_result(pl, res)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        fall_det.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 67/160 =====
+
+5.10.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 68/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.10.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“hand_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 69/160 =====
+
+脱机运行：
+1. 连接后将程序“hand_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前
+打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 70/160 =====
+
+5.10.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的手掌识别出来，并使用绿的线条的矩形标注出来。
+5.10.5 程序分析
+ 
+导入对应库文件
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+
+
+===== PAGE 71/160 =====
+
+初始化显示屏的函数
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+手部检测
+# ==================================================================
+# == 选择显示模式 (1: HDMI, 2: LCD, 3: IDE虚拟显示) ==
+# ==================================================================
+select_display = 3  # 1=HDMI，2=LCD，3=IDE虚拟显示
+def init_display(select_display, width, height):
+    if select_display == 1:
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        Display.init(Display.ST7701, to_ide=True)
+        print("初始化LCD显示，默认分辨率800x480")
+    elif select_display == 3:
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+class HandDetectionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, labels, anchors,
+                 confidence_threshold=0.2, nms_threshold=0.5, nms_option=False,
+                 strides=[8,16,32], rgb888p_size=[224,224], display_size=[1920,1080],
+                 debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.labels = labels
+        self.anchors = anchors
+        self.strides = strides
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.nms_option = nms_option
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = center_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [0, 0, 0])
+
+
+===== PAGE 72/160 =====
+
+定义了一个基于YOLO风格的手部目标检测和关键点估计任务类 HandDetectionApp ，其核心功能包括模型初始化、
+图像预处理、推理后处理以及检测结果可视化。
+主程序
+1. 通过字典将select_display 数值映射到对应显示设备名。根据显示设备，设置不同的分辨率：HDMI为1080p
+全高清。LCD为800×480，常见中小尺寸液晶屏。IDE虚拟显示为1280×720。
+2. 设定输入图片尺寸（1280x720），加载手部检测YOLO模型，设置检测置信度阈值和非极大值抑制阈值，指定识
+别类别标签（手部）和模型锚框参数。
+3. 构建采集、AI推理及显示流程的管道，启动管线并获取实际显示尺寸。
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+                            [1,3,self.model_input_size[1],self.model_input_size[0]])
+    display_mode_map = {1:"hdmi", 2:"lcd", 3:"ide"}
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920,1080]
+    elif display_mode == "lcd":
+        display_size = [800,480]
+    else:
+        display_size = [1280,720]
+    rgb888p_size = [1280,720]
+    kmodel_path = "/sdcard/examples/kmodel/hand_det.kmodel"
+    confidence_threshold = 0.2
+    nms_threshold = 0.5
+    labels = ["hand"]
+    anchors = [26,27, 53,52, 75,71, 80,99, 106,82, 99,134, 140,113, 161,172, 245,276]
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+    hand_det = HandDetectionApp(
+        kmodel_path,
+        model_input_size=[512,512],
+        labels=labels,
+        anchors=anchors,
+        confidence_threshold=confidence_threshold,
+        nms_threshold=nms_threshold,
+        nms_option=False,
+        strides=[8,16,32],
+        rgb888p_size=rgb888p_size,
+        display_size=display_size,
+        debug_mode=0
+    )
+
+
+===== PAGE 73/160 =====
+
+4. 根据模型路径和输入分辨率初始化任务类，加载模型和后处理配置，调用方法设置图像预处理（填充+缩放）。
+5. 循环采集摄像头数据，执行手部检测模型推理，绘制检测框和结果，显示渲染图像，手动触发垃圾回收，防止内
+存泄漏，支持用户Ctrl+C安全退出，关闭任务与设备资源。
+5.11 手掌关键点检测 
+ 
+5.11.1 实验简介
+ 
+本节通过程序学习k230开发板的手掌关键点检测功能。
+5.11.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+    hand_det.config_preprocess()
+    try:
+        while True:
+            with ScopedTiming("total", 1):
+                img = pl.get_frame()
+                res = hand_det.run(img)
+                hand_det.draw_result(pl, res)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        hand_det.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 74/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 75/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.11.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“hand_keypoint_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角
+的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 76/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“hand_keypoint_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏
+上的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 77/160 =====
+
+5.11.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的手掌识别出来使用绿的线条的矩形标注出来，使用不同颜色将识别出来的不
+同手指关节分别标记出来。
+5.11.5 程序分析
+ 
+导入对应库文件
+初始化显示屏的函数
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display  # 确保SDK支持
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+# ==================================================================
+# == 选择显示模式 (1: HDMI, 2: LCD, 3: IDE虚拟显示) ==
+# ==================================================================
+select_display = 2  # 1=HDMI，2=LCD，3=IDE虚拟显示
+def init_display(select_display, width, height):
+
+
+===== PAGE 78/160 =====
+
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+手部检测
+定义了一个名为 HandDetApp  的自定义手掌检测任务类，实现了从模型加载到预处理、后处理的完整流程。
+手势关键点检测
+    if select_display == 1:
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        Display.init(Display.ST7701, to_ide=True)
+        print("初始化LCD显示，默认分辨率800x480")
+    elif select_display == 3:
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+# 自定义手掌检测任务类
+class HandDetApp(AIBase):
+    def __init__(self,kmodel_path,labels,model_input_size,anchors,
+                 confidence_threshold=0.2,nms_threshold=0.5,nms_option=False,
+                 strides=[8,16,32],rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path = kmodel_path
+        self.labels = labels
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.anchors = anchors
+        self.strides = strides
+        self.nms_option = nms_option
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = center_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [114, 114, 114])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1,3, self.model_input_size[1], self.model_input_size[0]])
+
+
+===== PAGE 79/160 =====
+
+该 HandKPDetApp  类是一个自定义的手势关键点检测任务，基于深度学习的YOLOv8类关键点模型，结合输入预处
+理、模型推理后处理以及坐标还原，完成手势检测点输出。
+人手关键点检
+# 自定义手势关键点检测任务类
+class HandKPDetApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.crop_params = []
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self,det,input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            self.crop_params = self.get_crop_param(det)
+            self.ai2d.crop(self.crop_params[0], self.crop_params[1], self.crop_params[2], 
+self.crop_params[3])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1,3, self.model_input_size[1], self.model_input_size[0]])
+    def postprocess(self,results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            results=results[0].reshape(results[0].shape[0]*results[0].shape[1])
+            results_show = np.zeros(results.shape, dtype=np.int16)
+            results_show[0::2] = results[0::2]*self.crop_params[3] + self.crop_params[0]
+            results_show[1::2] = results[1::2]*self.crop_params[2] + self.crop_params[1]
+            results_show[0::2] = results_show[0::2]*
+(self.display_size[0]/self.rgb888p_size[0])
+            results_show[1::2] = results_show[1::2]*
+(self.display_size[1]/self.rgb888p_size[1])
+            return results_show
+# 手掌关键点检测任务合成类
+class HandKeyPointDet:
+    def __init__(self, hand_det_kmodel, hand_kp_kmodel,
+                 det_input_size, kp_input_size, labels, anchors,
+                 confidence_threshold=0.25, nms_threshold=0.3, nms_option=False,
+                 strides=[8,16,32], rgb888p_size=[1280,720], display_size=[1920,1080],
+                 debug_mode=0):
+        self.hand_det_kmodel = hand_det_kmodel
+        self.hand_kp_kmodel = hand_kp_kmodel
+
+
+===== PAGE 80/160 =====
+
+定义了一个名为 HandKeyPointDet  的类，用于实现基于两个模型串联的人手关键点检测任务。
+主程序
+1. 通过字典将select_display 数值映射到对应显示设备名。根据显示设备，设置不同的分辨率：HDMI为1080p
+全高清。LCD为800×480，常见中小尺寸液晶屏。IDE虚拟显示为1280×720。
+        self.det_input_size = det_input_size
+        self.kp_input_size = kp_input_size
+        self.labels = labels
+        self.anchors = anchors
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.nms_option = nms_option
+        self.strides = strides
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.hand_det = HandDetApp(self.hand_det_kmodel, self.labels,
+                                  model_input_size=self.det_input_size, 
+anchors=self.anchors,
+                                  confidence_threshold=self.confidence_threshold, 
+nms_threshold=self.nms_threshold,
+                                  nms_option=self.nms_option, strides=self.strides,
+                                  rgb888p_size=self.rgb888p_size, 
+display_size=self.display_size, debug_mode=0)
+        self.hand_kp = HandKPDetApp(self.hand_kp_kmodel,
+                                    model_input_size=self.kp_input_size,
+                                    rgb888p_size=self.rgb888p_size,
+                                    display_size=self.display_size)
+        self.hand_det.config_preprocess()
+if __name__=="__main__":
+    display_mode_map = {1:"hdmi", 2:"lcd", 3:"ide"}
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920,1080]
+    elif display_mode == "lcd":
+        display_size = [800,480]
+    else:
+        display_size = [1280,720]
+    rgb888p_size = [1280,720]
+    hand_det_kmodel_path = "/sdcard/examples/kmodel/hand_det.kmodel"
+    hand_kp_kmodel_path = "/sdcard/examples/kmodel/handkp_det.kmodel"
+    anchors = [26,27, 53,52, 75,71, 80,99, 106,82, 99,134, 140,113, 161,172, 245,276]
+    hand_det_input_size = [512,512]
+    hand_kp_input_size = [256,256]
+    confidence_threshold = 0.2
+    nms_threshold = 0.5
+    labels = ["hand"]
+
+
+===== PAGE 81/160 =====
+
+2. 指定手部检测与关键点模型的文件路径及其对应的输入尺寸。设定锚框参数，用于后处理中检测框的解码。设置
+置信度和NMS阈值，调节检测结果过滤灵敏度。标签仅为“hand”，表明只检测手部。
+3. 实例化视频采集管线，结合RGB数据和显示设备类型。调用create()启动设备及驱动。同步获取显示设备的分辨
+率。
+4. 创建两个模型串联的检测对象，完成检测框识别和框内关键点推理。传入检测模型与关键点模型的输入尺寸及相
+关阈值和锚点。
+5. 进入无限循环，实时采集摄像头帧。通过hkd.run() 执行完整推理：先检测手部，再对检测的区域进行关键点
+预测。绘制检测框和关键点信息到显示缓冲区。显示结果画面。手动调用垃圾回收保持系统稳定。支持用户手动
+中断（Ctrl+C），并释放所有设备与模型资源。
+5.12 手掌关键点分类 
+ 
+5.12.1 实验简介
+ 
+本节通过程序学习k230开发板的手掌关键点分类功能。
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+    hkd = HandKeyPointDet(hand_det_kmodel_path, hand_kp_kmodel_path,
+                         det_input_size=hand_det_input_size, 
+kp_input_size=hand_kp_input_size,
+                         labels=labels, anchors=anchors,
+                         confidence_threshold=confidence_threshold, 
+nms_threshold=nms_threshold,
+                         nms_option=False, strides=[8,16,32],
+                         rgb888p_size=rgb888p_size, display_size=display_size)
+    try:
+        while True:
+            with ScopedTiming("total", 1):
+                img = pl.get_frame()
+                det_boxes, hand_res = hkd.run(img)
+                hkd.draw_result(pl, det_boxes, hand_res)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        hkd.hand_det.deinit()
+        hkd.hand_kp.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 82/160 =====
+
+5.12.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 83/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.12.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“hand_keypoint_class.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行
+按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 84/160 =====
+
+脱机运行：
+1. 连接后将程序“hand_keypoint_class.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保
+存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 85/160 =====
+
+5.12.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的手掌以及手部关节识别出来，并推理出相对应的手势。
+5.12.5 程序分析
+ 
+导入对应库文件
+
+
+===== PAGE 86/160 =====
+
+初始化显示屏的函数
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+手掌检测
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display  # 确保SDK支持
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+# ==================================================================
+# == 选择显示模式 (1: HDMI, 2: LCD, 3: IDE虚拟显示) ==
+# ==================================================================
+select_display = 3  # 1=HDMI，2=LCD，3=IDE虚拟显示
+def init_display(select_display, width, height):
+    if select_display == 1:
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        Display.init(Display.ST7701, to_ide=True)
+        print("初始化LCD显示，默认分辨率800x480")
+    elif select_display == 3:
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+# 自定义手掌检测任务类
+class HandDetApp(AIBase):
+    def __init__(self,kmodel_path,labels,model_input_size,anchors,
+                 confidence_threshold=0.2,nms_threshold=0.5,nms_option=False,
+                 strides=[8,16,32],rgb888p_size=[1920,1080],display_size=[1920,1080],
+                 debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path = kmodel_path
+        self.labels = labels
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.anchors = anchors
+        self.strides = strides
+        self.nms_option = nms_option
+
+
+===== PAGE 87/160 =====
+
+定义了一个基于锚框的手掌检测任务类 HandDetApp ，整体流程包括模型初始化、图像预处理配置以及推理后处理。
+自定义手势关键点分类
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = center_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0,0,0,0,top,bottom,left,right], 0, [114,114,114])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1,3, self.model_input_size[1], self.model_input_size[0]])
+# 自定义手势关键点分类任务类
+class HandKPClassApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,
+                 rgb888p_size=[1920,1080], display_size=[1920,1080], debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.crop_params = []
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT, np.uint8, np.uint8)
+    def config_preprocess(self,det,input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            self.crop_params = self.get_crop_param(det)
+            self.ai2d.crop(self.crop_params[0], self.crop_params[1], self.crop_params[2], 
+self.crop_params[3])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1,3, self.model_input_size[1], self.model_input_size[0]])
+    def postprocess(self,results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            results = results[0].reshape(results[0].shape[0]*results[0].shape[1])
+            results_show = np.zeros(results.shape, dtype=np.int16)
+            results_show[0::2] = results[0::2] * self.crop_params[3] + self.crop_params[0]
+            results_show[1::2] = results[1::2] * self.crop_params[2] + self.crop_params[1]
+            gesture = self.hk_gesture(results_show)
+
+
+===== PAGE 88/160 =====
+
+定义了一个自定义手势关键点分类任务类 HandKPClassApp ，继承自基础AI类，用于基于手掌检测结果进行手势关键
+点识别与分类
+主程序
+1. 通过字典将select_display数值映射到对应显示设备名。根据显示设备，设置不同的分辨率：HDMI为1080p全高
+清。LCD为800×480，常见中小尺寸液晶屏。IDE虚拟显示为1280×720。
+2. 定义RGB输入图像尺寸及显示尺寸。指定手势检测模型和手势关键点模型的路径。锚框数组配合检测模型后处理
+使用。置信度与NMS阈值控制检测与过滤灵敏度。标签仅包含“hand”，表示只检测手部。
+3. 构建采集、AI推理及显示流程的管道，启动管线并获取实际显示尺寸。
+            results_show[0::2] = results_show[0::2] * 
+(self.display_size[0]/self.rgb888p_size[0])
+            results_show[1::2] = results_show[1::2] * 
+(self.display_size[1]/self.rgb888p_size[1])
+            return results_show, gesture
+    display_mode_map = {1:"hdmi", 2:"lcd", 3:"ide"}
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920,1080]
+    elif display_mode == "lcd":
+        display_size = [800,480]
+    else:
+        display_size = [1280,720]
+    rgb888p_size = [1280,720]
+    hand_det_kmodel_path = "/sdcard/examples/kmodel/hand_det.kmodel"
+    hand_kp_kmodel_path = "/sdcard/examples/kmodel/handkp_det.kmodel"
+    anchors = [26,27,53,52,75,71,80,99,106,82,99,134,140,113,161,172,245,276]
+    hand_det_input_size = [512,512]
+    hand_kp_input_size = [256,256]
+    confidence_threshold = 0.2
+    nms_threshold = 0.5
+    labels = ["hand"]
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+    hkc = HandKeyPointClass(
+        hand_det_kmodel_path,
+        hand_kp_kmodel_path,
+        det_input_size=hand_det_input_size,
+        kp_input_size=hand_kp_input_size,
+        labels=labels,
+        anchors=anchors,
+
+
+===== PAGE 89/160 =====
+
+4. 利用检测模型和关键点模型路径创建双阶段检测任务对象。配置输入尺寸、模型锚点、阈值、步幅及显示参数。
+该类内部负责先检测手部框，再在检测框内预测关键点。
+5. 主循环中持续从摄像头管线获取实时图像帧。使用HandKeyPointClass 完成手势检测框和关键点的推理流程。
+将推理结果绘制到屏幕缓冲区。显示绘制后的图像，实现实时反馈。循环中手动执行垃圾回收，防止内存泄漏。
+支持用户 Ctrl+C 安全退出，调用析构释放所有模型和硬件资源。
+5.13 动态手势识别实验 
+ 
+5.13.1 实验简介
+ 
+本节通过程序学习k230开发板的动态手势识别功能。
+5.13.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+        confidence_threshold=confidence_threshold,
+        nms_threshold=nms_threshold,
+        nms_option=False,
+        strides=[8,16,32],
+        rgb888p_size=rgb888p_size,
+        display_size=display_size,
+        debug_mode=0
+    )
+    try:
+        while True:
+            with ScopedTiming("total",1):
+                img = pl.get_frame()                          # 获取当前帧
+                det_boxes, gesture_res = hkc.run(img)        # 推理当前帧
+                hkc.draw_result(pl, det_boxes, gesture_res)  # 绘制当前帧推理结果
+                pl.show_image()                              # 展示推理结果
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        hkc.hand_det.deinit()
+        hkc.hand_kp.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 90/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 91/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.13.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“hand_keypoint_class.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行
+按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 92/160 =====
+
+脱机运行：
+1. 连接后将程序“hand_keypoint_class.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保
+存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 93/160 =====
+
+5.13.3 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的手部推理出相对应的手势。
+5.13.4 程序分析
+ 
+导入对应库文件
+初始化显示屏的函数
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math, time
+from media.media import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+from media.media import *
+from media.display import *
+select_display = 3
+def init_display(select_display):
+    if select_display == 1:
+        width, height = 640, 480
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        width, height = 800, 480
+        Display.init(Display.ST7701, width=width, height=height, to_ide=True)
+        print(f"初始化LCD显示，分辨率：{width}x{height}")
+    elif select_display == 3:
+        width, height = 800, 480
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+
+
+===== PAGE 94/160 =====
+
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+手部检测类HandDetApp
+通过输入摄像头捕获的画面对获取到的图像进行手部检测，并返回手部边界框（x1,y1,x2,y2）。
+动态手势识别类 DynamicGestureApp
+        raise ValueError("select_display参数错误，只能是1、2或3")
+    return width, height
+class HandDetApp(AIBase):
+    def 
+__init__(self,kmodel_path,labels,model_input_size,anchors,confidence_threshold=0.2,nms_thres
+hold=0.5,nms_option=False,strides=[8,16,32],rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.labels=labels
+        self.model_input_size=model_input_size
+        self.confidence_threshold=confidence_threshold
+        self.nms_threshold=nms_threshold
+        self.anchors=anchors
+        self.strides = strides
+        self.nms_option = nms_option
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right,_ = 
+center_pad_param(self.rgb888p_size,self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [114, 114, 114])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+    def postprocess(self,results):
+        with ScopedTiming("postprocess",self.debug_mode > 0):
+            dets = aicube.anchorbasedet_post_process(results[0], results[1], results[2], 
+self.model_input_size, self.rgb888p_size, self.strides, len(self.labels), 
+self.confidence_threshold, self.nms_threshold, self.anchors, self.nms_option)
+            return dets
+class HandKPClassApp(AIBase):
+
+
+===== PAGE 95/160 =====
+
+通过输入手部检测类HandDetApp返回的手部边界框进行动态手势识别，并返回动态手势类别（如上下左右移动）。
+主程序
+    def __init__(self,kmodel_path,model_input_size,rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.crop_params=[]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    def config_preprocess(self,det,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            self.crop_params = self.get_crop_param(det)
+            
+self.ai2d.crop(self.crop_params[0],self.crop_params[1],self.crop_params[2],self.crop_params[
+3])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+if __name__=="__main__":
+    width, height = init_display(select_display)
+    display_mode_map = {1:"hdmi", 2:"lcd", 3:"ide"}
+    display_mode = display_mode_map.get(select_display, "lcd")
+    rgb888p_size = [1920,1080]
+    pl=PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size=pl.get_display_size()
+    hand_det_kmodel_path="/sdcard/examples/kmodel/hand_det.kmodel"
+    hand_kp_kmodel_path="/sdcard/examples/kmodel/handkp_det.kmodel"
+    gesture_kmodel_path="/sdcard/examples/kmodel/gesture.kmodel"
+    hand_det_input_size=[512,512]
+    hand_kp_input_size=[256,256]
+    gesture_input_size=[224,224]
+    confidence_threshold=0.2
+    nms_threshold=0.5
+    labels=["hand"]
+    anchors=[26,27,53,52,75,71,80,99,106,82,99,134,140,113,161,172,245,276]
+    dg=DynamicGesture(
+        hand_det_kmodel_path, hand_kp_kmodel_path, gesture_kmodel_path,
+
+
+===== PAGE 96/160 =====
+
+1. rgb888p_size = [1920,1080]  定义初始化镜头采样的分辨率。
+2. hand_det_kmodel_path = "/sdcard/examples/kmodel/hand_det.kmodel" 定义模型路径。
+3. hand_det_input_size = [512,512]  定义模型输入的尺寸。
+4. dg=DynamicGesture()  创建“业务层”对象：把三个子模型（检测/关键点/动态手势）统一管理起来。
+5. img=pl.get_frame()  取一帧 RGB 图像。
+6. dg.draw_result(pl, output1, output2)  根据当前状态与推理结果，叠加箭头/提示图/文字到 OSD 层。
+7. pl.show_image()  显示一帧到屏幕（把 OSD 合成到显示层上）。
+8. 构建采集、AI推理及显示流程的管道，启动管线并获取实际显示尺寸。
+9. 利用检测模型和关键点模型路径创建双阶段检测任务对象。配置输入尺寸、模型锚点、阈值、步幅及显示参数。
+该类内部负责先检测手部框，再在检测框内预测关键点。
+10. finally : 循环中手动执行垃圾回收，防止内存泄漏。支持用户 Ctrl+C 安全退出，调用析构释放所有模型和硬件
+资源。
+5.14 剪头石头布实验 
+ 
+5.14.1 实验简介
+ 
+本节通过程序学习k230开发板的手势识别玩法下的剪刀石头布玩法功能。
+        det_input_size=hand_det_input_size, kp_input_size=hand_kp_input_size, 
+gesture_input_size=gesture_input_size,
+        labels=labels, anchors=anchors, confidence_threshold=confidence_threshold,
+        nms_threshold=nms_threshold, nms_option=False, strides=[8,16,32],
+        rgb888p_size=rgb888p_size, display_size=display_size
+    )
+    try:
+        while True:
+            with ScopedTiming("total",1):
+                img=pl.get_frame()
+                output1,output2=dg.run(img)
+                dg.draw_result(pl,output1,output2)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        dg.hand_det.deinit()
+        dg.hand_kp.deinit()
+        dg.dg.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 97/160 =====
+
+5.14.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 98/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.14.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“hand_keypoint_class.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行
+按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 99/160 =====
+
+脱机运行：
+1. 连接后将程序“hand_keypoint_class.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保
+存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 100/160 =====
+
+5.14.4 运行效果
+ 
+在回传画面，将摄像头拍摄到的画面中的识别出手部。并分析出对应的手势，并画出机器人随机出的“剪刀石头布”。
+记录下玩家出的“剪刀石头布”与机器出的“剪刀石头布”，并分析出结果输出。
+5.14.5 程序分析
+ 
+导入对应库文件
+初始化显示屏的函数
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os,sys,ujson,gc,math
+from random import randint
+from media.media import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+import aidemo
+from media.media import *
+from media.display import *
+def init_display(select_display):
+    if select_display == 1:
+        width, height = 640, 480
+        Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+        print(f"初始化HDMI显示，分辨率：{width}x{height}")
+    elif select_display == 2:
+        width, height = 800, 480
+        Display.init(Display.ST7701, width=width, height=height, to_ide=True)
+        print(f"初始化LCD显示，分辨率：{width}x{height}")
+    elif select_display == 3:
+        width, height = 1920, 1080
+        Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+
+
+===== PAGE 101/160 =====
+
+定义一个初始化显示屏的函数，接收三个参数：select_display ：选择显示屏类型（数字编码），width ：显示宽
+度（像素），height ：显示高度（像素）。
+手部检测类HandDetApp
+通过输入摄像头捕获的画面对获取到的图像进行手部检测，并返回手部边界框（x1,y1,x2,y2）。
+HandKPClassApp 手势关键点分类任务类
+        print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+    else:
+        raise ValueError("select_display参数错误，只能是1、2或3")
+    return width, height
+# 自定义手掌检测任务类
+class HandDetApp(AIBase):
+    def 
+__init__(self,kmodel_path,labels,model_input_size,anchors,confidence_threshold=0.2,nms_thres
+hold=0.5,nms_option=False, strides=[8,16,32],rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.labels=labels
+        self.model_input_size=model_input_size
+        self.confidence_threshold=confidence_threshold
+        self.nms_threshold=nms_threshold
+        self.anchors=anchors
+        self.strides = strides
+        self.nms_option = nms_option
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right,_ = 
+center_pad_param(self.rgb888p_size,self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [114, 114, 114])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+    def postprocess(self,results):
+        with ScopedTiming("postprocess",self.debug_mode > 0):
+            dets = aicube.anchorbasedet_post_process(results[0], results[1], results[2], 
+self.model_input_size, self.rgb888p_size, self.strides, len(self.labels), 
+self.confidence_threshold, self.nms_threshold, self.anchors, self.nms_option)
+            return dets
+
+
+===== PAGE 102/160 =====
+
+通过输入手部检测类HandDetApp 返回的手部边界框进行手部关节点识别，并根据关键点关系，计算夹角并判断具体
+手势。
+FingerGuess猜拳任务类
+# 自定义手势关键点分类任务类
+class HandKPClassApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,rgb888p_size=[1920,1080],display_size=
+[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.crop_params=[]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    def config_preprocess(self,det,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            self.crop_params = self.get_crop_param(det)
+            
+self.ai2d.crop(self.crop_params[0],self.crop_params[1],self.crop_params[2],self.crop_params[
+3])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+if __name__=="__main__":
+    width, height = init_display(select_display)
+    display_mode_map = {"hdmi":"hdmi", "lcd":"lcd", "lt9611":"hdmi", 
+"st7701":"lcd","hx8399":"lcd"}
+    display_mode = display_mode_map.get("lcd")  # 默认hdmi，也可以根据需求改成lcd等
+    rgb888p_size = [1280, 720]
+    hand_det_kmodel_path="/sdcard/examples/kmodel/hand_det.kmodel"
+    hand_kp_kmodel_path="/sdcard/examples/kmodel/handkp_det.kmodel"
+    anchors = [26,27, 53,52, 75,71, 80,99, 106,82, 99,134, 140,113, 161,172, 245,276]
+    hand_det_input_size=[512,512]
+    hand_kp_input_size=[256,256]
+    confidence_threshold=0.2
+    nms_threshold=0.5
+    labels=["hand"]
+    guess_mode = 3
+    pl=PipeLine(rgb888p_size=rgb888p_size,display_mode=display_mode)
+    pl.create()
+    display_size=pl.get_display_size()
+
+
+===== PAGE 103/160 =====
+
+手掌检测 + 关键点识别完成石头剪刀布游戏并在显示屏上绘制文字和提示。
+主程序
+1. rgb888p_size = [128,720]  定义初始化镜头采样的分辨率。
+2. hand_kp_kmodel_path="/sdcard/examples/kmodel/handkp_det.kmodel"  定义模型路径。
+3. hand_det_input_size = [512,512]  定义模型输入的尺寸。
+4. pl=PipeLine(rgb888p_size=rgb888p_size,display_mode=display_mode 建视频对象。
+5. pl.create()  初始化视频对象。
+6. display_size=pl.get_display_size()  获取显示实际尺寸
+    
+hkc=FingerGuess(hand_det_kmodel_path,hand_kp_kmodel_path,det_input_size=hand_det_input_size,
+kp_input_size=hand_kp_input_size,
+                    
+labels=labels,anchors=anchors,confidence_threshold=confidence_threshold,nms_threshold=nms_th
+reshold,nms_option=False,
+                    strides=
+[8,16,32],guess_mode=guess_mode,rgb888p_size=rgb888p_size,display_size=display_size)
+if __name__=="__main__":
+    width, height = init_display(select_display)
+    display_mode_map = {"hdmi":"hdmi", "lcd":"lcd", "lt9611":"hdmi", 
+"st7701":"lcd","hx8399":"lcd"}
+    display_mode = display_mode_map.get("lcd")  # 默认hdmi，也可以根据需求改成lcd等
+    rgb888p_size = [1280, 720]
+    hand_det_kmodel_path="/sdcard/examples/kmodel/hand_det.kmodel"
+    hand_kp_kmodel_path="/sdcard/examples/kmodel/handkp_det.kmodel"
+    anchors = [26,27, 53,52, 75,71, 80,99, 106,82, 99,134, 140,113, 161,172, 245,276]
+    hand_det_input_size=[512,512]
+    hand_kp_input_size=[256,256]
+    confidence_threshold=0.2
+    nms_threshold=0.5
+    labels=["hand"]
+    guess_mode = 3
+    pl=PipeLine(rgb888p_size=rgb888p_size,display_mode=display_mode)
+    pl.create()
+    display_size=pl.get_display_size()
+    
+hkc=FingerGuess(hand_det_kmodel_path,hand_kp_kmodel_path,det_input_size=hand_det_input_size,
+kp_input_size=hand_kp_input_size,
+                    
+labels=labels,anchors=anchors,confidence_threshold=confidence_threshold,nms_threshold=nms_th
+reshold,nms_option=False,
+                    strides=
+[8,16,32],guess_mode=guess_mode,rgb888p_size=rgb888p_size,display_size=display_size)
+
+
+===== PAGE 104/160 =====
+
+7. img=pl.get_frame()  取一帧 RGB 图像。
+8. det_boxes,gesture_res=hkc.run(img)  调用 FingerGuess.run ：手掌检测→关键点识别→得到手势结果。
+9. dg.draw_result(pl, output1, output2) 根据当前状态与推理结果，叠加箭头/提示图/文字到 OSD 层。
+10. hkc.draw_result(pl,det_boxes,gesture_res)  绘制：根据手势/模式在OSD层显示提示、图片与比分等。
+11. pl.show_image()  显示一帧到屏幕（把 OSD 合成到显示层上）。
+12. finally : 循环中手动执行垃圾回收，防止内存泄漏。支持用户 Ctrl+C 安全退出，调用析构释放所有模型和硬件
+资源。
+5.15 车牌检测
+ 
+5.15.1 实验简介
+ 
+本节通过程序学习k230开发板的车牌检测功能，并使用矩形框画图指示。
+5.15.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+       try:
+           while True:
+               with ScopedTiming("total",1):
+                   img=pl.get_frame()
+                   det_boxes,gesture_res=hkc.run(img)
+                   hkc.draw_result(pl,det_boxes,gesture_res)
+                   pl.show_image()
+                   gc.collect()
+       except KeyboardInterrupt:
+           pass
+       finally:
+           hkc.hand_det.deinit()
+           hkc.hand_kp.deinit()
+           pl.destroy()
+           deinit_display()
+
+
+===== PAGE 105/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 106/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.15.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：本方式是连接后，将程序“licence_det.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运
+行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 107/160 =====
+
+脱机运行：
+1. 连接后将程序“licence_det.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开
+的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 108/160 =====
+
+5.15.4 运行效果
+ 
+实时地在摄像头中找出所有的车牌，用一个绿色的四边形框将其精确地圈出。这个框会紧紧地贴合车牌的实际轮廓。
+5.15.5 程序分析
+ 
+导入对应库文件
+车牌检测
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+class LicenceDetectionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, confidence_threshold=0.5, 
+nms_threshold=0.2, rgb888p_size=[224,224], display_size=[1920,1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+
+
+===== PAGE 109/160 =====
+
+1. 加载关键参数，如Kmodel模型路径、输入分辨率(model_input_size) 、以及用于过滤无效检测框的阈值
+(mask_threshold, box_threshold) 。
+2. 调用了 aicube.ocr_post_process  这个高度封装的库函数。
+3. aicube 会自动处理所有复杂的解码逻辑，将原始特征图“翻译”成一个清晰的列表。列表中的每一项都包含了裁剪
+下来的文字小图, 这段文字在原图中的坐标列表。
+结果绘制 
+1. pl.osd_img.clear() : 每次绘制前，先清空上一帧的OSD（On-Screen Display）图层。
+2. 遍历检测结果 dets  列表中的每一个车牌
+3. 通过 pl.osd_img.draw_line  将四个顶点依次连接，形成一个封闭的绿色四边形。
+4. ((i+1)%4)  保证了能正确地连接 点0->点1, 点1->点2, 点2->点3, 点3->点0。
+5.16 车牌识别
+ 
+5.16.1 实验简介
+ 
+本节通过程序学习k230开发板的车牌识别功能，并使用矩形框画图指示及显示车牌号码。
+        self.nms_threshold = nms_threshold
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT,
+                                 np.uint8, np.uint8)
+    def draw_result(self, pl, dets):
+        with ScopedTiming("display_draw", self.debug_mode > 0):
+            pl.osd_img.clear()
+            if dets:
+                point_8 = np.zeros((8), dtype=np.int16)
+                for det in dets:
+                    for i in range(4):
+                        x = det[i*2+0] / self.rgb888p_size[0] * self.display_size[0]
+                        y = det[i*2+1] / self.rgb888p_size[1] * self.display_size[1]
+                        point_8[i*2+0] = int(x)
+                        point_8[i*2+1] = int(y)
+                    for i in range(4):
+                        pl.osd_img.draw_line(
+                            point_8[i*2+0], point_8[i*2+1],
+                            point_8[((i+1)%4)*2+0], point_8[((i+1)%4)*2+1],
+                            color=(255, 0, 255, 0), thickness=4)
+
+
+===== PAGE 110/160 =====
+
+5.16.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 111/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.16.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+ 
+在线运行：
+本方式是连接后，将程序“licence_det_rec.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 112/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“licence_det_rec.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 113/160 =====
+
+5.16.4 运行效果
+ 
+用一个绿色的四边形框将其精确地圈出。这个框会紧紧地贴合车牌的实际轮廓并识别出车牌内容。
+5.16.5 程序分析
+ 
+导入对应库文件
+车牌检测
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+# 自定义车牌检测类
+class LicenceDetectionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, confidence_threshold=0.5, 
+nms_threshold=0.2, rgb888p_size=[224,224], display_size=[1920,1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+
+
+===== PAGE 114/160 =====
+
+1. self.kmodel_path = kmodel_path  车牌检测模型路径
+2. self.model_input_size = model_input_size   模型输入尺寸
+3. self.confidence_threshold = confidence_threshold  检测置信度阈值
+4. return det_res   返回检测框
+车牌识别
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT,
+                                 np.uint8, np.uint8)
+# 自定义车牌识别类
+class LicenceRecognitionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, rgb888p_size=[1920,1080], 
+display_size=[1920,1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.dict_rec = ["挂", "使", "领", "澳", "港", "皖", "沪", "津", "渝", "冀", "晋", "蒙", 
+"辽", "吉", "黑", "苏", "浙",
+                         "京", "闽", "赣", "鲁", "豫", "鄂", "湘", "粤", "桂", "琼", "川", "贵", 
+"云", "藏", "陕", "甘", "青",
+                         "宁", "新", "警", "学", "0", "1", "2", "3", "4", "5", "6", "7", "8", 
+"9", "A", "B", "C", "D", "E",
+                         "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", 
+"U", "V", "W", "X", "Y", "Z", "_", "-"]
+        self.dict_size = len(self.dict_rec)
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT,
+                                 np.uint8, np.uint8)
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3, ai2d_input_size[1], ai2d_input_size[0]],
+                            [1,3, self.model_input_size[1], self.model_input_size[0]])
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            output_data = results[0].reshape((-1, self.dict_size))
+            max_indices = np.argmax(output_data, axis=1)
+            result_str = ""
+
+
+===== PAGE 115/160 =====
+
+1. self.dict_rec = []  字典表：车牌字符类别（省份简称、数字、字母、特殊符号）
+2. nself.dict_size = len(self.dict_rec)   获取字典大小
+3. def config_preprocess()   配置识别模型前处理
+4. def postprocess()    识别模型输出后处理（解码为车牌字符串）
+车牌识别整合
+1. 初始化参数 
+2. 初始化检测模型
+3. 初始化识别模型
+            for i in range(max_indices.shape[0]):
+                index = max_indices[i]
+                if index > 0 and (i == 0 or index != max_indices[i - 1]):
+                    result_str += self.dict_rec[index - 1]
+            return result_str
+# 自定义车牌识别类
+class LicenceRecognitionApp(AIBase):
+    def __init__(self, kmodel_path, model_input_size, rgb888p_size=[1920,1080], 
+display_size=[1920,1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.model_input_size = model_input_size
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0],16), rgb888p_size[1]]
+        self.display_size = [ALIGN_UP(display_size[0],16), display_size[1]]
+        self.debug_mode = debug_mode
+        self.dict_rec = ["挂", "使", "领", "澳", "港", "皖", "沪", "津", "渝", "冀", "晋", "蒙", 
+"辽", "吉", "黑", "苏", "浙",
+                         "京", "闽", "赣", "鲁", "豫", "鄂", "湘", "粤", "桂", "琼", "川", "贵", 
+"云", "藏", "陕", "甘", "青",
+                         "宁", "新", "警", "学", "0", "1", "2", "3", "4", "5", "6", "7", "8", 
+"9", "A", "B", "C", "D", "E",
+                         "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", 
+"U", "V", "W", "X", "Y", "Z", "_", "-"]
+        self.dict_size = len(self.dict_rec)
+        self.ai2d = Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,
+                                 nn.ai2d_format.NCHW_FMT,
+                                 np.uint8, np.uint8)
+        self.licence_det = LicenceDetectionApp(self.licence_det_kmodel,
+                                               model_input_size=self.det_input_size,
+                                               
+confidence_threshold=self.confidence_threshold,
+                                               nms_threshold=self.nms_threshold,
+                                               rgb888p_size=self.rgb888p_size,
+                                               display_size=self.display_size,
+                                               debug_mode=0)
+
+
+===== PAGE 116/160 =====
+
+4. 检测加识别流程
+5. 在屏幕上绘制检测结果和识别结果
+主程序
+        self.licence_rec = LicenceRecognitionApp(self.licence_rec_kmodel,
+                                                 model_input_size=self.rec_input_size,
+                                                 rgb888p_size=self.rgb888p_size,
+                                                 display_size=self.display_size)
+        self.licence_det.config_preprocess()
+    def run(self, input_np):
+        det_boxes = self.licence_det.run(input_np)
+        imgs_array_boxes = aidemo.ocr_rec_preprocess(input_np,
+                                                     [self.rgb888p_size[1], 
+self.rgb888p_size[0]],
+                                                     det_boxes)
+        imgs_array = imgs_array_boxes[0]
+        boxes = imgs_array_boxes[1]
+        rec_res = []
+        for img_array in imgs_array:
+            self.licence_rec.config_preprocess(input_image_size=[img_array.shape[3], 
+img_array.shape[2]])
+            licence_str = self.licence_rec.run(img_array)
+            rec_res.append(licence_str)
+            gc.collect()
+        return det_boxes, rec_res
+    def draw_result(self, pl, det_res, rec_res):
+        pl.osd_img.clear()
+        if det_res:
+            point_8 = np.zeros((8), dtype=np.int16)
+            for det_index in range(len(det_res)):
+                for i in range(4):
+                    x = det_res[det_index][i * 2 + 
+0]/self.rgb888p_size[0]*self.display_size[0]
+                    y = det_res[det_index][i * 2 + 
+1]/self.rgb888p_size[1]*self.display_size[1]
+                    point_8[i * 2 + 0] = int(x)
+                    point_8[i * 2 + 1] = int(y)
+                for i in range(4):
+                    pl.osd_img.draw_line(point_8[i * 2 + 0], point_8[i * 2 + 1],
+                                         point_8[(i+1) % 4 * 2 + 0], point_8[(i+1) % 4 * 2 + 
+1],
+                                         color=(255, 0, 255, 0), thickness=4)
+                pl.osd_img.draw_string_advanced(point_8[6], point_8[7] + 20, 40,
+                                               rec_res[det_index], color=(255, 255, 153, 
+18))
+
+
+===== PAGE 117/160 =====
+
+1. select_display = 2    修改为LCD输出
+2. display_mode    设置不同显示模式下的分辨率
+3. rgb888p_size = [640, 360]    设置输入图像分辨率
+1. licence_det_kmodel_path   设置模型的路径
+2. licence_det_input_size  设置车牌检测的模型尺寸
+3. licence_rec_input_size  设置车牌识别的模型尺寸
+4. confidence_threshold = 0.2   设置检测置信度阈值
+5. nms_threshold = 0.2      NMS阈值
+1. 初始化不同模式的显示
+if __name__ == "__main__":
+    # 选择显示模式
+    display_mode_map = {1: "hdmi", 2:"lcd", 3:"ide"}
+    select_display = 2  # 1=HDMI, 2=LCD, 3=IDE虚拟显示
+    display_mode = display_mode_map.get(select_display, "hdmi")
+    if display_mode == "hdmi":
+        display_size = [1920, 1080]
+    elif display_mode == "lcd":
+        display_size = [800, 480]
+    else:
+        display_size = [1280, 720]
+    rgb888p_size = [640, 360]
+    licence_det_kmodel_path = "/sdcard/examples/kmodel/LPD_640.kmodel"
+    licence_rec_kmodel_path = "/sdcard/examples/kmodel/licence_reco.kmodel"
+    licence_det_input_size = [640, 640]
+    licence_rec_input_size = [220, 32]
+    confidence_threshold = 0.2
+    nms_threshold = 0.2
+    # 初始化显示
+    def init_display(select_display, width, height):
+        if select_display == 1:
+            Display.init(Display.LT9611, width=width, height=height, to_ide=True)
+            print(f"初始化HDMI显示，分辨率：{width}x{height}")
+        elif select_display == 2:
+            Display.init(Display.ST7701, to_ide=True)
+            print("初始化LCD显示，默认分辨率800x480")
+        elif select_display == 3:
+            Display.init(Display.VIRT, width=width, height=height, fps=100, to_ide=True)
+            print(f"初始化IDE虚拟显示，分辨率：{width}x{height}")
+        else:
+            raise ValueError("select_display参数错误，只能是1、2或3")
+
+
+===== PAGE 118/160 =====
+
+2. init_display()   初始化显示设备
+3. init_display()   初始化车牌识别整体流程
+1. with ScopedTiming("total", 1) :   计时器统计耗时
+2. img = pl.get_frame()    从摄像头获取一帧图像
+3. det_res, rec_res = lr.run(img)    执行检测与识别
+4. lr.draw_result(pl, det_res, rec_res)   在图像上绘制结果
+5. pl.show_image()      显示图像
+    init_display(select_display, display_size[0], display_size[1])
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_mode=display_mode)
+    pl.create()
+    display_size = pl.get_display_size()
+    lr = LicenceRec(licence_det_kmodel_path, licence_rec_kmodel_path,
+                    det_input_size=licence_det_input_size,
+                    rec_input_size=licence_rec_input_size,
+                    confidence_threshold=confidence_threshold,
+                    nms_threshold=nms_threshold,
+                    rgb888p_size=rgb888p_size,
+                    display_size=display_size,
+                    debug_mode=0)
+    lr = LicenceRec(licence_det_kmodel_path, licence_rec_kmodel_path,
+                    det_input_size=licence_det_input_size,
+                    rec_input_size=licence_rec_input_size,
+                    confidence_threshold=confidence_threshold,
+                    nms_threshold=nms_threshold,
+                    rgb888p_size=rgb888p_size,
+                    display_size=display_size,
+                    debug_mode=0)
+    try:
+        while True:
+            with ScopedTiming("total", 1):
+                img = pl.get_frame()
+                det_res, rec_res = lr.run(img)
+                lr.draw_result(pl, det_res, rec_res)
+                pl.show_image()
+                gc.collect()
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        lr.licence_det.deinit()
+        lr.licence_rec.deinit()
+        pl.destroy()
+        deinit_display()
+
+
+===== PAGE 119/160 =====
+
+6. gc.collect()   内存回收
+5.17 字符检测
+ 
+5.17.1 实验简介
+ 
+本节通过程序学习k230开发板的字符检测功能玩法，通过检测暗、亮的模式确定其形状。
+5.17.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 120/160 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.17.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“ocr_det.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+
+
+===== PAGE 121/160 =====
+
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“ocr_det.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保
+存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 122/160 =====
+
+5.17.4 运行效果
+ 
+设备会变成一个实时的“文本位置扫描仪”通过显示摄像头捕捉到的动态画面实现文字识别。
+5.17.5 程序分析
+ 
+导入对应库文件
+文本检测
+1. 加载关键参数，如Kmodel模型路径、输入分辨率(model_input_size)、以及用于过滤无效检测框的阈值
+(mask_threshold, box_threshold)。
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os,sys,ujson,gc,math
+from media.media import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+# 自定义OCR检测类
+class OCRDetectionApp(AIBase):
+    def 
+__init__(self,kmodel_path,model_input_size,mask_threshold=0.5,box_threshold=0.2,rgb888p_size
+=[224,224],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.mask_threshold=mask_threshold
+        self.box_threshold=box_threshold
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+
+
+===== PAGE 123/160 =====
+
+2. 调用了 aicube.ocr_post_process  这个高度封装的库函数。
+3. aicube 会自动处理所有复杂的解码逻辑，将原始特征图“翻译”成一个清晰的列表。列表中的每一项都包含了裁剪
+下来的文字小图, 这段文字在原图中的坐标列表。
+结果绘制
+1. 在屏幕的图层上绘制红色的检测框。
+2. pl.osd_img.clear() ：每次绘制前，先清空上一帧的OSD内容。
+3. 对于每一个检测到的文字项 det，它会从中提取出坐标信息 det[1] 。
+4. 然后，它将这些坐标（基于AI输入图像rgb888p_size的坐标）按比例转换为适应屏幕显示尺寸 display_size 的坐
+标。
+5. 最后调用 pl.osd_img.draw_line ，将四个顶点连接起来，形成一个红色的四边形框。
+5.18 字符识别 
+ 
+5.18.1 实验简介
+ 
+本节通过程序学习k230开发板的字符识别功能玩法，通过检测暗、亮的模式确定其形状。并且将文字识别出来。
+5.18.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+def draw_detection_result(pl, det_res, rgb888p_size, display_size):
+    pl.osd_img.clear()
+    if not det_res:
+        return
+    for det in det_res:
+        # aicube.ocr_post_process 返回的 det 结构是 [裁剪的图像, 坐标列表]
+        # 我们只需要坐标列表 det[1] 来绘制边框
+        box_coords = det[1]
+        for i in range(4):
+            x1 = box_coords[(i * 2)] / rgb888p_size[0] * display_size[0]
+            y1 = box_coords[(i * 2 + 1)] / rgb888p_size[1] * display_size[1]
+            x2 = box_coords[((i + 1) * 2) % 8] / rgb888p_size[0] * display_size[0]
+            y2 = box_coords[((i + 1) * 2 + 1) % 8] / rgb888p_size[1] * display_size[1]
+            # 绘制红色的检测框
+            pl.osd_img.draw_line((int(x1), int(y1), int(x2), int(y2)), color=(255, 0, 0, 
+255), thickness=5)
+
+
+===== PAGE 124/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 125/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.18.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“ocr_rec.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 126/160 =====
+
+脱机运行：
+1. 连接后将程序“ocr_rec.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开的脚
+本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 127/160 =====
+
+5.18.4 运行效果
+ 
+用一个蓝色的四边形框将其精确地圈出。这个框会紧紧地贴合文字的实际轮廓，即使文字是倾斜的，几乎在框住文字
+的同时，程序会将识别出的文字内容以蓝色字体显示在蓝色框的上方或附近。
+5.18.5 程序分析
+ 
+导入对应库文件
+文本检测
+1. 加载关键参数，如Kmodel 模型路径、输入分辨率(model_input_size) 、以及用于过滤无效检测框的阈值
+(mask_threshold, box_threshold) 。
+2. 调用了 aicube.ocr_post_process  这个高度封装的库函数。
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os,sys,ujson,gc,math
+from media.media import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+class OCRDetectionApp(AIBase):
+    def 
+__init__(self,kmodel_path,model_input_size,mask_threshold=0.5,box_threshold=0.2,rgb888p_size
+=[224,224],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.mask_threshold=mask_threshold
+        self.box_threshold=box_threshold
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+
+
+===== PAGE 128/160 =====
+
+3. aicube  会自动处理所有复杂的解码逻辑，将原始特征图“翻译”成一个清晰的列表。列表中的每一项都包含了裁
+剪下来的文字小图, 这段文字在原图中的坐标列表。
+文本识别
+1. OCRDetectionApp  输出的一张张尺寸不一的文字小图片。
+2. 预处理 ：识别模型也需要固定尺寸的输入。此函数也利用 Ai2d 将这些大小不一的文字小图，统一处理成标准尺
+寸。
+3. read_dict() 会加载 dict.txt 文件。这个字典定义了AI模型输出的数字标签与真实字符（如'A', 'B', 'c', '你', '好'）
+的一一对应关系。encoding='gb2312' 确保了能正确读取中文字符。
+4. np.argmax ：找出序列中每个位置概率最高的字符标签。
+5. 去重与去空：遍历序列，根据CTC解码规则，忽略空白标签和连续重复的字符标签。
+6. 查字典：将有效的字符标签，通过self.dict_word字典翻译成最终的字符串。
+结果绘制
+class OCRRecognitionApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,dict_path,rgb888p_size=
+[1920,1080],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.dict_path=dict_path
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.dict_word=None
+        self.read_dict()
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.RGB_packed,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+    def draw_result(self,pl,det_res,rec_res):
+        pl.osd_img.clear()
+        if det_res:
+            for j in range(len(det_res)):
+                # Draw bounding box
+                for i in range(4):
+                    x1 = det_res[j][(i * 2)] / self.rgb888p_size[0] * self.display_size[0]
+                    y1 = det_res[j][(i * 2 + 1)] / self.rgb888p_size[1] * 
+self.display_size[1]
+                    x2 = det_res[j][((i + 1) * 2) % 8] / self.rgb888p_size[0] * 
+self.display_size[0]
+                    y2 = det_res[j][((i + 1) * 2 + 1) % 8] / self.rgb888p_size[1] * 
+self.display_size[1]
+                    pl.osd_img.draw_line((int(x1), int(y1), int(x2), int(y2)), color=(255, 
+0, 0, 255),thickness=5)
+                # Prepare text coordinates, ensuring they are on-screen
+                text_x = det_res[j][0] / self.rgb888p_size[0] * self.display_size[0]
+
+
+===== PAGE 129/160 =====
+
+1. 在屏幕的图层上绘制红色的检测框。
+2. pl.osd_img.clear() ：每次绘制前，先清空上一帧的OSD内容。
+3. 对于每一个检测到的文字项 det，它会从中提取出坐标信息 det[1] 。
+4. 然后，它将这些坐标（基于AI输入图像rgb888p_size的坐标）按比例转换为适应屏幕显示尺寸 display_size 的坐
+标。
+5. 最后调用 pl.osd_img.draw_line ，将四个顶点连接起来，形成一个红色的四边形框。
+6. pl.osd_img.draw_line  绘制红色的定位框
+7. 调用 pl.osd_img.draw_string_advanced  在框的附近绘制蓝色的识别文字。
+5.19 自学习玩法 
+ 
+5.19.1 实验简介
+ 
+本节通过程序学习k230开发板的自学习玩法，特定图片进行特征采集，然后实现物品识别。
+5.19.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+                text_y = det_res[j][1] / self.rgb888p_size[1] * self.display_size[1] - 32
+                if text_y < 0: text_y = 0
+                # Draw recognized text
+                pl.osd_img.draw_string_advanced(int(text_x),int(text_y),32,rec_res[j],color=
+(0,0,255))
+
+
+===== PAGE 130/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 131/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.19.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“self_learning.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 132/160 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“self_learning.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选
+择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 133/160 =====
+
+5.19.4 运行效果
+ 
+运行程序后画面会显示回传画面，根据画面提示按下开发板上的按键key进行学习，完成后在框会显示学习的名称和特
+征进行相似度计算，输出识别结果。
+
+
+===== PAGE 134/160 =====
+
+5.19.5 程序分析
+ 
+导入对应库文件
+SelfLearningApp
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math, uos
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aicube
+from machine import Pin
+from machine import FPIOA
+import time
+class SelfLearningApp(AIBase):
+    def 
+__init__(self,kmodel_path,model_input_size,labels,top_k,threshold,features_save_path,rgb888p
+_size=[224,224],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.labels=labels
+        self.features_save_path=features_save_path
+        self.database_path=features_save_path+"features/"
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.threshold = threshold
+        self.top_k = top_k
+        self.features=[2,2]
+        self.time_one=60
+        self.time_all = 0
+        self.time_now = 0
+        self.category_index = 0
+        self.crop_w = 400
+        self.crop_h = 400
+        self.crop_x = self.rgb888p_size[0] / 2.0 - self.crop_w / 2.0
+        self.crop_y = self.rgb888p_size[1] / 2.0 - self.crop_h / 2.0
+        self.crop_x_osd=0
+        self.crop_y_osd=0
+        self.crop_w_osd=0
+        self.crop_h_osd=0
+        self.ai2d=Ai2d(debug_mode)
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+
+
+===== PAGE 135/160 =====
+
+SelfLearningApp  是整个程序的核心类，负责物体识别的自学习过程。包括图像预处理、特征提取、特征存储、按
+键控制的学习逻辑等功能。
+1. 初始化各种变量，包括图像裁剪尺寸、学习状态、特征采集时间等。
+2. 设置 Ai2d的输入输出格式。
+3. 创建数据库目录，用于存储每个类别的特征。
+图像预处理
+设置图像的预处理步骤。包括裁剪图像并调整图像大小，以适配输入模型的尺寸。
+根据 crop_x  和 crop_y  裁剪图像，使用双线性插值法调整图像尺寸，确保输入图像符合模型要求。
+图像显示
+        self.learning = False
+        self.need_press_to_start = True
+        self.data_init()
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size=input_image_size if input_image_size else self.rgb888p_size
+            
+self.ai2d.crop(int(self.crop_x),int(self.crop_y),int(self.crop_w),int(self.crop_h))
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+[1,3,self.model_input_size[1],self.model_input_size[0]])
+    def draw_result(self,pl,feature):
+        pl.osd_img.clear()
+        with ScopedTiming("display_draw",self.debug_mode >0):
+            pl.osd_img.draw_rectangle(self.crop_x_osd,self.crop_y_osd, self.crop_w_osd, 
+self.crop_h_osd, color=(255, 255, 0, 255), thickness = 4)
+            if self.need_press_to_start:
+                pl.osd_img.draw_string_advanced(50, 50, 40, "请按下按键开始学习", color=
+(255,255,0,0))
+            else:
+                if self.learning:
+                    if (self.category_index < len(self.labels)):
+                        pl.osd_img.draw_string_advanced(50, self.crop_y_osd-50, 30,
+                            "请将待添加类别放入框内进行特征采
+集："+self.labels[self.category_index] + "_" + str(int(self.time_now-1) // self.time_one) + 
+".bin",
+                            color=(255,255,0,0))
+                        with open(self.database_path + self.labels[self.category_index] + 
+"_" + str(int(self.time_now-1) // self.time_one) + ".bin", 'wb') as f:
+                            f.write(feature.tobytes())
+                        self.time_now += 1
+                        if (self.time_now // self.time_one == 
+self.features[self.category_index]):
+                            self.category_index += 1
+                            self.time_all -= self.time_now
+
+
+===== PAGE 136/160 =====
+
+在显示屏上绘制学习过程中的信息。包括学习提示、裁剪框和识别结果
+1. 如果需要开始学习，则在屏幕上显示提示信息，指导将物体放置到框内进行学习。
+2. 如果已经学习并正在进行类别切换，显示当前类别及其学习进度。
+3. 如果完成学习，则显示识别结果，包括类别和相似度。
+判断输入特征与已保存特征的相似性
+计算两个特征向量之间的余弦相似度，用于判断输入特征与已保存特征的相似性。通过计算向量的内积，并用向量的
+模长进行归一化，得到两者之间的相似度。
+5.20 物品检测 
+ 
+5.20.1 实验简介
+ 
+本节通过程序学习k230开发板的物品检测，实现物体检测识别并将识别结果画图指示出来。
+5.20.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+                            self.time_now = 0
+                            self.learning = False
+                    else:
+                        self.learning = False
+                        pl.osd_img.draw_string_advanced(50, 50, 40, "所有类别采集完成", color=
+(255,255,0,0))
+                else:
+                    if self.category_index < len(self.labels):
+                        pl.osd_img.draw_string_advanced(50, 50, 40, f"请按下按键开始学习类别：
+{self.labels[self.category_index]}", color=(255,255,0,0))
+                    else:
+                        results_learn = []
+                        list_features = os.listdir(self.database_path)
+    def getSimilarity(self,output_vec,save_vec):
+        tmp = sum(output_vec * save_vec)
+        mold_out = np.sqrt(sum(output_vec * output_vec))
+        mold_save = np.sqrt(sum(save_vec * save_vec))
+        return tmp / (mold_out * mold_save)
+
+
+===== PAGE 137/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 138/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.20.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“object_detect_yolov8n.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运
+行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 139/160 =====
+
+脱机运行：
+1. 连接后将程序“object_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当
+前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 140/160 =====
+
+5.20.4 运行效果
+ 
+运行程序，按下按键实现物体检测识别并将识别结果画图指示，跟已知模型做比较从而判断物体。
+例程基于YOLOv8n, 支持识别80种物体。详情请参考：  
+原图：
+
+
+===== PAGE 141/160 =====
+
+5.20.5 程序分析
+ 
+导入对应库文件
+物体检测
+from libs.PipeLine import PipeLine, ScopedTiming
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+import os
+import ujson
+from media.media import *  # Import Display from here
+from media.sensor import *
+from media.display import Display # 明确导入Display类
+import nncase_runtime as nn
+from time import *
+import nncase_runtime as nn
+import ulab.numpy as np
+import time
+import utime
+import image
+import random
+import gc
+import sys
+import aidemo
+
+
+===== PAGE 142/160 =====
+
+用 super()  调用父类构造函数进行初始化。设置标签、输入尺寸、阈值等参数。创建 Ai2d 对象，用于图像的预处理
+和输入输出格式的设置。
+计算图像的缩放因子 x_factor  和 y_factor ，用于将检测框从模型输入尺寸映射到实际显示尺寸。
+1. labels ：物体检测的标签（物体种类）。
+2. model_input_size ：YOLOv8模型的输入尺寸。
+3. max_boxes_num ：最多检测的框数量。
+4. confidence_threshold ：置信度阈值，低于此值的检测结果会被忽略。
+5. nms_threshold ：非极大抑制（NMS）阈值，用于去除冗余的检测框。
+# 自定义YOLOv8检测类
+class ObjectDetectionApp(AIBase):
+    def __init__(self, kmodel_path, labels, model_input_size, max_boxes_num, 
+confidence_threshold=0.5, nms_threshold=0.2, rgb888p_size=[224, 224], display_size=[1920, 
+1080], debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        self.kmodel_path = kmodel_path
+        self.labels = labels
+        # 模型输入分辨率
+        self.model_input_size = model_input_size
+        # 阈值设置
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
+        self.max_boxes_num = max_boxes_num
+        # sensor给到AI的图像分辨率
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        # 显示分辨率
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        # 检测框预置颜色值
+        self.color_four = [(255, 220, 20, 60), (255, 119, 11, 32), (255, 0, 0, 142), (255, 
+0, 0, 230),
+                         (255, 106, 0, 228), (255, 0, 60, 100), (255, 0, 80, 100), (255, 0, 
+0, 70),
+                         (255, 0, 0, 192), (255, 250, 170, 30), (255, 100, 170, 30), (255, 
+220, 220, 0),
+                         (255, 175, 116, 175), (255, 250, 0, 30), (255, 165, 42, 42), (255, 
+255, 77, 255),
+                         (255, 0, 226, 252), (255, 182, 182, 255), (255, 0, 82, 0), (255, 
+120, 166, 157)]
+        # 宽高缩放比例
+        self.x_factor = float(self.rgb888p_size[0]) / self.model_input_size[0]
+        self.y_factor = float(self.rgb888p_size[1]) / self.model_input_size[1]
+        # Ai2d实例，用于实现模型预处理
+        self.ai2d = Ai2d(debug_mode)
+        # 设置Ai2d的输入输出格式和类型
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT, nn.ai2d_format.NCHW_FMT, np.uint8, 
+np.uint8)
+
+
+===== PAGE 143/160 =====
+
+6. rgb888p_size ：图像输入尺寸，RGB格式的图像尺寸。度阈值等参数。
+图像预处理和后处理
+    # 配置预处理操作，这里使用了resize，Ai2d支持crop/shift/pad/resize/affine，具体代码请打
+开/sdcard/libs/AI2D.py查看
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            # 初始化ai2d预处理配置，默认为sensor给到AI的尺寸，您可以通过设置input_image_size自行修改输
+入尺寸
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1, 3, ai2d_input_size[1], ai2d_input_size[0]], [1, 3, 
+self.model_input_size[1], self.model_input_size[0]])
+    # 自定义当前任务的后处理
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            result = results[0]
+            result = result.reshape((result.shape[0] * result.shape[1], result.shape[2]))
+            output_data = result.transpose()
+            boxes_ori = output_data[:, 0:4]
+            scores_ori = output_data[:, 4:]
+            confs_ori = np.max(scores_ori, axis=-1)
+            inds_ori = np.argmax(scores_ori, axis=-1)
+            boxes, scores, inds = [], [], []
+            for i in range(len(boxes_ori)):
+                if confs_ori[i] > self.confidence_threshold: # Use self.confidence_threshold
+                    scores.append(confs_ori[i])
+                    inds.append(inds_ori[i])
+                    x = boxes_ori[i, 0]
+                    y = boxes_ori[i, 1]
+                    w = boxes_ori[i, 2]
+                    h = boxes_ori[i, 3]
+                    left = int((x - 0.5 * w) * self.x_factor)
+                    top = int((y - 0.5 * h) * self.y_factor)
+                    right = int((x + 0.5 * w) * self.x_factor)
+                    bottom = int((y + 0.5 * h) * self.y_factor)
+                    boxes.append([left, top, right, bottom])
+            if len(boxes) == 0:
+                return []
+            boxes = np.array(boxes)
+            scores = np.array(scores)
+            inds = np.array(inds)
+            # NMS过程
+            keep = self.nms(boxes, scores, self.nms_threshold) # Use self.nms_threshold
+            dets = np.concatenate((boxes, scores.reshape((len(boxes), 1)), 
+inds.reshape((len(boxes), 1))), axis=1)
+            dets_out = []
+            for keep_i in keep:
+                dets_out.append(dets[keep_i])
+            dets_out = np.array(dets_out)
+            dets_out = dets_out[:self.max_boxes_num, :]
+
+
+===== PAGE 144/160 =====
+
+1. 图像预处理，主要是进行图像的填充和缩放，确保图像输入符合模型要求input_image_size ：输入图像的尺
+寸，默认为 rgb888p_size。
+2. 计算填充和裁剪的参数，使用 letterbox_pad_param  进行填充，
+3. 使用 Ai2d 对图像进行填充、缩放。对模型输出结果进行后处理，提取出检测框和相关信息。
+4. 然后对输出结果进行转置、处理和非极大抑制（NMS），提取有效的检测框、类别和置信度。
+绘制图像
+将检测结果绘制到屏幕上，显示检测框、类别和置信度。
+1. pl ：显示对象，负责在屏幕上绘制结果。
+2. dets ：检测框信息，包括位置、类别和置信度。
+5.21 物品分割实验 
+ 
+5.21.1 实验简介 
+ 
+本节通过程序学习k230开发板的物品检测，实现物体检测识别并将识别并使用不同颜色分割出不同的物品。
+5.21.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+            return dets_out
+    def draw_result(self, pl, dets):
+        with ScopedTiming("display_draw", self.debug_mode > 0):
+            if dets:
+                pl.osd_img.clear()
+                for det in dets:
+                    x1, y1, x2, y2 = map(lambda x: int(round(x, 0)), det[:4])
+                    x = x1 * self.display_size[0] // self.rgb888p_size[0]
+                    y = y1 * self.display_size[1] // self.rgb888p_size[1]
+                    w = (x2 - x1) * self.display_size[0] // self.rgb888p_size[0]
+                    h = (y2 - y1) * self.display_size[1] // self.rgb888p_size[1]
+                    pl.osd_img.draw_rectangle(x, y, w, h, color=self.get_color(int(det[5])), 
+thickness=4)
+                    pl.osd_img.draw_string_advanced(x, y - 50, 32, " " + 
+self.labels[int(det[5])] + " " + str(round(det[4], 2)), color=self.get_color(int(det[5])))
+            else:
+                pl.osd_img.clear()
+
+
+===== PAGE 145/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 146/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.21.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“object_detect_yolov8n.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运
+行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 147/160 =====
+
+脱机运行：
+1. 连接后程序“object_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前
+打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 148/160 =====
+
+5.21.4 运行效果
+ 
+运行程序，识别出对应的物体。并实现物体检测识别并将识别并使用不同颜色分割出不同的物品。
+5.21.5程序分析
+ 
+导入对应库文件
+物体检测
+from libs.PipeLine import PipeLine, ScopedTiming
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math, random
+from media.media import *  # This will import Display
+from media.sensor import *
+from media.display import Display  # 确保SDK支持
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+import time # Import time for clock
+# 自定义YOLOv8分割类
+class SegmentationApp(AIBase):
+    def __init__(self, kmodel_path, labels, model_input_size, confidence_threshold=0.2, 
+nms_threshold=0.5, mask_threshold=0.5, rgb888p_size=[224, 224], display_size=[1920, 1080], 
+debug_mode=0):
+        super().__init__(kmodel_path, model_input_size, rgb888p_size, debug_mode)
+        # 模型路径
+        self.kmodel_path = kmodel_path
+
+
+===== PAGE 149/160 =====
+
+对模型进行初化设置，设置模型路径、分割类别、输入分辨率、置信度阈值等。
+图像预处理和后处理
+        # 分割类别标签
+        self.labels = labels
+        # 模型输入分辨率
+        self.model_input_size = model_input_size
+        # 置信度阈值
+        self.confidence_threshold = confidence_threshold
+        # nms阈值
+        self.nms_threshold = nms_threshold
+        # mask阈值
+        self.mask_threshold = mask_threshold
+        # sensor给到AI的图像分辨率
+        self.rgb888p_size = [ALIGN_UP(rgb888p_size[0], 16), rgb888p_size[1]]
+        # 显示分辨率
+        self.display_size = [ALIGN_UP(display_size[0], 16), display_size[1]]
+        self.debug_mode = debug_mode
+        # 检测框预置颜色值
+        self.color_four = get_colors(len(self.labels))
+        # 分割结果的numpy.array，用于给到aidemo后处理接口
+        # Note: self.masks will be populated by aidemo.segment_postprocess
+        self.masks = np.zeros((1, self.display_size[1], self.display_size[0], 4), 
+dtype=np.uint8) # Specify dtype
+        # Ai2d实例，用于实现模型预处理
+        self.ai2d = Ai2d(debug_mode)
+        # 设置Ai2d的输入输出格式和类型
+        self.ai2d.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT, nn.ai2d_format.NCHW_FMT, np.uint8, 
+np.uint8)
+    # 配置预处理操作，这里使用了pad和resize，Ai2d支持crop/shift/pad/resize/affine，具体代码请打
+开/sdcard/app/libs/AI2D.py查看
+    def config_preprocess(self, input_image_size=None):
+        with ScopedTiming("set preprocess config", self.debug_mode > 0):
+            # 初始化ai2d预处理配置，默认为sensor给到AI的尺寸，您可以通过设置input_image_size自行修改输
+入尺寸
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            top, bottom, left, right, _ = center_pad_param(self.rgb888p_size, 
+self.model_input_size)
+            self.ai2d.pad([0, 0, 0, 0, top, bottom, left, right], 0, [114, 114, 114])
+            self.ai2d.resize(nn.interp_method.tf_bilinear, nn.interp_mode.half_pixel)
+            self.ai2d.build([1, 3, ai2d_input_size[1], ai2d_input_size[0]], [1, 3, 
+self.model_input_size[1], self.model_input_size[0]])
+    # 自定义当前任务的后处理
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            # 这里使用了aidemo的segment_postprocess接口
+
+
+===== PAGE 150/160 =====
+
+1. 图像预处理，主要是进行图像的填充和缩放，确保图像输入符合模型要求input_image_size ：输入图像的尺
+寸，默认为 rgb888p_size。
+2. 调用 aidemo.segment_postprocess  完成分割结果的解码。
+3. 然后对输出结果进行转置、处理和非极大抑制（NMS），提取有效的检测框、类别和置信度。
+绘制图像
+将检测结果绘制到屏幕上，显示检测框、类别和置信度。
+1. pl ：显示对象，负责在屏幕上绘制结果。
+2. dets ：检测框信息，包括位置、类别和置信度。
+5.22 目标追踪玩法
+ 
+5.22.1 实验简介
+ 
+本节通过程序学习k230开发板的目标追踪玩法，目标跟踪用于追踪图像中感兴趣的物体。
+5.22.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+            seg_res = aidemo.segment_postprocess(results, [self.rgb888p_size[1], 
+self.rgb888p_size[0]], self.model_input_size, [self.display_size[1], self.display_size[0]], 
+self.confidence_threshold, self.nms_threshold, self.mask_threshold, self.masks)
+            return seg_res
+    # 绘制结果
+    def draw_result(self, pl, seg_res):
+        with ScopedTiming("display_draw", self.debug_mode > 0):
+            if seg_res[0]:
+                pl.osd_img.clear()
+                # Create image object referencing the numpy array populated by 
+aidemo.segment_postprocess
+                mask_img = image.Image(self.display_size[0], self.display_size[1], 
+image.ARGB8888, alloc=image.ALLOC_REF, data=self.masks)
+                pl.osd_img.copy_from(mask_img)
+                dets, ids, scores = seg_res[0], seg_res[1], seg_res[2]
+                for i, det in enumerate(dets):
+                    x1, y1, w, h = map(lambda x: int(round(x, 0)), det)
+                    pl.osd_img.draw_string_advanced(x1, y1 - 50, 32, " " + 
+self.labels[int(ids[i])] + " " + str(round(scores[i], 2)), 
+color=self.color_four[int(ids[i])])
+            else:
+                pl.osd_img.clear()
+
+
+===== PAGE 151/160 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 152/160 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+5.22.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“”参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“object_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 153/160 =====
+
+脱机运行：
+1. 连接后将程序“object_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当
+前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 154/160 =====
+
+5.22.4 运行效果
+ 
+运行程序后画面会显示回传画面，根据画面提示按下按键进行学习物品，完成后在框住物品，进行轻微移动可以看到
+物品会一直在画面中间。
+5.22.5 程序分析
+ 
+导入对应库文件
+物体裁剪
+from libs.PipeLine import PipeLine
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from libs.Utils import *
+import os, sys, ujson, gc, math, time
+from media.media import *
+from media.display import Display
+import nncase_runtime as nn
+import ulab.numpy as np
+import image
+import aidemo
+from machine import Pin
+from machine import FPIOA
+class TrackCropApp(AIBase):
+    def __init__(self,kmodel_path,model_input_size,ratio_src_crop,center_xy_wh,rgb888p_size=
+[1280,720],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+
+
+===== PAGE 155/160 =====
+
+初始化模型路径、输入尺寸、裁剪比设置图像裁剪参数（裁剪比例、中心坐标等）。
+初始化两个 Ai2d 模块，一个用于图像填充 (pad)，另一个用于裁剪。率和中心坐标等参数。
+kmodel_path ：裁剪模型文件的路径。
+model_input_size ：模型输入尺寸，表示模型要求的输入图像大小。
+ratio_src_crop ：源裁剪的比率，用于调整裁剪区域大小。
+center_xy_wh ：包含物体中心坐标和宽高的列表，格式为 [xcenter,ycenter,width,height] 。
+图像预处理和后处理
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.debug_mode=debug_mode
+        self.CONTEXT_AMOUNT = 0.5
+        self.ratio_src_crop = ratio_src_crop
+        self.center_xy_wh=center_xy_wh
+        self.pad_crop_params=[]
+        self.ai2d_pad=Ai2d(debug_mode)
+        
+self.ai2d_pad.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+        self.ai2d_crop=Ai2d(debug_mode)
+        
+self.ai2d_crop.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8, 
+np.uint8)
+        self.need_pad=False
+    def config_preprocess(self,input_image_size=None):
+        with ScopedTiming("set preprocess config",self.debug_mode > 0):
+            ai2d_input_size = input_image_size if input_image_size else self.rgb888p_size
+            self.pad_crop_params= self.get_padding_crop_param()
+            if (self.pad_crop_params[0]!=0 or self.pad_crop_params[1]!=0 or 
+self.pad_crop_params[2]!=0 or self.pad_crop_params[3]!=0):
+                self.need_pad=True
+                self.ai2d_pad.resize(nn.interp_method.tf_bilinear, 
+nn.interp_mode.half_pixel)
+                
+self.ai2d_pad.pad([0,0,0,0,self.pad_crop_params[0],self.pad_crop_params[1],self.pad_crop_par
+ams[2],self.pad_crop_params[3]],0,[114,114,114])
+                output_size=
+[self.rgb888p_size[0]+self.pad_crop_params[2]+self.pad_crop_params[3],
+                             
+self.rgb888p_size[1]+self.pad_crop_params[0]+self.pad_crop_params[1]]
+                self.ai2d_pad.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+                                   [1,3,output_size[1],output_size[0]])
+                self.ai2d_crop.resize(nn.interp_method.tf_bilinear, 
+nn.interp_mode.half_pixel)
+                
+self.ai2d_crop.crop(int(self.pad_crop_params[4]),int(self.pad_crop_params[6]),
+                                    int(self.pad_crop_params[5]-self.pad_crop_params[4]+1),
+
+
+===== PAGE 156/160 =====
+
+计算裁剪区域的填充参数，确保裁剪区域适合模型输入。如果需要填充，使用 Ai2d 模块进行填充，然后再进行裁剪。
+如果不需要填充，则直接根据给定的裁剪中心和尺寸进行裁剪。
+计算裁剪区域
+计算裁剪区域的填充参数，保证裁剪区域的中心位置在目标物体的位置上。
+物体源特征的提取
+                                    int(self.pad_crop_params[7]-self.pad_crop_params[6]+1))
+                self.ai2d_crop.build([1,3,output_size[1],output_size[0]],
+                                    [1,3,self.model_input_size[1],self.model_input_size[0]])
+            else:
+                self.need_pad=False
+                self.ai2d_crop.resize(nn.interp_method.tf_bilinear, 
+nn.interp_mode.half_pixel)
+                self.ai2d_crop.crop(int(self.center_xy_wh[0]-self.pad_crop_params[8]/2.0),
+                                    int(self.center_xy_wh[1]-self.pad_crop_params[8]/2.0),
+                                    int(self.pad_crop_params[8]),
+                                    int(self.pad_crop_params[8]))
+                self.ai2d_crop.build([1,3,ai2d_input_size[1],ai2d_input_size[0]],
+                                    [1,3,self.model_input_size[1],self.model_input_size[0]])
+    def preprocess(self,input_np):
+        if self.need_pad:
+            pad_output=self.ai2d_pad.run(input_np).to_numpy()
+            return [self.ai2d_crop.run(pad_output)]
+        else:
+            return [self.ai2d_crop.run(input_np)]
+    def get_padding_crop_param(self):
+        s_z = round(np.sqrt((self.center_xy_wh[2] + self.CONTEXT_AMOUNT * 
+(self.center_xy_wh[2] + self.center_xy_wh[3])) *
+                           (self.center_xy_wh[3] + self.CONTEXT_AMOUNT * 
+(self.center_xy_wh[2] + self.center_xy_wh[3]))))
+        c = (s_z + 1) / 2
+        context_xmin = np.floor(self.center_xy_wh[0] - c + 0.5)
+        context_xmax = int(context_xmin + s_z - 1)
+        context_ymin = np.floor(self.center_xy_wh[1] - c + 0.5)
+        context_ymax = int(context_ymin + s_z - 1)
+        left_pad = int(max(0, -context_xmin))
+        top_pad = int(max(0, -context_ymin))
+        right_pad = int(max(0, int(context_xmax - self.rgb888p_size[0] + 1)))
+        bottom_pad = int(max(0, int(context_ymax - self.rgb888p_size[1] + 1)))
+        context_xmin += left_pad
+        context_xmax += left_pad
+        context_ymin += top_pad
+        context_ymax += top_pad
+        return [top_pad,bottom_pad,left_pad,right_pad,
+                context_xmin,context_xmax,context_ymin,context_ymax,s_z]
+class TrackSrcApp(AIBase):
+
+
+===== PAGE 157/160 =====
+
+初始化源图像特征提取模型的相关参数。
+1. kmodel_path ：源特征提取模型路径。
+2. model_input_size ：模型输入尺寸。
+3. ratio_src_crop ：源裁剪比例。
+4. rgb888p_size ：输入图像尺寸。
+5. display_size ：显示器分辨率。
+6. debug_mode ：调试模式标志。
+追踪框的生成与更新
+    def __init__(self,kmodel_path,model_input_size,ratio_src_crop,rgb888p_size=
+[1280,720],display_size=[1920,1080],debug_mode=0):
+        super().__init__(kmodel_path,model_input_size,rgb888p_size,debug_mode)
+        self.kmodel_path=kmodel_path
+        self.model_input_size=model_input_size
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+        self.pad_crop_params=[]
+        self.CONTEXT_AMOUNT = 0.5
+        self.ratio_src_crop = ratio_src_crop
+        self.debug_mode=debug_mode
+        self.ai2d_pad=Ai2d(debug_mode)
+        
+self.ai2d_pad.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8,np.uin
+t8)
+        self.ai2d_crop=Ai2d(debug_mode)
+        
+self.ai2d_crop.set_ai2d_dtype(nn.ai2d_format.NCHW_FMT,nn.ai2d_format.NCHW_FMT,np.uint8,np.ui
+nt8)
+        self.need_pad=False
+class NanoTracker:
+    def __init__(self,track_crop_kmodel,track_src_kmodel,tracker_kmodel,
+                 crop_input_size,src_input_size,threshold=0.25,
+                 rgb888p_size=[1280,720],display_size=[1920,1080],debug_mode=0):
+        self.track_crop_kmodel=track_crop_kmodel
+        self.track_src_kmodel=track_src_kmodel
+        self.tracker_kmodel=tracker_kmodel
+        self.crop_input_size=crop_input_size
+        self.src_input_size=src_input_size
+        self.threshold=threshold
+        self.CONTEXT_AMOUNT=0.5
+        self.ratio_src_crop = 0.0
+        self.track_x1 = float(600)
+        self.track_y1 = float(300)
+        self.track_w = float(100)
+        self.track_h = float(100)
+        self.draw_mean=[]
+        self.center_xy_wh = []
+
+
+===== PAGE 158/160 =====
+
+NanoTracker  负责追踪框的生成与更新、裁剪、源特征提取等。
+1. track_crop_kmodel ：裁剪模型路径。
+2. track_src_kmodel ：源特征提取模型路径。
+3. tracker_kmodel ：追踪模型路径。
+4. crop_input_size ：裁剪模型输入尺寸。
+5. src_input_size ：源特征提取模型输入尺寸。
+6. threshold ：追踪的阈值。
+7. rgb888p_size ：图像尺寸。
+8. display_size ：显示设备分辨率。
+run 函数
+        self.track_boxes = []
+        self.center_xy_wh_tmp = []
+        self.track_boxes_tmp=[]
+        self.crop_output=None
+        self.src_output=None
+        self.seconds = 8
+        self.endtime = None  # 初始化为None，倒计时在外部按键按下后开始
+        self.countdown_active = False # 新增标志：倒计时是否正在进行
+        self.initial_setup_done = False # 新增标志：首次倒计时设置是否已完成
+        self.rgb888p_size=[ALIGN_UP(rgb888p_size[0],16),rgb888p_size[1]]
+        self.display_size=[ALIGN_UP(display_size[0],16),display_size[1]]
+    def run(self,input_np, external_tracking_enabled):
+        nowtime = time.time()
+        if external_tracking_enabled and not self.initial_setup_done:
+            # 用户想要开始追踪，且初始设置（倒计时）尚未完成
+            if not self.countdown_active: # 如果倒计时尚未激活，则开始
+                self.endtime = nowtime + self.seconds
+                self.countdown_active = True
+                print(f"倒计时开始 (首次追踪). 当前时间: {nowtime}, 结束时间: {self.endtime}")
+            if self.countdown_active and nowtime <= self.endtime:
+                # 倒计时进行中
+                countdown = int(self.endtime - nowtime)
+                # 在倒计时阶段，持续更新初始裁剪图像 (模板)
+                self.crop_output=self.track_crop.run(input_np)
+                return self.draw_mean, countdown # 返回初始框和倒计时
+            elif self.countdown_active and nowtime > self.endtime:
+                # 倒计时刚刚结束
+                print("倒计时结束，开始追踪。")
+                self.countdown_active = False
+                self.initial_setup_done = True # 标记初始设置已完成
+                # 倒计时结束后，立即进行一次追踪以更新状态
+                self.track_src.config_preprocess(self.center_xy_wh)
+
+
+===== PAGE 159/160 =====
+
+运行整个追踪过程，包括裁剪、特征提取、追踪等步骤，返回追踪框或倒计时。
+绘制图像
+                self.src_output=self.track_src.run(input_np)
+                det=self.tracker.run(self.crop_output,self.src_output,self.center_xy_wh)
+                return det, None
+        elif self.initial_setup_done and external_tracking_enabled:
+            # 初始设置已完成，且外部追踪开关为True (正常追踪模式)
+            self.track_src.config_preprocess(self.center_xy_wh)
+            self.src_output=self.track_src.run(input_np)
+            det=self.tracker.run(self.crop_output,self.src_output,self.center_xy_wh)
+            return det, None
+        else:
+            # 外部追踪开关未开启，或者初始设置未完成且外部追踪未开启（等待按键开始状态）
+            # 在这些情况下，只显示初始框，不显示倒计时
+            return self.draw_mean, None
+    def draw_result(self,pl,box,countdown=None):
+        pl.osd_img.clear()
+        if not self.initial_setup_done: # 如果初始设置（倒计时）尚未完成
+            pl.osd_img.draw_rectangle(box[0],box[1],box[2],box[3],color=
+(255,0,255,0),thickness=4)
+            if countdown is not None: # 仅当倒计时激活时才显示倒计时文本
+                pl.osd_img.draw_string_advanced(50, 50, 50, f"倒计时: {countdown} 秒", color=
+(255, 255, 0, 0))
+        else: # 初始设置已完成，进入追踪模式
+            self.track_boxes = box[0]
+            self.center_xy_wh = box[1]
+            track_bool = True
+            if (len(self.track_boxes) != 0):
+                track_bool = (self.track_boxes[0] > 10 and self.track_boxes[1] >10 and
+                              self.track_boxes[0]+self.track_boxes[2]
+<self.rgb888p_size[0]-10 and
+                              self.track_boxes[1]+self.track_boxes[3]
+<self.rgb888p_size[1]-10)
+            else:
+                track_bool = False
+            if (len(self.center_xy_wh) != 0):
+                track_bool = track_bool and self.center_xy_wh[2]*self.center_xy_wh[3]<40000
+            else:
+                track_bool = False
+            if (track_bool):
+                self.center_xy_wh_tmp = self.center_xy_wh
+                self.track_boxes_tmp = self.track_boxes
+                x1 = int(self.track_boxes[0]*self.display_size[0]/self.rgb888p_size[0])
+                y1 = int(self.track_boxes[1]*self.display_size[1]/self.rgb888p_size[1])
+                w = int(self.track_boxes[2]*self.display_size[0]/self.rgb888p_size[0])
+                h = int(self.track_boxes[3]*self.display_size[1]/self.rgb888p_size[1])
+                pl.osd_img.draw_rectangle(x1,y1,w,h,color=(255,255,0,0),thickness=4)
+            else:
+
+
+===== PAGE 160/160 =====
+
+绘制追踪结果，包括追踪框、倒计时和提示信息。
+                self.center_xy_wh = self.center_xy_wh_tmp
+                self.track_boxes = self.track_boxes_tmp
+                x1 = int(self.track_boxes[0]*self.display_size[0]/self.rgb888p_size[0])
+                y1 = int(self.track_boxes[1]*self.display_size[1]/self.rgb888p_size[1])
+                w = int(self.track_boxes[2]*self.display_size[0]/self.rgb888p_size[0])
+                h = int(self.track_boxes[3]*self.display_size[1]/self.rgb888p_size[1])
+                pl.osd_img.draw_rectangle(x1,y1,w,h,color=(255,255,0,0),thickness=4)
+                pl.osd_img.draw_string_advanced(x1,y1-50,32,"请远离摄像头，保持跟踪物体大小基本一
+致!",color=(255,255,0,0))
+                pl.osd_img.draw_string_advanced(x1,y1-100,32,"请靠近中心!",color=
+(255,255,0,0))

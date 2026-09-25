@@ -1,0 +1,899 @@
+
+
+===== PAGE 1/44 =====
+
+8. AI大模型课程
+ 
+8. AI大模型课程
+8.1 大模型API-KEY获取 
+8.1.1 大模型API-Key获取及配置
+8.2 语音唤醒 
+8.2.1 实验简介
+8.2.2 准备工作
+8.2.3 程序运行及下载
+8.2.4 运行效果
+8.2.5 程序分析
+8.3 语音识别 
+8.3.1 实验简介
+8.3.2 准备工作
+8.3.3 程序运行及下载
+8.3.4 运行效果
+8.3.5 程序分析
+8.4 语音合成 
+8.4.1 实验简介
+8.4.2 准备工作
+8.4.3 程序运行及下载
+8.4.4 运行效果
+8.4.5 程序分析
+8.5 文字理解 
+8.5.1 实验简介
+8.5.2 准备工作
+8.5.3 程序运行及下载
+8.5.4 运行效果
+8.5.5 程序分析
+8.6 图片理解 
+8.6.1 实验简介
+8.5.2 准备工作
+8.5.3 程序运行及下载
+8.5.4 运行效果
+8.5.5 程序分析
+8.1 大模型API-KEY获取 
+ 
+8.1.1 大模型API-Key获取及配置
+ 
+阿里云大模型账号注册和API密钥获取及配置
+（1）注册账号 
+1. 复制网址：https://www.aliyun.com/product/tongyi，打开通义大模型网页，点击右上角注册。
+
+
+===== PAGE 2/44 =====
+
+2. 根据提示词依次填写“手机号”、“校验码”，还需要勾选同意“我已阅读并同意用户协议、隐私政策、产品服务协
+议”。
+3. 提交完成后，表明账号已注册成功，然后点击“快速实名认证”。
+
+
+===== PAGE 3/44 =====
+
+4. 实名认证分为“个人认证”和“企业认证”，可根据实际情况选择对应的认证方式。
+5. 本教程以“个人认证”中的“个人支付宝认证”为例。
+6. 点击“个人支付宝认证”后，在右边的弹窗中勾选“我同意授权阿里云获取支付宝认证信息”，然后点击“登录支付
+宝”。
+7. 然后在弹出的界面中选择支付宝登录方式。
+
+
+===== PAGE 4/44 =====
+
+8. 勾选“已阅读和同意《用户授权协议》”并点击“授权”，既可完成实名认证。
+部署并测试在线大模型
+1. 注册完成后，点击“免费体验”。
+2. 进入大模型界面后，点击网页上方的“开通服务”。
+
+
+===== PAGE 5/44 =====
+
+3. 在弹出的界面中， 勾选“我已阅读并同意《模型管理服务协议》”，并点击“确认开通，并领取免费额度”。
+4. 本教程选择了“通义千问-Plus”模型，在会话框输入“你好”，并点击“ 
+”发送会话。
+5. 模型生成对话，即可表明账号等配置完成，并通过测试。
+
+
+===== PAGE 6/44 =====
+
+API密钥获取
+1. 点击选择“密钥管理”。
+2. 然后点击网页右上角的“创建我的API-KEY”。
+
+
+===== PAGE 7/44 =====
+
+3. 在归属业务空间选择“默认业务空间”，描述选项可进行选填，然后点击“确定”，即可创建API-KEY。
+4. API KEY为程序调用的密钥，点击查看后复制（同时需要记住本次生成的API_KEY,建议将其保存到本地电脑当
+中）。
+8.2 语音唤醒 
+ 
+8.2.1 实验简介
+ 
+本节通过程序学习k230开发板的语音唤醒玩法。
+8.2.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 8/44 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 9/44 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+8.2.3 程序运行及下载
+ 
+在线运行：
+本方式是连接后，将程序“keyword_spotting.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按
+钮 
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 10/44 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“keyword_spotting.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 11/44 =====
+
+8.2.4 运行效果
+ 
+程序运行后，一直调用语音识别。当识别到“小南小南”，K230播报“我在”。
+ 
+8.2.5 程序分析
+ 
+导入对应库文件
+自定义关键词唤醒类
+初始化：加载模型、设置阈值、缓存。
+自定义预处理函数
+from libs.PipeLine import ScopedTiming
+from libs.AIBase import AIBase
+from libs.AI2D import Ai2d
+from media.pyaudio import *                     # 音频模块
+from media.media import *                       # 软件抽象模块
+import media.wave as wave                       # wav音频处理模块
+import nncase_runtime as nn                     # nncase运行模块
+import ulab.numpy as np                         # numpy类似操作
+import aidemo                                   # aidemo模块
+import time                                     # 时间统计
+import struct                                   # 字节字符转换模块
+import gc                                       # 垃圾回收模块
+import os, sys                                  # 操作系统接口模块
+# 自定义关键词唤醒类，继承自AIBase基类
+class KWSApp(AIBase):
+    def __init__(self, kmodel_path, threshold, debug_mode=0):
+        super().__init__(kmodel_path)  # 调用基类的构造函数
+        self.kmodel_path = kmodel_path  # 模型文件路径
+        self.threshold = threshold
+        self.debug_mode = debug_mode  # 是否开启调试模式
+        self.cache_np = np.zeros((1, 256, 105), dtype=np.float)
+    # 自定义预处理，返回模型输入tensor列表
+    def preprocess(self, pcm_data):
+        pcm_data_list = []
+        # 获取音频流数据
+        for i in range(0, len(pcm_data), 2):
+            # 每两个字节组成一个有符号整数，转为浮点数采样值
+            int_pcm_data = struct.unpack("<h", pcm_data[i:i + 2])[0]
+            float_pcm_data = float(int_pcm_data)
+            pcm_data_list.append(float_pcm_data)
+        print("Preprocess first 10 samples:", pcm_data_list[:10])  # 打印前10个采样点，确认音频
+数据
+        # 将pcm数据处理为模型输入的特征向量
+
+
+===== PAGE 12/44 =====
+
+预处理：把麦克风采集的 PCM 数据转为特征，生成模型输入。
+后处理函数
+后处理：解析模型输出，判断是否检测到对应唤醒词并返回是否识别成功。
+主程序参数配置 
+        mp_feats = aidemo.kws_preprocess(fp, pcm_data_list)[0]
+        mp_feats_np = np.array(mp_feats).reshape((1, 30, 40))
+        audio_input_tensor = nn.from_numpy(mp_feats_np)
+        cache_input_tensor = nn.from_numpy(self.cache_np)
+        return [audio_input_tensor, cache_input_tensor]
+    # 自定义当前任务的后处理，results是模型输出array列表
+    def postprocess(self, results):
+        with ScopedTiming("postprocess", self.debug_mode > 0):
+            logits_np = results[0]
+            self.cache_np= results[1]
+            max_logits = np.max(logits_np, axis=1)[0]
+            max_p = np.max(max_logits)
+            idx = np.argmax(max_logits)
+            print(f"max_p={max_p}, idx={idx}")   # 打印当前置信度和类别预测
+            if max_p > self.threshold and idx == 1:
+                return 1
+            else:
+                return 0
+if __name__ == "__main__":
+    os.exitpoint(os.EXITPOINT_ENABLE)
+    nn.shrink_memory_pool()
+    # 设置模型路径和参数
+    kmodel_path = "/sdcard/examples/kmodel/kws.kmodel"
+    THRESH = 0.05
+    SAMPLE_RATE = 16000
+    CHANNELS = 1
+    FORMAT = paInt16
+    CHUNK = int(0.3 * SAMPLE_RATE)   # 0.3秒采样大小，4800点
+    reply_wav_file = "/sdcard/examples/utils/wozai.wav"
+    # 初始化音频预处理接口
+    fp = aidemo.kws_fp_create()
+    # 初始化PyAudio对象及MediaManager
+    p = PyAudio()
+    p.initialize(CHUNK)
+    MediaManager.init()
+    # 打开音频输入流
+    input_stream = p.open(format=FORMAT, channels=CHANNELS, rate=SAMPLE_RATE, input=True, 
+frames_per_buffer=CHUNK)
+    input_stream.volume(vol=100)  # 设置麦克风音量最大
+    # 打开输出流，用于播放回复音频
+
+
+===== PAGE 13/44 =====
+
+配置运行参数，包括 模型路径、置信度阈值、音频采样率/通道数/采样格式、采样帧大小 以及 回复音频文件路径。
+初始化音频与模型
+1. aidemo ：创建关键词预处理句柄。
+2. PyAudio ：配置输入（麦克风）与输出（播放）音频流。
+3. MediaManager ：管理媒体资源。
+4. KWSApp ：加载唤醒模型，准备执行检测。
+主程序
+    output_stream = p.open(format=FORMAT, channels=CHANNELS, rate=SAMPLE_RATE, output=True, 
+frames_per_buffer=CHUNK)
+    # 创建自定义关键词唤醒实例
+    kws = KWSApp(kmodel_path, threshold=THRESH, debug_mode=0)
+if __name__ == "__main__":
+    os.exitpoint(os.EXITPOINT_ENABLE)
+    nn.shrink_memory_pool()
+    # 设置模型路径和参数
+    kmodel_path = "/sdcard/examples/kmodel/kws.kmodel"
+    THRESH = 0.05
+    SAMPLE_RATE = 16000
+    CHANNELS = 1
+    FORMAT = paInt16
+    CHUNK = int(0.3 * SAMPLE_RATE)   # 0.3秒采样大小，4800点
+    reply_wav_file = "/sdcard/examples/utils/wozai.wav"
+    # 初始化音频预处理接口
+    fp = aidemo.kws_fp_create()
+    # 初始化PyAudio对象及MediaManager
+    p = PyAudio()
+    p.initialize(CHUNK)
+    MediaManager.init()
+    # 打开音频输入流
+    input_stream = p.open(format=FORMAT, channels=CHANNELS, rate=SAMPLE_RATE, input=True, 
+frames_per_buffer=CHUNK)
+    input_stream.volume(vol=100)  # 设置麦克风音量最大
+    # 打开输出流，用于播放回复音频
+    output_stream = p.open(format=FORMAT, channels=CHANNELS, rate=SAMPLE_RATE, output=True, 
+frames_per_buffer=CHUNK)
+    # 创建自定义关键词唤醒实例
+    kws = KWSApp(kmodel_path, threshold=THRESH, debug_mode=0)
+    try:
+        while True:
+            os.exitpoint()  # 检查程序退出信号
+
+
+===== PAGE 14/44 =====
+
+1. pcm_data = input_stream.read()  读取音频数据。
+2. res = kws.run(pcm_data)  执行模型推理，进行唤醒检测。
+3. if res while wav_data  如果检测到唤醒词执行播放指定wav音频。
+4. 循环结束 gc.collect()  执行执行“垃圾回收”。
+8.3 语音识别 
+ 
+8.3.1 实验简介
+ 
+本节通过程序学习k230开发板通过大模型将音频中的语音转换成为文本。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+8.3.2 准备工作
+ 
+为了确保顺利进行大模型通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板和电脑通过同一个路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+            with ScopedTiming("total", 1):
+                pcm_data = input_stream.read()
+                print(f"Captured audio length: {len(pcm_data)} bytes")   # 打印采集数据长度
+                print(f"First 10 bytes: {pcm_data[:10]}")
+                res = kws.run(pcm_data)
+                if res:
+                    print("====Detected XiaonanXiaonan!====")
+                    wf = wave.open(reply_wav_file, "rb")
+                    wav_data = wf.read_frames(CHUNK)
+                    while wav_data:
+                        output_stream.write(wav_data)
+                        wav_data = wf.read_frames(CHUNK)
+                    time.sleep(1)  # 播放后缓冲
+                    wf.close()
+                else:
+                    print("Deactivated!")
+                gc.collect()  # 垃圾回收
+
+
+===== PAGE 15/44 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 16/44 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+8.3.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“asr.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 17/44 =====
+
+2. 输入热点的名称和密码以及 8.1 大模型API-KEY获取 课程中获取到的api-key。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 18/44 =====
+
+脱机运行：
+1. 连接后将程序“asr.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开的脚
+本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 19/44 =====
+
+8.3.4 运行效果
+ 
+k230开发板连接网络后，等待用户按下key 后开始录制识别的音频，用户松开key 按键后停止录制识别音频。并将识
+别音频发送到阿里云，有阿里云进行语音识别，并将返回的语音识别结果打印到终端中。
+Note
+Key 按键如下如所示
+ 
+Note
+当运行程序后，程序终端返回结果为下图所示。可能是额度耗尽，请前往阿里云官网进行查询。
+
+
+===== PAGE 20/44 =====
+
+8.3.5 程序分析
+ 
+导入对应库文件
+方便接下来程序的库文件的调用。
+定义全局常量和配置项
+1. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+2. 将'your_api_key'替换成实际的API-KEY，我们可以 8.1 大模型API-KEY获取 课程中学习API-KEY的获取。
+ 
+主程序入口
+import os   #提供系统级别的接口，用于推出点控制
+import uos  #用于检查文件状态以及创建文件夹
+import time #用于延时
+import gc   #用于回收垃圾
+import usocket as socket    #网路TCP/IP通讯
+import ussl as ssl          #用于在普通 socket 基础上包装 TLS/SSL 加密层 (实现 HTTPS)
+from media.media import MediaManager    #用于管理多媒体硬件资源的初始化和释放
+from media.pyaudio import PyAudio, paInt16, LEFT, RIGHT #从 K230 的音频库导入 PyAudio 核心类、
+16位采样格式常量以及左右声道常量
+import media.wave as wave   #用于将 PCM 裸音频流封装并保存为标准的 .wav 文件
+# 尝试导入 JSON 库，兼容 ujson (MicroPython) 和标准 json
+try:
+    import ujson as json
+except ImportError:
+    import json
+# ========== 全局常量和配置项 ==========
+API_KEY = "Your_api_key"        # 你的阿里云 DashScope API Key
+WIFI_SSID = "your_ssid_name"    # 你的 WiFi 名称
+WIFI_KEY = "your_ssid_password" # 你的 WiFi 密码
+MODEL = "paraformer-v2"         # 使用的语音识别大模型版本
+SAVE_PATH = "/sdcard/asr_demo.wav" # 本地保存录音的路径，存在 SD 卡中
+CHUNK = 1764                    # 每次读取的音频帧大小 (44100采样率下，约40ms的数据 = 44100 / 25)
+RATE = 44100                    # 音频采样率 (44.1kHz 标清音质)
+
+
+===== PAGE 21/44 =====
+
+调用提前定义好的方法以及接口，在程序运行时首先连接上WiFi。如果连接成功返回获取到的ip地址，如果没有就返
+回失败。接下来一直读取21号引脚（key 按键引脚），等待用户按下按键。当用户按下按键初始化音频系统并打开录
+音的音频流开始录音，等待用户松开按键结束录音。并将录制的音频wav文件上传到云端识别，判断识别是否成功。
+成功就把识别结果返回，识别则返回识别失败，并开始下一轮识别。
+1. 定义退出点功能方便用户随时打断,
+2. 定义按键的引脚
+3. 调用connect_wifi 连接无线网
+4.初始化音频以及录音流
+5. 定义识别循环
+# ========== 主程序入口 ==========
+if __name__ == "__main__":
+    # 启用退出点功能，方便在 MicroPython IDE 中安全终止程序
+    os.exitpoint(os.EXITPOINT_ENABLE)
+    print("\n========== K230 语音识别 ==========\n")
+    # 初始化接在 GPIO 21 的物理按键
+    key = Button(21)
+    # 1. 连接网络
+    print("正在连接网络...")
+    ok, result = connect_wifi(WIFI_SSID, WIFI_KEY)
+    if not ok:
+        print("网络连接失败:", result)
+    else:
+        print("网络已连接, IP:", result)
+    print("\n按下按键开始录音，松开按键停止\n")
+    # 2. 初始化底层硬件音频系统
+    p = PyAudio()
+    p.initialize(CHUNK)
+    MediaManager.init()
+    # 3. 打开系统录音流
+    init_audio_stream(p)
+    count = 0
+    # 4. 主事件循环：每次循环即进行一次 按键录音-云端识别 交互
+    try:
+        while True:
+            count += 1
+            print("--- 第{}次识别 ---".format(count))
+
+
+===== PAGE 22/44 =====
+
+6. 定义异常捕获
+ 
+8.4 语音合成 
+ 
+8.4.1 实验简介
+ 
+本节通过程序学习k230开发板通过大模型合成音频并播报。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+8.4.2 准备工作
+ 
+为了确保顺利进行大模型通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板和电脑通过同一个路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+            # 执行录音及识别的串联操作
+            ok, result = record_and_recognize(SAVE_PATH, key, API_KEY)
+            if ok:
+                print("识别结果:", result)
+            else:
+                print("识别失败:", result)
+            print("")
+            time.sleep(2)  # 给系统一定的呼吸时间
+except Exception as e:
+        print("异常:", e)
+    finally:
+        # 5. 退出程序前，安全释放所有的音频资源避免内存泄漏与硬件占用
+        close_audio_stream()
+        p.terminate()
+        MediaManager.deinit()
+    print("程序结束，共识别{}次".format(count))
+
+
+===== PAGE 23/44 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 24/44 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+8.4.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“tts.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 25/44 =====
+
+2. 输入热点的名称和密码以及 8.1 大模型API-KEY获取 课程中获取到的api-key。
+3. 代码编辑区中，接着点击左下角的运行按钮 
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“tts.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当
+前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+
+
+===== PAGE 26/44 =====
+
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+8.4.4 运行效果
+ 
+k230开发板连接网络后，通过大模型合成“静夜思”朗读音频。 
+Note
+当运行程序后，程序终端返回结果为下图所示。可能是额度耗尽，请前往阿里云官网进行查询。
+
+
+===== PAGE 27/44 =====
+
+ 
+8.4.5 程序分析
+ 
+导入对应库文件
+主程序
+1. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+2. 将'your_api_key'替换成实际的API-KEY，我们可以 8.1 大模型API-KEY获取 课程中学习API-KEY的获取。
+3. 将texts = []  中的内容，替换为需要合成播报的文本。
+import usocket
+import ussl
+import network
+import time
+import ubinascii
+import urandom
+import json
+def main():
+    WIFI_SSID = "your_ssid_name" #
+    WIFI_PASSWORD = "your_ssid_password" #
+    API_KEY = "your_api_key"  # API KEY
+    HOST = "dashscope.aliyuncs.com"
+    PORT = 443
+    PATH = "/api-ws/v1/inference/"
+    OUTPUT_FILE = "/sdcard/output_0001.mp3"
+    # 发送多条合成文本（continue-task）
+    texts = [
+        "床前明月光，疑是地上霜",
+        "举头望明月，低头思故乡"
+    ]
+
+
+===== PAGE 28/44 =====
+
+连接WiFi，接着解析服务器地址建立SSL连接并尝试WebSocket 握手。
+定义JSON内容，发送JSON指令。
+    if not connect_wifi(WIFI_SSID, WIFI_PASSWORD):
+        return
+    addr_info = usocket.getaddrinfo(HOST, PORT)[0][-1]
+    sock = usocket.socket()
+    sock.connect(addr_info)
+    ssl_sock = ussl.wrap_socket(sock, server_hostname=HOST)
+    ws_key = websocket_handshake(ssl_sock, HOST, PATH, API_KEY)
+    task_id = ws_key  # 任务ID用握手key保证唯一
+    # 发送启动任务命令 (run-task)
+    run_task_cmd = {
+        "header": {
+            "action": "run-task",
+            "task_id": task_id,
+            "streaming": "duplex"
+        },
+        "payload": {
+            "task_group": "audio",
+            "task": "tts",
+            "function": "SpeechSynthesizer",
+            "model": "cosyvoice-v2",
+            "parameters": {
+                "text_type": "PlainText",
+                "voice": "longxiaochun_v2",
+                "format": "mp3",
+                "sample_rate": 22050,
+                "volume": 50,
+                "rate": 1,
+                "pitch": 1
+            },
+            "input": {}
+        }
+    }
+    send_ws_text(ssl_sock, json.dumps(run_task_cmd))
+    send_ws_text(ssl_sock, json.dumps(run_task_cmd))
+    for t in texts:
+        continue_task_cmd = {
+            "header": {
+                "action": "continue-task",
+                "task_id": task_id,
+                "streaming": "duplex"
+            },
+            "payload": {
+
+
+===== PAGE 29/44 =====
+
+循环发送，并使用time.sleep() 避免发送过快。
+1. open(OUTPUT_FILE, "wb") as f 将文件打开，准备写入。
+2. f.write(msg)  写入 mp3 文件。
+3. ssl_sock.close()  关闭 SSL 连接。
+4. sock.close() 关闭 TCP 连接。
+8.5 文字理解 
+ 
+8.5.1 实验简介
+ 
+本节通过程序学习k230开发板通过大模型将提前准备好的“提问词”发送给大模型，在通过IDE以串口的方式显示出大模
+型的回答。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+                "input": {
+                    "text": t
+                }
+            }
+        }
+        send_ws_text(ssl_sock, json.dumps(continue_task_cmd))
+        time.sleep(0.1)
+    # 接收服务器响应消息，保存音频数据
+    try:
+        with open(OUTPUT_FILE, "wb") as f:
+            while True:
+                msg = recv_ws_message(ssl_sock)
+                print("msg:",msg)
+                if msg is None:
+                    print("连接关闭或无数据，退出循环")
+                    break
+                if isinstance(msg, str):
+                    print("收到文本消息:", msg)
+                elif isinstance(msg, bytes):
+                    print(f"收到二进制消息，大小:{len(msg)}字节")
+                    f.write(msg)
+                else:
+                    print("收到未知类型消息:", type(msg))
+    except Exception as e:
+        print("接收异常:", e)
+    ssl_sock.close()
+    sock.close()
+    print("音频已保存到:", OUTPUT_FILE)
+
+
+===== PAGE 30/44 =====
+
+8.5.2 准备工作
+ 
+为了确保顺利进行大模型通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 31/44 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+8.5.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+ 
+在线运行：
+本方式是连接后，将程序“llm.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 32/44 =====
+
+2. 输入热点的名称和密码以及 8.1 大模型API-KEY获取 课程中获取到的api-key。
+3. 代码编辑区中，接着点击左下角的运行按钮 
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 33/44 =====
+
+脱机运行：
+1. 连接后将程序“llm.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开的脚本为
+（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 34/44 =====
+
+8.5.4 运行效果
+ 
+k230开发板连接网络后，可以对其提问，大模型会返回对应的答案文本，实现与大模型进行文本对话。
+Note
+当运行程序后，程序终端返回结果为下图所示。可能是额度耗尽，请前往阿里云官网进行查询。
+ 
+8.5.5 程序分析
+ 
+导入对应库文件
+主程序
+import network
+import time
+import usocket
+import ussl
+import json
+
+
+===== PAGE 35/44 =====
+
+1. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+2. 将'your_api_key'替换成实际的API-KEY，我们可以8.1 大模型API-KEY获取课程中学习API-KEY的获取。
+3. if not connect_wifi(WIFI_SSID, WIFI_PASSWORD) : 连接WiFi，并使用if判断是否连接成功。
+4. 将messages= []  中的内容，替换为需要提问的“提问词”。
+5. result = https_post(host, url, API_KEY, data)  发送对应的请求。
+判断是否收到返回响应，并将判断结果输出到IDE的终端中。
+ 
+def main():
+    WIFI_SSID = "your_ssid_name"
+    WIFI_PASSWORD = "your_ssid_password"
+    API_KEY = "your_API_Key"   # 填写你的API Key
+    if not connect_wifi(WIFI_SSID, WIFI_PASSWORD):
+        return
+    host = "dashscope.aliyuncs.com"
+    url = "/api/v1/services/aigc/text-generation/generation"
+    data = {
+        "model": "qwen-plus",
+        "input": {
+            "messages": [
+                {"role": "system", "content": "你是一个AI助手"},
+                {"role": "user", "content": "联网查询深圳今天天气怎么样?"}
+            ]
+        },
+        "parameters": {
+            "result_format": "message",
+            "top_p": 0.8,
+            "temperature": 0.7,
+            "enable_search": False,
+            "enable_thinking": False,
+            "thinking_budget": 4000
+        }
+    }
+    print("发送请求中...")
+    result = https_post(host, url, API_KEY, data)
+    if result:
+        print("收到响应:\n",result)
+    else:
+        print("请求失败或无响应")
+
+
+===== PAGE 36/44 =====
+
+8.6 图片理解 
+ 
+8.6.1 实验简介
+ 
+本节通过程序学习k230开发板通过大模型将提前准备好的”提问图片“发送给大模型，在通过IDE以串口的方式显示出大
+模型回答的图片描述。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+8.5.2 准备工作
+ 
+为了确保顺利进行大模型通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+
+
+===== PAGE 37/44 =====
+
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+8.5.3 程序运行及下载
+ 
+Note
+在程序下载前我们需要注意K230 不能直连  阿里云DashScope（dashscope.aliyuncs.com）,K230 运行的是 
+CanMV 固件 + MicroPython 环境，它的加密库（ussl）是一个极简实现，只支持非常基础的 TLS 协议。不支
+持阿里云 DashScope 所要求的 TLS 协议版本或加密套件。所以我们需要其他设备进行转发。我们可以使用树莓
+派，jetson nano以及PC电脑来实现转发。
+
+
+===== PAGE 38/44 =====
+
+这里我们以本地电脑为例子使用Visual Studio Code实现转发：
+1. 我们将程序“VLLM_demo.py”拖入到Visual Studio Code （请自行前往搜索学习Visual Studio Code下载）。
+2. 我们点击上方菜单栏，点击终端 -->  新建终端。
+3. 接着在新建的终端中输入下面对应的pip 指令，下载对应的库。
+
+
+===== PAGE 39/44 =====
+
+4. 我们需要将DASHSCOPE_API_KEY = "your_API_key" 修改为8.1 大模型API-KEY获取 课程中获取到的api-key。
+5. 点击右上角的运行按钮即可。
+pip install flask
+pip install requests flask
+
+
+===== PAGE 40/44 =====
+
+ 
+K230程序下载：
+1. 我们首先打开电脑的命令提示符（Command Prompt）,同时按下键盘上的 Win + R ，会弹出一个「运行」窗口
+2. 在输入框中输入：
+3. 然后按下 Enter 回车键 或点击“确定”。这样就会打开一个黑色的命令行窗口（即 CMD 窗口），你可以在里面输
+入ipconfig 命令。
+Note
+cmd
+
+
+===== PAGE 41/44 =====
+
+上图仅作为参考，请勿自行查询对应的电脑IP
+4. 我们首先需要修改程序中输入热点的名称和密码以及对应电脑的IP。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后：
+1. 将程序“llm.py”拖至CanMV IDE K230。
+2. 代码编辑区中，接着点击左下角的运行按钮 
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+
+
+===== PAGE 42/44 =====
+
+1. 连接后将程序“vllm_understand.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当
+前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+8.5.4 运行效果
+ 
+Note
+请务必先运行K230程序再运行Visual Studio Code 中程序。
+k230开发板连接网络后，可以对其提问，大模型会返回对应的答案文本，实现与大模型进行文本对话。
+
+
+===== PAGE 43/44 =====
+
+Note
+当运行程序后，程序终端返回结果为下图所示。可能是额度耗尽，请前往阿里云官网进行查询。
+ 
+8.5.5 程序分析
+ 
+导入对应库文件
+主程序
+import network
+import usocket
+import json
+import time
+
+
+===== PAGE 44/44 =====
+
+1. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+2. 将'you_PC_IP'替换成实际的电脑IP。
+3. 定义图片以及询问的问题
+4. 发送请求到 Flask 代理
+def main():
+    WIFI_SSID = "your_ssid_name"
+    WIFI_PASSWORD = "your_ssid_password"
+    PC_IP = "you_PC_IP"  # ⚠️ 改成你电脑在同一局域网的 IP
+    PORT = 5000
+    if not connect_wifi(WIFI_SSID, WIFI_PASSWORD):
+        return
+image_url = "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-
+CN/20241022/emyrja/dog_and_girl.jpeg"
+question = "请用中文描述这张图片,在120个字以内"
+send_to_pc(PC_IP, PORT, image_url, question)

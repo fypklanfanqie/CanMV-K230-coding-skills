@@ -1,0 +1,51 @@
+---
+description: CanMV K230（K230 开发板）MicroPython 开发技能 — 视觉/AI/外设/网络/大模型
+globs: ["**/*.py"]
+alwaysApply: false
+---
+
+# CanMV K230 开发规则
+
+本工作区是 **K230（勘智/幻尔 Hiwonder）开发板 MicroPython 开发工作区**。
+
+## 动手前必读（按顺序）
+
+1. `AGENTS.md` — 工作区总入口
+2. `skills/canmv-k230/SKILL.md` — 主技能（工作流、代码骨架、导航表、高频坑 Top15）
+3. `skills/canmv-k230/references/12-example-index.md` — 官方例程索引（**先找到最接近的例程再改**）
+
+## 写 K230 代码的硬性规则
+
+1. **先抄再改**：参考资料包 `CanMV K230/` 里的 174 个官方例程与 `references/` 文档，
+   不要凭空手写 K230 API。
+2. **代码形态**：MicroPython 单文件脚本（跑在 CanMV 固件上），顶部集中配置区
+   （`select_display`、WiFi、阈值、模型路径）。
+3. **资源释放契约**（视觉/音频程序必须，放 finally）：
+   ```python
+   sensor.stop()
+   Display.deinit()
+   os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+   time.sleep_ms(100)
+   MediaManager.deinit()
+   ```
+4. 主循环：`os.exitpoint()` + 按需 `gc.collect()`；显示模式 1=HDMI / 2=LCD / 3=IDE虚拟。
+5. 新项目放 `projects/<项目名>/`（main.py + README.md）。
+6. 交付时给用户三步指引：拖入 CanMV IDE → 连接 → 运行（或保存 main.py 脱机）。
+
+## 常用参考
+
+| 主题 | 文件 |
+|---|---|
+| 硬件/引脚/40PIN | `skills/canmv-k230/references/01-hardware.md` |
+| IDE/烧录/运行/脱机 | `skills/canmv-k230/references/02-workflow.md` |
+| 摄像头/显示/音频/视频 | `skills/canmv-k230/references/03-media.md` |
+| GPIO/UART/I2C/SPI/PWM/ADC 等 | `skills/canmv-k230/references/04-machine-api.md` |
+| 颜色/码类/形状检测 | `skills/canmv-k230/references/05-openmv-vision.md` |
+| kmodel/AIBase/YOLO | `skills/canmv-k230/references/06-ai-vision.md` |
+| WiFi/TCP/UDP/HTTP | `skills/canmv-k230/references/07-network.md` |
+| 触摸/LVGL | `skills/canmv-k230/references/08-touch-lvgl.md` |
+| 语音/大模型 | `skills/canmv-k230/references/09-ai-llm.md` |
+| 模型训练/部署 | `skills/canmv-k230/references/10-model-training.md` |
+| 模型清单 | `skills/canmv-k230/references/11-model-inventory.md` |
+| 排错 | `skills/canmv-k230/references/13-troubleshooting.md` |
+| 代码模板 | `skills/canmv-k230/templates/` |

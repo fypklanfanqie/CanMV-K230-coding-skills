@@ -1,0 +1,31 @@
+# Windsurf 规则 — K230 开发工作区
+
+本工作区是 **CanMV K230（勘智 K230 / 幻尔 Hiwonder K230）开发板 MicroPython 开发工作区**。
+
+## 必读文档
+
+1. `AGENTS.md` — 工作区总入口
+2. `skills/canmv-k230/SKILL.md` — 主技能（工作流 / 代码骨架 / 导航表 / 高频坑）
+3. `skills/canmv-k230/references/` — 13 篇深度参考文档
+
+## 规则
+
+1. 生成 **MicroPython 单文件脚本**（K230 CanMV 固件环境，非桌面 Python）。
+2. **先抄再改**：先查 `skills/canmv-k230/references/12-example-index.md` 定位官方例程
+   （资料包 `CanMV K230/` 内共 174 个 .py），读源码后修改。
+3. 视觉/音频程序资源释放（finally，顺序不可改）：
+   `sensor.stop() → Display.deinit() → os.exitpoint(os.EXITPOINT_ENABLE_SLEEP) → time.sleep_ms(100) → MediaManager.deinit()`
+4. 显示模式：`select_display` 1=HDMI / 2=LCD(800×480) / 3=IDE 虚拟显示。
+5. 主循环：`os.exitpoint()` + 按需 `gc.collect()`；异常 try/except/finally。
+6. 配置集中文件顶部：WiFi、API Key、阈值、模型路径（中文注释）。
+7. 新项目：`projects/<项目名>/{main.py, README.md}`。
+8. 交付指引：拖入 CanMV IDE → 连接 → 运行；调通后存为 main.py 实现脱机运行。
+
+## 关键参考
+
+- 外设 API：`skills/canmv-k230/references/04-machine-api.md`
+- 摄像头/显示：`skills/canmv-k230/references/03-media.md`
+- AI 视觉：`skills/canmv-k230/references/06-ai-vision.md`
+- 模型清单：`skills/canmv-k230/references/11-model-inventory.md`
+- 排错手册：`skills/canmv-k230/references/13-troubleshooting.md`
+- 模板：`skills/canmv-k230/templates/`
