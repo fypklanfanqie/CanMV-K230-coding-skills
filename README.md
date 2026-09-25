@@ -1,4 +1,5 @@
 # CanMV-K230-coding-skills
+写在前面已经获得店家同意，然后后面会不断更新
 
 > 给 AI 编程助手用的 **CanMV K230（勘智 K230 / 幻尔 Hiwonder K230 开发板）开发技能包**
 > —— 让 CodeBuddy / Claude Code / Cursor / Copilot / Cline / Windsurf 等任何 agent
