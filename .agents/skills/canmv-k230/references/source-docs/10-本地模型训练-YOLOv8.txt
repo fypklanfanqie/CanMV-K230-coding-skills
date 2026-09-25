@@ -1,0 +1,487 @@
+
+
+===== PAGE 1/29 =====
+
+10. 本地模型训练（YOLOv8）
+ 
+10. 本地模型训练（YOLOv8）
+10.1 实验简介 
+10.2 环境部署
+10.2.1 环境确认
+10.2.1.1 可能会出现的两种情况：
+10.2.1.2 显卡驱动安装与更新：
+10.2.2 conda环境部署
+10.2.2.1 安装miniconda
+10.2.2.2 安装检查
+10.2.2.3 清华源添加
+10.2.2.4 创建 Miniconda 环境
+10.2.2.5 新建并切换目录
+10.2.2.6 安装 git
+10.2.2.7 安装 YOLOv8 及其依赖
+10.3 数据集下载以及处理
+10.3.1 数据集下载
+10.3.2 解压数据集
+10.3.3 数据集处理脚本处理
+10.4 使用YOLOv8训练猫狗分类
+10.4.1 开始训练
+10.4.2 模型验证
+10.5 将训练的模型转为K230可以识别的kmodel
+10.5.1 pt转onnx 
+10.5.2 转换脚本准备
+10.5.3 转换开始
+10.6 模型部署
+10.6.1 模型文件部署
+10.6.2 模型程序部署运行
+10.6.3 程序分析
+10.1 实验简介 
+ 
+本节通过程序学习在本地部署YOLOv8环境并训练Cat_and_dog_detection 模型，再通过nncase  转换为KModel ，
+以部署至 K230 设备。
+ 
+10.2 环境部署
+ 
+我们演示的操作环境如下：
+系统：Windows 10专业版
+GPU：NVIDIA 1650显卡
+环境管理：Miniconda3
+conda：25.11.1
+ 
+
+
+===== PAGE 2/29 =====
+
+10.2.1 环境确认
+ 
+本教程运行的环境在Windows 并且使用NVIDIA 1650显卡
+请确认你环境
+带NVIDIA 显卡
+如果你使用的是带NVIDIA显卡的环境请确认你的环境显卡是否安装驱动;驱动是否太旧。
+不带NVIDIA显卡
+如果你使用的环境不带NVIDIA也问题不大，我们可以使用CPU版本的PyTorch。
+1. 按键盘上的Win + R 键，输入cmd 并回车。
+2. 在黑色窗口里输入NVIDIA-smi 然后按回车。
+10.2.1.1 可能会出现的两种情况：
+ 
+情况A：显示了一个表格（包含显卡型号、驱动版本等）。
+结论：你已经安装好了驱动，不需要再额外安装任何东西就可以查看状态。（注意：请确认显卡驱动是否过
+旧，如果过旧；请参考下面驱动更新）
+情况B：提示“不是内部或外部命令”。
+原因1：你尚未安装NVIDIA显卡驱动（最常见）。
+原因2：你安装了驱动，但它的路径没有被加入到系统的“环境变量”里（这种情况下，命令其实在电脑里，
+只是系统找不到它）。通常重新安装驱动能解决“环境指标”。
+原因3：你用的并不是NVIDIA显卡。
+10.2.1.2 显卡驱动安装与更新：
+ 
+请前往NVIDIA安装NVIDIA APP
+NVIDIA App的主要功能就是自动检测并安装/更新显卡驱动。
+操作方式：安装好NVIDIA App后，首先点击左侧的序号1“驱动程序”选项卡，接着图中序号2点击“检查更新”，
+最后点击图中序号3”一键下载“即可。
+
+
+===== PAGE 3/29 =====
+
+驱动验证：安装好显卡驱动后 
+按键盘上的Win + R 键，输入cmd 并回车。
+在黑色窗口里输入NVIDIA-smi 然后按回车。
+显示出类似下面图片的表格，而不是 提示“不是内部或外部命令”。
+ 
+10.2.2 conda环境部署
+ 
+10.2.2.1 安装miniconda
+ 
+下载安装包 ：我们可以点击miniconda下载miniconda安装包，或者前往同目录文件下的软件安装包文件获取安
+装包。
+开始安装：
+1. 双击Minicoand3安装包
+
+
+===== PAGE 4/29 =====
+
+  
+2. 点击“Next” 下一步。
+  
+
+
+===== PAGE 5/29 =====
+
+3. 点击I Agree” ，同意协议。
+4. 选择All User ，接着点击Next 。
+
+
+===== PAGE 6/29 =====
+
+5. 选择对应的下载路径，接着点击Next 。
+6. 根据自己需求勾选对应选项，接着点击Install 。
+
+
+===== PAGE 7/29 =====
+
+7. 点击Next
+8. 最后点击Finsh
+10.2.2.2 安装检查
+ 
+1. 在安装完毕后，我们按下按键盘上的Win 并搜索anaconda Prompt 。
+
+
+===== PAGE 8/29 =====
+
+2. 双击运行anaconda Prompt
+3. 我们输入下面的指令，当看到输出conda 25.11.1 代表我们的conda环境管理安装成功
+10.2.2.3 清华源添加
+ 
+配置清华大学镜像源，请将下面指令单独运行
+conda -V
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+
+
+===== PAGE 9/29 =====
+
+完成上述指令运行后，运行下面指令验证配置是否成功
+10.2.2.4 创建 Miniconda 环境
+ 
+1. 由于Anaconda 最近新增的服务条款（ToS）确认步骤。现在的版本要求用户在使用官方镜像源（Channels）之
+前，必须明确表示同意其条款。请在你的 Anaconda Prompt 中依次复制并运行以下三条命令：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --set show_channel_urls yes
+conda config --show channels
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/msys2
+
+
+===== PAGE 10/29 =====
+
+2. 首先，我们需要为 YOLOv8创建一个干净的 Python 环境，以避免依赖冲突。打开你的终端（Anaconda 
+Prompt），执行以下命令：
+创建名为 YOLOv8的环境，使用 Python 3.9
+激活环境
+10.2.2.5 新建并切换目录
+ 
+Note
+为什么需要在磁盘中新建并切换文件夹
+保持路径清晰
+避免权限和空间问题
+方便执行代码
+本课程将以E:\dog_and_cat_detection 为例
+1. 新建目录：我们在任意磁盘中新建文件夹（我们以为E:\dog_and_cat_detection 为例）
+conda create -n yolov8 python=3.9 -y
+conda activate yolov8
+
+
+===== PAGE 11/29 =====
+
+2. 切换目录：回到你的终端（Anaconda Prompt）输入下面指令
+10.2.2.6 安装 git
+ 
+1. 运行下面指令，下载git工具
+2. 运行下面指令验证验证安装是否成功
+如果看到类似 git version 2.x.x  的字样，说明你已经成功安装到你的电脑了。
+cd /d E:\dog_and_cat_detection
+conda install -c anaconda git -y
+git --version
+
+
+===== PAGE 12/29 =====
+
+10.2.2.7 安装 YOLOv8 及其依赖
+ 
+Note
+注意：请根据你的硬件情况，再根据文档执行对应安装步骤
+不带NVIDIA显卡版本
+ 
+git克隆YOLOv8仓库
+进入YOLOv8目录
+安装依赖 (PyTorch 等)
+git clone https://github.com/ultralytics/ultralytics.git
+cd ultralytics
+pip install -e .
+
+
+===== PAGE 13/29 =====
+
+带NVIDIA显卡版本
+ 
+请首先完成根据不带NVIDIA显卡版本教程完成安装 YOLOv8 及其依赖安装
+卸载CPU版本PyTorch 
+安装GPU版本PyTorch 
+pip uninstall torch torchvision torchaudio -y
+pip install torch torchvision torchaudio --index-url 
+https://download.pytorch.org/whl/cu121
+
+
+===== PAGE 14/29 =====
+
+验证GPU版本PyTorch 
+请务必保证输出是为True
+出现ModuleNotFoundError: No module named 'torch' 这意味着：
+1. 在你当前运行代码的环境里，压根就没有安装 PyTorch。
+2. 或者你安装在了 A 环境，但你在 B 环境里运行代码。
+出现True ：说明你成功安装了 GPU 版本 的 PyTorch，你的显卡驱动版本与安装的 CUDA 版本
+是兼容的并且PyTorch 成功识别到了你的 NVIDIA 显卡。
+出现False ：
+1. 装错版本了： 你可能通过普通的 pip install torch  安装了 CPU 专用版（默认下载版
+本），它不带 CUDA 库。
+2. 驱动不匹配： 你的 NVIDIA 显卡驱动太旧，不支持你安装的 CUDA 版本（例如你的驱动只
+支持到 CUDA 11.0，但你装了 12.1）。
+3. 硬件问题： 你的电脑没有 NVIDIA 显卡，或者显卡驱动没有安装/已经损坏。
+回到YOLOv8环境
+python
+import torch
+print(torch.cuda.is_available())
+exit()
+
+
+===== PAGE 15/29 =====
+
+ 
+10.3 数据集下载以及处理
+ 
+数据来源
+ 
+本项目使用了由牛津大学发布的 Oxford-IIIT Pet Dataset。
+引用说明：
+Parkhi, O. M., Vedaldi, A., Zisserman, A., & Jawahar, C. V. (2012). Cats and dogs. In 2012 IEEE Conference on 
+Computer Vision and Pattern Recognition.
+10.3.1 数据集下载
+ 
+Note
+数据集下载可以选择直接网页链接下载也可以选择指令下载
+当然你也可以选择前往同目录文件下的数据集文件夹获取提供的数据集
+新建并切换目录
+ 
+Note
+注意请在下载数据集前新建并切换到对应的目录路径
+为什么需要在磁盘中新建并切换文件夹
+保持路径清晰
+避免权限和空间问题
+方便执行代码
+本课程将以E:\dog_and_cat_detection 为例
+1. 切换目录：回到你的终端（Anaconda Prompt）输入下面指令
+cd /d E:\dog_and_cat_detection
+
+
+===== PAGE 16/29 =====
+
+2. 创建数据集存放目录：
+官网链接下载
+ 
+我们使用的资源如下：
+官网链接： Oxford-IIIT Pet Dataset
+图片数据集： images.tar.gz (dataset)
+标注数据集： annotations.tar.gz (groundtruth data)
+1. 点击网页中的下载链接
+2. 等待下载
+mkdir pet_data
+
+
+===== PAGE 17/29 =====
+
+3. 将下载好的数据集压缩包移动到上述创建数据集存放的路径中
+conda环境指令下载
+ 
+1. 进入上述创建数据集存放的路径中
+2. 一次输入下面的下载指令
+cd pet_data
+curl -L -O https://www.robots.ox.ac.uk/~vgg/data/pets/data/images.tar.gz
+
+
+===== PAGE 18/29 =====
+
+10.3.2 解压数据集
+ 
+Note
+解压需要时间，请耐心等待
+将下载的 zip 包解压。
+10.3.3 数据集处理脚本处理
+ 
+1. 脚本获取：请前往同目录文件下的源码文件夹获取提供的数据集处理教程dataset.py ,并将其放在数据集目录
+中。
+curl -L -O https://www.robots.ox.ac.uk/~vgg/data/pets/data/annotations.tar.gz
+tar -xf images.tar.gz
+tar -xf annotations.tar.gz
+
+
+===== PAGE 19/29 =====
+
+2. 确认生成的data.yaml : 按下键盘win 以及E 按键打开文件管理器并使用记事本打开dataset.py 确认
+data.yaml 中数据集路径是否正确
+
+
+===== PAGE 20/29 =====
+
+3. 添加库文件：回到anaconda Prompt 添加tqdm 这个库
+4. 运行脚本：dataset.py 数据集处理教程
+pip install tqdm
+python dataset.py
+
+
+===== PAGE 21/29 =====
+
+5. 确认生成的data.yaml : 按下键盘win 以及E 按键打开文件管理器并使用记事本打开data.yaml 确认
+data.yaml 中数据集路径是否正确
+ 
+10.4 使用YOLOv8训练猫狗分类
+ 
+10.4.1 开始训练
+ 
+1. 进入工作目录：输入下面指令回到YOLOv8目录中
+2. 输入下面指令开始训练：
+cd E:\dog_and_cat_detection\ultralytics
+yolo detect train data=E:\dog_and_cat_detection\pet_data\dataset_formatted\data.yaml 
+model=yolov8n.pt epochs=50 imgsz=320 batch=16 device=0 project=runs/train name=pet_k230_v8
+
+
+===== PAGE 22/29 =====
+
+参数详解：
+yolo detect train ：启动 YOLOv8 的训练模式。
+data=... ：告诉程序数据集配置文件的位置
+model=yolov8n.pt ：使用“Nano”版本的预训练模型
+epochs=50 ：让模型把整个数据集学习 50 遍。
+imgsz=320 ：把图片缩放成 
+ 像素进行训练。
+batch=16 ：一次塞给显卡 16 张图处理。
+device=0 ：使用第一块显卡（GPU）跑训练。
+project/name ：结果保存在 runs/train/pet_k230_v8  文件夹下。
+10.4.2 模型验证
+ 
+1. 输入下面指令测试训练的模型：
+参数详解：
+yolo predict ：启动 YOLOv8 的推理（预测）模式。
+model=best.pt ：加载你训练出的效果最好的那份模型权重。
+source=.../Abyssinian_1.jpg ：指定测试图片的路径。
+imgsz=320 ：推理前将图片缩放至 
+ 像素（必须与导出后的 K230 输入一致）。
+conf=0.25 ：置信度阈值。只显示概率大于 25% 的物体（默认值）。
+save=True ：告诉程序保存画好框的预测结果图（默认开启）。
+2. 前往查看验证图片：E:\dog_and_cat_detection\ultralytics\runs\detect\predict 查看验证图片
+yolo predict 
+model="E:\dog_and_cat_detection\ultralytics\runs\detect\runs\train\pet_k230_v8\weights\best.
+pt" source="E:\dog_cat_yolov5\images\Abyssinian_1.jpg" imgsz=320
+
+
+===== PAGE 23/29 =====
+
+ 
+10.5 将训练的模型转为K230可以识别的kmodel
+ 
+Note
+pt 模型在转换成为kmodel 模型前需要先转换成为onnx 模型。
+10.5.1 pt转onnx 
+ 
+运行下面指令（注意：Ultralytics  发现你的环境中缺少依赖会自动安装，如果发现卡住不动，请耐心等待即
+可。）
+yolo export 
+model="E:\dog_and_cat_detection\ultralytics\runs\detect\runs\train\pet_k230_v8\weights\best.
+pt" format=onnx imgsz=320 opset=11 simplify=True
+
+
+===== PAGE 24/29 =====
+
+10.5.2 转换脚本准备
+ 
+1. 将convert_to_kmodel.py 移动到E:\dog_and_cat_detection
+2. 从 Python 官方仓库（PyPI）下载并安装 nncase  的核心基础包。
+3. 显示已安装的 nncase  包的版本信息。(确认版本一致性。)
+pip install nncase
+
+
+===== PAGE 25/29 =====
+
+4. 下载 K230 的“驱动”文件。
+5. 安装刚才下载到本地的 .whl  文件。
+10.5.3 转换开始
+ 
+1. 运行转换脚本
+2. 转换完毕可以前往输出的对应文件查看
+pip show nncase
+curl -L -O https://github.com/kendryte/nncase/releases/download/v2.10.0/nncase_kpu-2.10.0-
+py2.py3-none-win_amd64.whl
+pip install nncase_kpu-2.10.0-py2.py3-none-win_amd64.whl
+python convert_to_kmodel.py
+
+
+===== PAGE 26/29 =====
+
+ 
+10.6 模型部署
+ 
+10.6.1 模型文件部署
+ 
+将模型文件移动到此电脑\CanMV\sdcard 中
+10.6.2 模型程序部署运行
+ 
+1. 将Cat_and_dog_detection.py 拖入到CanMV IDE K230 中
+
+
+===== PAGE 27/29 =====
+
+2. 按下图片中的1 连接K230开发板，再按下图片中的2 运行Cat_and_dog_detection.py
+效果：
+
+
+===== PAGE 28/29 =====
+
+10.6.3 程序分析
+ 
+1. 导入所需库文件
+2. 定义识别配置
+3. 硬件初始化
+from libs.PipeLine import PipeLine, ScopedTiming
+from libs.YOLO import YOLOv8
+import os, sys, gc
+if __name__ == "__main__":
+    #模型路径
+    kmodel_path = "/sdcard/pet_cat_dog_norm.kmodel"
+    #标签列表
+    labels = ["cat", "dog"]
+    #模型输入尺寸 必须是模型训练时的输入尺寸。
+    model_input_size = [320, 320]
+    #阈值设置
+    confidence_threshold = 0.7
+    nms_threshold = 0.7
+
+
+===== PAGE 29/29 =====
+
+4. 模型加载与预处理
+5. 主循环
+ 
+    #屏幕与摄像头配置
+    rgb888p_size = [1280, 720]  # 摄像头采集分辨率
+    display_size = [800, 480]   # 屏幕显示分辨率
+    #这里建立了一个从摄像头（1280x720）到屏幕（800x480）的数据通路。系统会自动处理缩放
+    pl = PipeLine(rgb888p_size=rgb888p_size, display_size=display_size, display_mode="lcd")
+    pl.create()
+    # 初始化 YOLOv8 实例
+    yolo = YOLOv8(task_type="detect",               # 告诉类库这是一个“检测”任务。
+                  mode="video",                     # 视频模式。通常意味着模型会持续处理连续帧，库
+内部可能会优化 Buffer 缓存逻辑。
+                  kmodel_path=kmodel_path,          # 模型路径
+                  labels=labels,                    # 标签列表
+                  rgb888p_size=rgb888p_size,        # 原始输入尺寸
+                  model_input_size=model_input_size,    # 模型输入尺寸
+                  display_size=display_size,            # 显示尺寸
+                  conf_thresh=confidence_threshold,     # 置信度阈值
+                  nms_thresh=nms_threshold,             # 非极大值抑制
+                  debug_mode=0)                         # 调试模式,输出详细的识别信息0关闭1开启
+    yolo.config_preprocess()
+    try:
+            print("YOLOv8 模型加载成功，开始运行检测...")
+            while True:
+                os.exitpoint()
+                with ScopedTiming("total", 1):
+                    img = pl.get_frame()      # 获取图像
+                    res = yolo.run(img)       # 推理
+                    yolo.draw_result(res, pl.osd_img) # 绘制结果
+                    pl.show_image()           # 显示
+                    gc.collect()              # 内存回收
+        except Exception as e:
+            sys.print_exception(e)
+        finally:
+            yolo.deinit()
+            pl.destroy()
+            print("程序已停止")

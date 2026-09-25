@@ -1,0 +1,1170 @@
+
+
+===== PAGE 1/59 =====
+
+6.网络基础课程
+ 
+6.网络基础课程
+6.1 有线连接实验 
+6.1.1 实验简介
+6.1.2 准备工作
+6.1.3 程序运行及下载
+6.1.4 运行效果
+6.1.5 程序分析
+6.2 无线连接实验 
+6.2.1 实验简介
+6.2.2 准备工作
+6.2.3 程序运行及下载
+6.2.4 运行效果
+6.2.5 程序分析
+6.3 TCP_Client实验 
+6.3.1 实验简介
+6.3.2 准备工作
+6.3.3 程序运行及下载
+6.3.4 工具准备
+6.3.5 运行效果
+6.3.6 程序分析
+6.4 TCP_Server实验 
+6.4.1 实验简介
+6.4.2 准备工作
+6.4.3 程序运行及下载
+6.4.4 运行效果
+6.4.5 程序分析
+6.5 UDP_Client实验实验
+6.5.1 实验简介
+6.5.2 准备工作
+6.5.3 模块连接
+6.5.4 程序运行及下载
+6.5.5 运行效果
+6.5.6 程序分析
+6.6 UDP_Server实验 
+6.6.1 实验简介
+6.6.2 准备工作
+6.6.3 程序运行及下载
+6.6.3 运行效果
+6.6.5 程序分析
+6.7 HTTP_Client实验 
+6.7.1 实验简介
+6.7.2 准备工作
+6.7.3 程序运行及下载
+6.7.4 运行效果
+6.7.5 程序分析
+6.8 HTTP_Server实验 
+6.8.1 实验简介
+6.8.2 准备工作
+6.8.3 程序运行及下载
+6.8.4 运行效果
+
+
+===== PAGE 2/59 =====
+
+6.8.5 程序分析
+6.1 有线连接实验 
+ 
+6.1.1 实验简介
+ 
+本节通过程序学习k230开发板连接有线的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+6.1.2 准备工作
+ 
+硬件准备
+Note
+下方出现的USB转RJ45（网口）本司并无配备，请自行准备。
+1. 有线以太网需要借助一个USB转以太网设备，型号为：USB2.0 RTL8152B 免驱百兆网卡。
+2. 将USB转以太网卡USB端插入01Studio CanMV K230开发板，另一头插入网线连接到路由器。
+
+
+===== PAGE 3/59 =====
+
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 4/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 5/59 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.1.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序 LAN.py 拖至CanMV IDE K230。
+1. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 6/59 =====
+
+脱机运行：
+1. 连接后将程序“LAN.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保
+存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+6.1.4 运行效果
+ 
+K230开发板实现USB转以太网设备有线方式连接到路由器，将IP地址等相关信息通过串口终端打印。
+
+
+===== PAGE 7/59 =====
+
+6.1.5 程序分析
+ 
+导入对应库文件
+network  用于WiFi连接管理。
+主程序
+a = network.LAN()  获取LAN接口对象。a.active()  查询接口是否启用。a.ifconfig()  查看当前
+网络配置。a.ifconfig((ip,mask,gateway,dns))  设置静态IP配置。再次调用 a.ifconfig()  验证
+设置结果。a.ifconfig("dhcp")  设置为DHCP模式自动获取IP。再次查询确认DHCP生效。
+a.config("mac")  获取MAC地址。
+import network
+def main():
+    # 获取 lan 接口
+    a=network.LAN()
+    # 获取网口是否在使用
+    print(a.active())
+    # 查看网口 ip，掩码，网关， dns 配置
+    print(a.ifconfig())
+    # 设置网口 ip，掩码，网关， dns 配置
+    print(a.ifconfig(('192.168.0.4', '255.255.255.0', '192.168.0.1', '8.8.8.8')))
+    # 查看网口 ip，掩码，网关， dns 配置
+    print(a.ifconfig())
+    # 设置网口为 dhcp 模式
+    print(a.ifconfig("dhcp"))
+    # 查看网口 ip，掩码，网关， dns 配置
+    print(a.ifconfig())
+    # 查看网口 mac 地址
+    print(a.config("mac"))
+    # 设置网口为 dhcp 模式
+    print(a.ifconfig("dhcp"))
+    # 查看网口 ip，掩码，网关， dns 配置
+    print(a.ifconfig())
+main()
+
+
+===== PAGE 8/59 =====
+
+6.2 无线连接实验 
+ 
+6.2.1 实验简介
+ 
+本节通过程序学习k230开发板的连接无线的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+6.2.2 准备工作
+ 
+为了确保顺利进行无线连接的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板连接到可上网的路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+
+
+===== PAGE 9/59 =====
+
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.2.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“WIFI.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 10/59 =====
+
+2. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“WIFI.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的
+“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+
+
+===== PAGE 11/59 =====
+
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+6.2.4 运行效果
+ 
+K230开发板设置热点的名称和密码，成功连接上网络。
+6.2.5 程序分析
+ 
+导入对应库文件
+socket  用于TCP网络通信，network  用于WiFi连接管理，time  用于延时操作。
+主程序
+import network
+import socket
+import time
+    # 填入WiFi信息
+    WIFI_SSID = 'your_ssid_name'
+    WIFI_PASSWORD = 'your_ssid_password'
+    # 初始化WLAN接口为STA模式
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print(f"正在连接到WiFi网络: {WIFI_SSID}...")
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        start_time = time.time()
+        while not wlan.isconnected():
+
+
+===== PAGE 12/59 =====
+
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。将设备设置为站点模式，
+作为WiFi客户端连接网络，如果设备未连接WiFi，调用connect 方法，最长等待 15 秒，如果超过则打印
+超时退出，期间通过循环和睡眠确保程序不会占用过多CPU资源。
+6.3 TCP_Client实验 
+ 
+6.3.1 实验简介
+ 
+本节通过程序学习k230开发板的TCP_Client的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+6.3.2 准备工作
+ 
+为了确保顺利进行TCP通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板和电脑通过同一个路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+关闭防火墙
+为了避免防火墙组织TCP通信，建议暂时关闭电脑的防火墙。
+            if time.time() - start_time > 15:
+                print("WiFi连接超时！请检查SSID、密码或信号强度。")
+                return
+            time.sleep(1)
+    # 确保已连接并获取到IP地址
+    if wlan.isconnected():
+        print("WiFi连接成功！")
+        # 打印网络信息 (IP, 子网掩码, 网关, DNS)
+        print("网络信息:", wlan.ifconfig())
+    else:
+        print("WiFi连接失败。")
+        return
+
+
+===== PAGE 13/59 =====
+
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 14/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+ 
+6.3.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“TCP_Client.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 15/59 =====
+
+2. 输入与电脑连接的同一个热点的名称和密码。
+3. 找到红色方框的代码。
+4. 输入“工具准备”设置的IP地址。
+5. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 16/59 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“TCP_Client.py”拖至CanMV IDE K230代码编辑区，点击工具
+栏上的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+6.3.4 工具准备
+ 
+1. 在“2.软件工具\2.6 网络调试助手”中双击打开“NetAssist.exe”网络调试助手工具。
+
+
+===== PAGE 17/59 =====
+
+2. 在“协议类型”中选择“TCP Client”。
+3. 在“远程主机地址”填写为K230开发板连接局域网的IP，“远程主机端口”的“8080”不需要修改。
+
+
+===== PAGE 18/59 =====
+
+4. 然后点击“连接”。
+5. 在新弹出的会话框点击“确定”。
+
+
+===== PAGE 19/59 =====
+
+6. 连接成功后，收到K230开发板发送的“Hello #1 from k230 canmv MicroPython!”。
+7. 在会话框上输入“Hello,Hiwonder”，然后点击“发送”。
+
+
+===== PAGE 20/59 =====
+
+6.3.5 运行效果
+ 
+网络调试助手通过TCP协议向k230开发板发送消息。
+6.3.6 程序分析
+ 
+导入对应库文件
+
+
+===== PAGE 21/59 =====
+
+socket  用于TCP网络通信，network  用于WiFi连接管理，time  用于延时操作，CONTENT  是服务器每
+次向客户端发送的欢迎信息模板，有一个数字占位符。
+主程序
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+初始化STA接口模式（站点模式，即连接路由器），如果未连接就尝试连接指定 WIFI_SSID 和 
+WIFI_PASSWORD，并每隔500毫秒打印“.”进度表示，直到连接成功，连接成功后打印所获IP及其它网络
+配置信息。
+socket.socket  创建一个IPv4(TCP) socket ，setsockopt 设置端口可重用，防止“地址已被占用”错
+误，使用 getaddrinfo  获取本机IP的socket 地址结构，将socket 绑定到本机IP的8080端口，启动监
+听，允许最多5个挂起的连接请求，打印服务器启动完成信息。
+#配置 tcp/udp socket调试工具
+import socket
+import network
+import time
+CONTENT = b"""
+Hello #%d from k230 canmv MicroPython!
+"""
+    WIFI_SSID = "your_ssid_name"
+    WIFI_PASSWORD = "your_ssid_password"
+    wlan = network.WLAN(network.STA_IF)
+    if not wlan.isconnected():
+        print('正在连接到WiFi网络...')
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        while not wlan.isconnected():
+            print('.')
+            time.sleep_ms(500)
+    ip = wlan.ifconfig()[0]
+    print('网络已连接，IP配置:', wlan.ifconfig())
+    counter = 1
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    ai = socket.getaddrinfo(ip, 8080)
+    addr = ai[0][-1]
+    s.bind(addr)
+    s.listen(5)
+    print("TCP服务器已启动于 %s 端口:%d\n" % (ip, 8080))
+
+
+===== PAGE 22/59 =====
+
+counter 初始为1，限制服务器只处理10个客户端连接，accept() 阻塞直到有客户端连接，获取连接的
+客户端socket对象和其IP端口信息，打印连接客户端的地址信息，进行 WiFi 连接并等待结果。如果未连
+接 WiFi，则调用 connect()  启动连接。进入循环，等待连接成功，超时 15 秒自动退出（防止死等）。
+wlan.isconnected() 实时轮询连接状态。
+进入内部无限循环，不断读取客户端数据，read() 操作非阻塞，异常11等价于 EAGAIN，表示数据暂时
+不可读，忽略继续循环。如果成功读取到非空数据，则打印收到的消息，回复客户端字符串 "recv :<收到
+的数据>"。如果数据中包含字节串 "end"，判定客户端想关闭连接，跳出循环，每次循环阻塞100毫秒，
+降低CPU占用。
+ 
+6.4 TCP_Server实验 
+ 
+6.4.1 实验简介
+ 
+本节通过程序学习k230开发板的TCP_Server的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+    while counter <= 10:
+        client_sock = None
+        try:
+            res = s.accept()
+            client_sock = res[0]
+            client_addr = res[1]
+            print("客户端地址:", client_addr)
+            client_sock.setblocking(False)
+            client_stream = client_sock
+            client_stream.write(CONTENT % counter)
+            while True:
+                h = None
+                try:
+                    h = client_stream.read()
+                except OSError as e:
+                    if e.args[0] != 11:
+                        print("读取数据时出错:", e)
+                        break
+                if h and h != b"":
+                    print("收到消息:", h)
+                    client_stream.write("recv :%s" % h)
+                    if b"end" in h:
+                        print("客户端请求关闭连接。")
+                        break
+                time.sleep_ms(100)
+
+
+===== PAGE 23/59 =====
+
+6.4.2 准备工作
+ 
+为了确保顺利进行TCP通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板和电脑通过同一个路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+关闭防火墙
+为了避免防火墙组织TCP通信，建议暂时关闭电脑的防火墙。
+工具准备
+1. 在“2.软件工具\2.6 网络调试助手”中双击打开“NetAssist.exe”网络调试助手工具。
+2. 在“协议类型”中选择“TCP Server”。
+
+
+===== PAGE 24/59 =====
+
+3. 在“本地主机地址”选择与K230开发板连接局域网的同一网段IP，“本地主机端口”的“8080”不需要修
+改。
+
+
+===== PAGE 25/59 =====
+
+4. 然后点击“打开”。
+5. 在新弹出的会话框点击“确定”。
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 26/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 27/59 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.4.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“TCP_Server.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+2. 输入与电脑连接的同一个热点的名称和密码。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 28/59 =====
+
+脱机运行：
+1. 连接后将程序“TCP_Server.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，
+选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+6.4.4 运行效果
+ 
+k230开发板通过TCP协议向网络调试助手发送消息。
+
+
+===== PAGE 29/59 =====
+
+6.4.5 程序分析
+ 
+导入对应库文件
+主程序
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+开启并配置 WLAN 接口为 STA 模式。
+进行 WiFi 连接并等待结果。如果未连接 WiFi，则调用 connect() 启动连接。进入循环，等待连接成
+功，超时 15 秒自动退出（防止死等）。wlan.isconnected() 实时轮询连接状态。
+创建一个 TCP（SOCK_STREAM）IPv4（AF_INET）socket 。
+#配置 tcp/udp socket调试工具
+import network
+import socket
+import time
+    # 填入WiFi信息
+    WIFI_SSID = 'your_ssid_name'
+    WIFI_PASSWORD = 'your_ssid_password'
+    # 初始化WLAN接口为STA模式
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print(f"正在连接到WiFi网络: {WIFI_SSID}...")
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        start_time = time.time()
+        while not wlan.isconnected():
+            if time.time() - start_time > 15:
+                print("WiFi连接超时！请检查SSID、密码或信号强度。")
+                return
+            time.sleep(1)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
+
+
+===== PAGE 30/59 =====
+
+使用 getaddrinfo  解析服务器 IP 和端口（此处示例是 192.168.11.242:8080）。兼容 DNS 域名和 IP 
+地址；返回完整地址信息。拿到 addr 变量，作为后续连接目标。
+发起 TCP 连接，如果失败则关闭资源并终止程序。
+循环 10 次，每次发送一行字符串 “hiwonder k230 tcp X” （X从0到9）。\r\n 保持消息结尾格式，常用
+于标准网络协议。内部打印本次发送数据内容。使用 write()  直接二进制发送，编码为 UTF-8。每次发
+送后 sleep(0.2) 适当延时，防止刷屏或网络拥堵。
+6.5 UDP_Client实验实验
+ 
+6.5.1 实验简介
+ 
+本节通过程序学习k230开发板的UDP_Client实验的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+    try:
+        s.connect(addr)
+        print("成功连接到服务器。")
+    except OSError as e:
+        s.close()
+        print(f"服务器连接错误: {e}")
+        return
+    # 连接到服务器地址
+    try:
+        s.connect(addr)
+        print("成功连接到服务器。")
+    except OSError as e:
+        s.close()
+        print(f"服务器连接错误: {e}")
+        return
+    for i in range(10):
+        # 准备要发送的字符串
+        message = "hiwonder k230 tcp {0} \r\n".format(i)
+        print("正在发送 -> ", message.strip())
+        # 发送字符串
+        s.write(message.encode('utf-8'))
+        time.sleep(0.2)
+    time.sleep(1)
+    s.close()
+    print("end")
+
+
+===== PAGE 31/59 =====
+
+6.5.2 准备工作
+ 
+为了确保顺利进行UDP通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板和电脑通过同一个路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+关闭防火墙
+为了避免防火墙组织UDP通信，建议暂时关闭电脑的防火墙。
+工具准备
+1. 在“2.软件工具\2.6 网络调试助手”中双击打开“NetAssist.exe”网络调试助手工具。
+2. 在“协议类型”中选择“UDP”。
+
+
+===== PAGE 32/59 =====
+
+3. 在“本地主机地址”选择与K230开发板连接局域网的同一网段IP，“本地主机端口”的“8080”不需要修
+改。
+
+
+===== PAGE 33/59 =====
+
+4. 然后点击“打开”。
+6.5.3 模块连接
+ 
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 34/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 35/59 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.5.4 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“UDP_Client.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+2. 输入与电脑连接的同一个热点的名称和密码，和电脑的IP。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 36/59 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“TCP_Client.py”拖至CanMV IDE K230代码编辑区，点击工具
+栏上的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+6.5.5 运行效果
+ 
+k230开发板通过UDP协议向网络调试助手发送消息。
+
+
+===== PAGE 37/59 =====
+
+6.5.6 程序分析
+ 
+导入对应库文件
+主程序
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码，“SERVER_IP”设置电脑的
+IP。
+开启并配置 WLAN 接口为 STA 模式。
+进行 WiFi 连接并等待结果。如果未连接 WiFi，则调用 connect() 启动连接。进入循环，等待连接成
+功，超时 15 秒自动退出（防止死等）。wlan.isconnected()  实时轮询连接状态。
+创建UDP (SOCK_DGRAM) 套接字，IPv4 协议族(AF_INET) 。
+import socket
+import time
+import network
+    WIFI_SSID = "your_ssid_name"
+    WIFI_PASSWORD = "your_ssid_password"
+    SERVER_IP = "192.168.174.78"
+    SERVER_PORT = 8080
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print(f"正在连接到WiFi网络: {WIFI_SSID}...")
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        start_time = time.time()
+        while not wlan.isconnected():
+            if time.time() - start_time > 15:
+                print("WiFi连接超时！请检查SSID、密码或信号强度。")
+                return
+            time.sleep(1)
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+
+===== PAGE 38/59 =====
+
+循环发送 10 条消息，每条消息的内容按照 "hiwonder K230 UDP {i} \r\n" 格式生成，使用 sendto 将
+消息发送到指定 UDP 服务器地址和端口，发送后等待 0.2 秒，防止网络阻塞或发送过快。
+待 1 秒保证所有发送完成，关闭 UDP socket，打印程序结束标志。
+6.6 UDP_Server实验 
+ 
+6.6.1 实验简介
+ 
+本节通过程序学习k230开发板的UDP_Server的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+6.6.2 准备工作
+ 
+为了确保顺利进行UDP通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板和电脑通过同一个路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+关闭防火墙
+为了避免防火墙组织UDP通信，建议暂时关闭电脑的防火墙。
+    for i in range(10):
+        message = "hiwonder K230 UDP {0} \r\n".format(i)
+        print(f"正在发送 -> {message.strip()}")
+        s.sendto(message.encode('utf-8'), addr)
+        time.sleep(0.2)
+    time.sleep(1)
+    s.close()
+    print("客户端运行结束")
+udpclient()
+
+
+===== PAGE 39/59 =====
+
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 40/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.6.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“UDP_Server.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 41/59 =====
+
+2. 输入与电脑连接的同一个热点的名称和密码。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“UDP_Server.py”拖至CanMV IDE K230代码编辑区，点击工具
+栏上的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+
+
+===== PAGE 42/59 =====
+
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+工具准备
+1. 在 2.软件工具\2.6 网络调试助手 中双击打开“NetAssist.exe”网络调试助手工具。
+2. 在“协议类型”中选择“UDP”。
+3. 在“远程主机地址”填写为本机IP“远程主机端口”的“8080”不需要修改。
+
+
+===== PAGE 43/59 =====
+
+4. 然后点击“打开”。
+5. 在会话框上输入“Hello,Hiwonder”，然后点击“发送”。
+
+
+===== PAGE 44/59 =====
+
+6.6.3 运行效果
+ 
+网络调试助手通过UDP协议向k230开发板发送消息。
+6.6.5 程序分析
+ 
+导入对应库文件
+import socket
+import time
+import network
+
+
+===== PAGE 45/59 =====
+
+socket  用于UDP网络通信，network  用于WiFi连接管理，time  用于延时操作。
+主程序
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+切换到 STA（station）模式，作为客户端连接路由器。如果未连接，调用 connect() 登录网络，循环检
+查连接状态，限制最大等待 15 秒，避免卡死。
+连接成功就记录本机 IP 地址，打印网络配置信息，失败则终止程序。
+使用getaddrinfo 转换IP和端口，兼容IPv4/IPv6，创建支持 IPv4/UDP 的 socket ，设置端口可重用，
+防止重启时绑定失败，绑定本机 IP 地址及端口8080，打印服务器启动信息。
+设置 recvfrom  阻塞超时，防止长时间无客户端消息卡死，10秒无消息即抛异常。
+    WIFI_SSID = "your_ssid_name"
+    WIFI_PASSWORD = "your_ssid_password"
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print(f"正在连接到WiFi网络: {WIFI_SSID}...")
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        start_time = time.time()
+        while not wlan.isconnected():
+            if time.time() - start_time > 15:
+                print("WiFi连接超时！请检查SSID、密码或信号强度。")
+                return
+            time.sleep(1)
+    if wlan.isconnected():
+        ip = wlan.ifconfig()[0]
+        print("WiFi连接成功！")
+        print("网络信息:", wlan.ifconfig())
+    else:
+        print("WiFi连接失败。")
+        return
+    ai = socket.getaddrinfo(ip, 8080)
+    addr = ai[0][-1]
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind(addr)
+    print(f"UDP服务器已启动于 {ip} 端口:8080\n")
+    s.settimeout(10.0)
+    count = 0
+    while count < 10:
+
+
+===== PAGE 46/59 =====
+
+count 记录处理的消息数量，最多 10 条，使用 recvfrom  接收 UDP 包及客户端地址，最大缓存 1024 
+字节，打印接收到的消息内容，组装响应消息，回复给发送方客户端地址，发生 OSError （通常是超
+时）时打印超时提示，并继续等待，其他异常打印错误详情，并退出循环。
+关闭 UDP socket，关闭所有网络资源，打印关闭信息。
+6.7 HTTP_Client实验 
+ 
+6.7.1 实验简介
+ 
+本节通过程序学习k230开发板的HTTP_Client的相关功能。
+Note
+CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+6.7.2 准备工作
+ 
+为了确保顺利进行HTTP通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板连接到可上网的路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+关闭防火墙
+为了避免防火墙组织HTTP通信，建议暂时关闭电脑的防火墙。
+        try:
+            data, client_addr = s.recvfrom(1024)
+            print(f"从 {client_addr} 收到消息: {data.decode('utf-8').strip()}")
+            response = f"已收到的消息: {data.decode('utf-8').strip()}".encode('utf-
+8')
+            s.sendto(response, client_addr)
+            count += 1
+        except OSError:
+            print("等待客户端消息超时...继续等待...")
+            continue
+        except Exception as e:
+            print(f"发生错误: {e}")
+            break
+    s.close()
+    print("UDP 服务器已关闭。")
+
+
+===== PAGE 47/59 =====
+
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 48/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.7.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“HTTP_Client.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 49/59 =====
+
+2. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“HTTP_Client.py”拖至CanMV IDE K230代码编辑区，点击工具
+栏上的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+
+
+===== PAGE 50/59 =====
+
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython 文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可
+实现脱机运行。
+6.7.4 运行效果
+ 
+k230开发板通过HTTP协议向网络发送请求。
+6.7.5 程序分析
+ 
+导入对应库文件
+主程序
+import network
+import socket
+import time
+def main(use_stream=True):
+    WIFI_SSID = "TP-LINK_031F"
+    WIFI_PASSWORD = "12345678"
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print(f"正在连接到WiFi网络: {WIFI_SSID}...")
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        start_time = time.time()
+        while not wlan.isconnected():
+            if time.time() - start_time > 15:
+                print("WiFi连接超时！请检查SSID、密码或信号强度。")
+                return
+
+
+===== PAGE 51/59 =====
+
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。启动连接指定热点，循环
+等待连接，设置最长 15 秒超时，超时打印并退出。
+成功时打印 IP、网关、DNS 等信息，额外尝试获取设备 MAC 地址，失败则打印错误。
+创建一个默认 TCP socket（AF_INET，SOCK_STREAM），重试最多3次解析“www.baidu.com”，处理
+网络错误，如果多次失败退出。解析成功获取 IP 地址端口四元组地址，开启并配置 WLAN 接口为 STA 
+模式。
+            time.sleep(1)
+    if wlan.isconnected():
+        print("WiFi连接成功！")
+        print("网络信息:", wlan.ifconfig())
+        try:
+             mac_addr = wlan.config("mac")
+             print("MAC地址:", mac_addr)
+        except Exception as e:
+             print(f"获取MAC地址失败: {e}")
+    else:
+        print("WiFi连接失败，程序退出。")
+        return
+    s = socket.socket()
+    ai = []
+    for attempt in range(3):
+        try:
+            ai = socket.getaddrinfo("www.baidu.com", 80)
+            break
+        except OSError as e:
+            print(f"第 {attempt + 1} 次获取地址信息失败: {e}, 正在重试...")
+            time.sleep(1)
+    if not ai:
+        print("获取目标地址失败，无法继续。")
+        s.close()
+        return
+    addr = ai[0][-1]
+    print("目标地址信息:", ai)
+    print("解析出的连接地址:", addr)
+    try:
+        s.connect(addr)
+    except OSError as e:
+        print(f"连接到目标地址失败: {e}")
+        s.close()
+        return
+    print("\n--- 开始HTTP请求 (模式: {}) ---".format("流" if use_stream else "收
+发"))
+
+
+===== PAGE 52/59 =====
+
+尝试建立 TCP 连接，失败抛异常并关闭socket。
+流模式(makefile) ，将socket 包装成文件流，支持类似文件的读写操作，写入HTTP GET请求，读取
+全部服务器响应内容。
+收发模式(send/recv) ，直接用send 发送请求数据，调用recv 接收最多4096字节响应，打印数据。
+主动关闭连接，释放资源。
+6.8 HTTP_Server实验 
+ 
+6.8.1 实验简介
+ 
+本节通过程序学习k230开发板的HTTP_Server的相关功能。
+注意:CanMV K230板载WiFi模块和陶瓷天线，可以直接连接2.4G无线网络。
+6.8.2 准备工作
+ 
+为了确保顺利进行HTTP通信的演示，需要确认以下环境已正确配置。
+环境准备
+1. 请确保K230开发板连接到可上网的路由器，形成局域网。
+2. 确保路由器正常工作，以保证网络连接的稳定性。
+关闭防火墙
+为了避免防火墙组织HTTP通信，建议暂时关闭电脑的防火墙。
+    if use_stream:
+        # 使用流模式（类似文件读写）
+        s_file = s.makefile("rwb", 0)
+        s_file.write(b"GET /index.html HTTP/1.0\r\n\r\n")
+        print(s_file.read())
+        s_file.close()
+    else:
+        # 使用标准的收发模式
+        s.send(b"GET /index.html HTTP/1.0\r\n\r\n")
+        print(s.recv(4096))
+    s.close()
+    print("--- 请求结束，Socket已关闭 ---\n")
+
+
+===== PAGE 53/59 =====
+
+模块连接
+1. 使用Type-C数据线将k230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 54/59 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的
+Type-C线进行连接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+6.8.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“HTTP_Server.py”拖至CanMV IDE K230。
+1. 找到红色方框的代码。
+
+
+===== PAGE 55/59 =====
+
+2. 将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。
+3. 代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+4. 将终端红色方框输出的信息复制。
+5. 然后打开浏览器，将复制的网址输入进去，并按下回车。
+
+
+===== PAGE 56/59 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“HTTP_Server.py”拖至CanMV IDE K230代码编辑区，点击工具栏上
+的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱
+机运行。
+6.8.4 运行效果
+ 
+K230开发板通过HTTP协议向网络发送消息。
+
+
+===== PAGE 57/59 =====
+
+6.8.5 程序分析
+ 
+导入对应库文件
+socket  用于TCP网络通信，network  用于WiFi连接管理，time  用于延时操作。
+主程序
+将'your_ssid_name'和'your_ssid_password'替换成实际的热点名称和密码。将设备设置为站点模式，
+作为WiFi客户端连接网络，如果设备未连接WiFi，调用connect 方法，最长等待 15 秒，如果超过则打印
+超时退出，期间通过循环和睡眠确保程序不会占用过多CPU资源。
+检测 WiFi 连接状态，如果连接成功就打印 IP 地址和其他网络信息，失败则退出程序。
+创建基于 IPv4 的 TCP socket，设置 SO_REUSEADDR 选项允许运行时快速重启绑定端口，将socket 绑
+定于所有网卡接口（0.0.0.0）和端口 8081，设置允许最大等待连接数 5，设置为阻塞模式，便于同步操
+作，打印服务器启动信息和访问URL。
+import socket
+import time
+import network
+def tcp_http_server():
+    WIFI_SSID = "your_ssid_name"
+    WIFI_PASSWORD = "your_ssid_password"
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print(f"正在连接到WiFi网络: {WIFI_SSID}...")
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        start_time = time.time()
+        while not wlan.isconnected():
+            if time.time() - start_time > 15:
+                print("WiFi连接超时！请检查SSID、密码或信号强度。")
+                return
+            time.sleep(1)
+    if wlan.isconnected():
+        ip = wlan.ifconfig()[0]
+        print("WiFi连接成功！")
+        print("网络信息:", wlan.ifconfig())
+    else:
+        print("WiFi连接失败。")
+        return
+    addr = ('0.0.0.0', 8081)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # TCP socket
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind(addr)
+    s.listen(5)
+    s.setblocking(True)
+    print(f"TCP HTTP服务器已启动，访问地址: http://{ip}:8081")
+
+
+===== PAGE 58/59 =====
+
+HTTP 简单响应模板，使用HTTP/1.0 200 OK响应头, counter 用于记录服务器响应请求计数。
+服务器进入无限循环，阻塞等待客户端连接，当客户端连接进来后打印客户端 IP 和端口信息，设置客户
+端socket 超时时间为5秒，防止死等或长时间阻塞。
+初始化request 字节变量用于缓存请求数据，循环调用recv(1024) 读取客户端发送的数据片段，判断
+读取到连接关闭（返回空字节）或 HTTP 请求头结束标志（连续两个回车换行\r\n\r\n），捕获可能的非
+阻塞IO异常（错误码 11，对应 EAGAIN）并处理，等待数据到达。
+解码请求数据为字符串，非UTF-8字符以替代方式处理，避免报错，使用计数器填充响应消息，发送
+HTTP响应给客户端，请求计数器自增。
+    CONTENT_TEMPLATE = b"""HTTP/1.0 200 OK
+Hello Hiwonder k230 canmv! Request number: %d
+"""
+    counter = 0
+        while True:
+            try:
+                client_sock, client_addr = s.accept()
+                print(f"客户端连接来自: {client_addr}")
+                client_sock.settimeout(5)
+                request = b""
+                while True:
+                    try:
+                        chunk = client_sock.recv(1024)
+                        if not chunk:
+                            break
+                        request += chunk
+                        if b"\r\n\r\n" in request:
+                            break
+                    except OSError as e:
+                        # EAGAIN错误处理
+                        if e.args[0] == 11:
+                            time.sleep(0.1)
+                            continue
+                        else:
+                            raise
+                print("收到请求:")
+                print(request.decode('utf-8', 'replace'))
+                response = CONTENT_TEMPLATE % counter
+                client_sock.send(response)
+                counter += 1
+            except Exception as e:
+                print(f"处理客户端请求错误: {e}")
+            finally:
+                client_sock.close()
+
+
+===== PAGE 59/59 =====
+
+捕获请求处理过程中的所有异常，打印错误信息，无论异常与否，确保客户端 socket 关闭释放资源。
+处理完至少一条请求后，服务器休眠1秒，显示完成消息，退出主循环，使用finally 确保服务器 
+socket  关闭，释放资源。
+            time.sleep(1)
+            if counter > 0:
+                print("服务器响应完毕，退出。")
+                break
+    finally:
+        s.close()
+        print("TCP HTTP服务器已关闭。")

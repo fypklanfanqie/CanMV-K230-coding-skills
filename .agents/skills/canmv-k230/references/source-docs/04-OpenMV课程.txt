@@ -1,0 +1,1646 @@
+
+
+===== PAGE 1/84 =====
+
+4. OpenMV课程
+ 
+4. OpenMV课程
+4.1 单一颜色识别 
+4.1.1 实验简介
+4.1.2 准备工作
+4.1.3 程序运行及下载
+4.1.4 运行效果
+4.1.5 程序分析
+4.2 多种颜色识别实验
+4.2.1 实验简介
+4.2.2 准备工作
+4.2.3 程序运行及下载
+4.2.4 运行效果
+4.2.5 程序分析
+4.3 物体计数实验 
+4.3.1 实验简介
+4.3.2 准备工作
+4.3.3 程序运行及下载
+4.3.4 运行效果
+4.3.5 程序分析
+4.4 视觉巡线 
+4.4.1 实验简介
+4.4.2 准备工作
+4.4.3 颜色阈值设置
+4.4.4 程序运行及下载
+4.4.5 运行效果
+4.4.6 程序分析
+4.5 QR码识别 
+4.5.1 实验简介
+4.5.2 准备工作
+4.5.3 程序运行及下载
+4.5.4 运行效果
+4.5.5 程序分析
+4.6 条形码识别
+4.6.1 实验简介
+4.6.2 准备工作
+4.6.3 程序运行及下载 
+4.6.4 运行效果
+4.6.5 程序分析
+4.7 DM码识别 
+4.7.1 实验简介
+4.7.2 准备工作
+4.7.3 程序运行及下载
+4.7.4 运行效果
+4.7.5 程序分析
+4.8 AprilTags识别 
+4.8.1 实验简介
+4.8.2 准备工作
+4.8.3 AprilTag生成
+4.8.4 程序运行及下载
+
+
+===== PAGE 2/84 =====
+
+4.8.5 运行效果
+4.8.6 程序分析
+4.9 线段检测实验 
+4.9.1 实验简介
+4.9.2 准备工作
+4.9.3 程序运行及下载
+4.9.4 运行效果
+4.9.5 程序分析
+4.10 矩形检测实验
+4.10.1 实验简介
+4.10.2 准备工作
+4.10.3 程序运行及下载
+4.10.4 运行效果
+4.10.5 程序分析
+4.11 圆形检测实验 
+4.11.1 实验简介
+4.11.2 准备工作
+4.11.3 程序运行及下载
+4.11.4 运行效果
+4.11.5 程序分析
+4.12 特征值检测 
+4.12.1 实验简介
+4.12.2 准备工作
+4.12.3 程序运行及下载
+4.12.4 运行效果
+4.12.5 程序分析
+4.13 物体边缘检测
+4.13.1 实验简介
+4.13.2 准备工作
+4.13.3 程序运行及下载
+4.13.4 运行效果
+4.13.5 程序分析
+ 
+4.1 单一颜色识别 
+ 
+4.1.1 实验简介
+ 
+本节通过程序学习k230开发板的颜色识别功能，find_blobs  是 OpenMV 的图像处理函数，用于在图像中寻找并识
+别“斑点” （blobs）。这些斑点是指图像中具有相似颜色或亮度的区域。
+4.1.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 3/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 4/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+颜色阈值设置
+（1） 使用在线运行连接K230模块
+在线运行：
+本方式是连接后，将程序“Single_color_recognition.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的
+运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 5/84 =====
+
+（2）帧缓冲区禁用
+对应的色块放在镜头中，并点击右上角的禁用截取色块的图像。
+（3）颜色阈值调试
+1. 点击左上角的工具->机器视觉->阈值编辑器。
+
+
+===== PAGE 6/84 =====
+
+2. 选择帧缓冲区。
+3. 我们需要拖动滑杆，使处理后的图像仅识别用户期望识别的颜色。(右侧识别结果中，仅出现用户期望识别的颜色
+的图像区域为白色，其他区域均为黑色)
+Note
+黑色区域表示未被识别，即当前LAB各阈值不会识别到这些区域的颜色；白色区域表示被识别，即当前LAB各阈
+值能够识别到这些区域的颜色。
+
+
+===== PAGE 7/84 =====
+
+（4）修改识别颜色阈值
+1. 复制调试好的LAB阈值。
+2. 将调试好的LAB阈值复制到对应的颜色阈值。
+
+
+===== PAGE 8/84 =====
+
+4.1.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：颜色阈值设置。
+脱机运行：
+1. 连接后将本节同目录下的程序“Color_recognition.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+
+
+===== PAGE 9/84 =====
+
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+4.1.4 运行效果
+ 
+可以在显示屏上看到实时视频，并且只要一个红色的物体进入视野，它就会被一个白色的十字牢牢锁定识别出来。
+4.1.5 程序分析
+ 
+导入对应库文件
+thresholds
+import time
+from media.sensor import *
+from media.display import *
+from media.media import *
+from media.display import Display
+
+
+===== PAGE 10/84 =====
+
+1. thresholds : 这是一个列表，包含了两种颜色的阈值定义，格式为(L Min, L Max, A Min, A Max, B Min, 
+B Max) ，这是在 LAB 色彩空间 中定义的。
+2. thresholds[0]:(30, 100, 15, 127, -128, 127) 是红色的阈值。
+3. thresholds[1]: (30, 100, -64, -8, 50, 70)  是绿色的阈值。
+4. thresholds[1]: (0, 100, -128, -18, 1, 127)  是蓝色的阈值。
+主循环
+1. img = sensor.snapshot()  拍摄一帧。
+2. find_blobs()  返回检测到的红色区域集合，每个元素包含矩形位置、中心点、面积等信息。
+绘制检测结果
+thresholds = [
+    (0, 100, 29, 127, 3, 127),  # 红色阈值
+    (30, 100, -64, -8, 50, 70),   # 绿色阈值
+    (0, 100, -128, -18, 1, 127)     # 蓝色阈值
+]
+# ==================================================================
+# == 选择显示模式 (1: HDMI, 2: LCD, 3: IDE虚拟显示) ==
+# ==================================================================
+select_display = 1  # 1=HDMI，2=LCD，3=IDE虚拟显示
+try:
+    while True:
+        clock.tick()
+        img = sensor.snapshot()
+        blobs = img.find_blobs([thresholds[0]])
+        if blobs:
+            for b in blobs:
+                img.draw_rectangle(b[0:4], thickness=4)
+                img.draw_cross(b[5], b[6], thickness=2)
+        img.draw_string_advanced(0, 0, 30, 'FPS: {:.3f}'.format(clock.fps()), color=(255, 
+255, 255))
+        Display.show_image(img)
+        print(clock.fps())
+
+
+===== PAGE 11/84 =====
+
+1. 在画面左上角实时显示 FPS。
+2. Display.show_image(img)  把图像显示到屏幕或虚拟窗口。
+3. print(clock.fps())  在终端输出 FPS。
+4.2 多种颜色识别实验
+ 
+4.2.1 实验简介
+ 
+本节通过程序学习k230开发板的多颜色颜色识别功能。
+4.2.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+        if blobs:
+            for b in blobs:
+                img.draw_rectangle(b[0:4], thickness=4)
+                img.draw_cross(b[5], b[6], thickness=2)
+        img.draw_string_advanced(0, 0, 30, 'FPS: {:.3f}'.format(clock.fps()), color=(255, 
+255, 255))
+        Display.show_image(img)
+        print(clock.fps())
+
+
+===== PAGE 12/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 13/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+颜色阈值设置
+(1) 使用在线运行连接K230模块
+在线运行：
+本方式是连接后，将程序“Multiple color recognition.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角
+的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 14/84 =====
+
+（2）帧缓冲区禁用
+对应的色块放在镜头中，并点击右上角的禁用截取色块的图像。
+（3）颜色阈值调试
+1. 点击左上角的工具->机器视觉->阈值编辑器。
+
+
+===== PAGE 15/84 =====
+
+2. 选择帧缓冲区。
+3. 我们需要拖动滑杆，使处理后的图像仅识别用户期望识别的颜色。(右侧识别结果中，仅出现用户期望识别的颜色
+的图像区域为白色，其他区域均为黑色)
+Note
+黑色区域表示未被识别，即当前LAB各阈值不会识别到这些区域的颜色；白色区域表示被识别，即当前LAB各阈
+值能够识别到这些区域的颜色。
+
+
+===== PAGE 16/84 =====
+
+（4）修改识别颜色阈值
+1. 复制调试好的LAB阈值。
+2. 将调试好的LAB阈值复制到对应的颜色阈值。
+
+
+===== PAGE 17/84 =====
+
+4.2.3 程序运行及下载
+ 
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行:参考颜色阈值设置。
+脱机运行：
+1. 连接后将程序“Color_recognition.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当
+前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+
+
+===== PAGE 18/84 =====
+
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+4.2.4 运行效果
+ 
+可以在显示屏上看到实时视频，并且只要“红绿蓝”任意一种的物体进入视野，它就会被识别出来。
+4.2.5 程序分析
+ 
+导入对应库文件
+颜色阈值
+1. thresholds : 这是一个列表，包含了三种种颜色的阈值定义，格式为 (L Min, L Max, A Min, A Max, B Min, B 
+Max)，这是在 LAB 色彩空间中定义的。
+import time
+from media.sensor import *
+from media.display import *
+from media.media import *
+# 颜色识别阈值(LAB模型)
+thresholds = [
+    (55, 62, 42, 55, 28, 42),   # 红色阈值
+    (65, 72, -51, -38, 31, 14),    # 绿色阈值
+    (65, 74, -8, -34, -46, -20)      # 蓝色阈值
+]
+colors1 = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]
+colors2 = ['RED', 'GREEN', 'BLUE']
+
+
+===== PAGE 19/84 =====
+
+2. thresholds[0]: (17, 25, 10, 127, 7, 17) 是红色的阈值。
+3. thresholds[1]: (0, 100, -128, -15, -128, 127) 是绿色的阈值。
+4. thresholds[1]: (0, 100, -128, -2, -128, -7)  是蓝色的阈值。
+5. colors1 ，colors2 定义屏幕显示的颜色值。
+主循环图像采集与颜色检测
+1. img = sensor.snapshot()  获取一帧数据。
+2. blobs = img.find_blobs([thresholds[i]])  遍历红绿蓝三种颜色。
+3. img.draw_rectangle() ，img.draw_cross() ，img.draw_string_advanced() 绘画出对应标注。
+4. img.draw_string_advanced(0, 0, 30, 'FPS: {:.3f}'.format(clock.fps()), color=(255, 255, 
+255))  显示帧率。
+退出与释放
+避免资源泄漏，保证下次还能正常打开显示设备。
+    try:
+        while True:
+            clock.tick()
+            img = sensor.snapshot()
+            for i in range(3):
+                blobs = img.find_blobs([thresholds[i]])
+                if blobs:
+                    for b in blobs:
+                        img.draw_rectangle(b[0:4], thickness=4, color=colors1[i])
+                        img.draw_cross(b[5], b[6], thickness=2)
+                        img.draw_string_advanced(b[0], b[1]-35, 30, colors2[i], 
+color=colors1[i])
+            img.draw_string_advanced(0, 0, 30, 'FPS: {:.3f}'.format(clock.fps()), color=
+(255, 255, 255))
+            Display.show_image(img)
+            print(clock.fps())
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    except KeyboardInterrupt:
+        print("用户中断程序")
+    finally:
+        deinit_display()
+
+
+===== PAGE 20/84 =====
+
+4.3 物体计数实验 
+ 
+4.3.1 实验简介
+ 
+本节通过程序学习利用 K230 对黄色跳线帽阈值进行视觉计数。
+4.3.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 21/84 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.3.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“Lvgl.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即
+可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 22/84 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“Lvgl.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存
+当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 23/84 =====
+
+4.3.4 运行效果
+ 
+运行程序，K230实现黄色跳线帽阈值的计数玩法
+4.3.5 程序分析
+ 
+导入对应库文件
+定义寻找物体的颜色阈值
+显示初始化
+其中1为HDMI显示输出，2为LCD屏幕显示输出，3为IDE虚拟现实输出。
+摄像头初始化
+1. 设置相机分辨率与显示分辨率一致。
+import time
+from media.sensor import *
+from media.display import *
+from media.media import *
+# 颜色阈值，黄色跳线帽阈值
+thresholds = [(18, 72, -13, 31, 18, 83)]
+select_display = 2  # 1=HDMI，2=LCD，3=IDE虚拟显示
+    # 初始化显示并获取宽高
+    width, height = init_display(select_display)
+    sensor = Sensor()
+    sensor.reset()
+    sensor.set_framesize(width=width, height=height)
+    sensor.set_pixformat(Sensor.RGB565)
+
+
+===== PAGE 24/84 =====
+
+2. 使用RGB565格式。
+主循环：采图以及检测
+1. img = sensor.snapshot() 抓一帧图像。
+2. blobs = img.find_blobs([thresholds[0]]) 在图像里查找符合黄色阈值的色块，返回列表。
+绘制检测结果
+1. FPS → 实时处理帧率。
+2. Num → 检测到的黄色物体数量（即 len(blobs) ）。
+3. 把标注后的图像送去 LCD 显示。
+4.4 视觉巡线 
+ 
+4.4.1 实验简介
+ 
+本节通过程序学习利用 K230 实现视觉巡线。
+    try:
+        while True:
+            clock.tick()
+            img = sensor.snapshot()
+            blobs = img.find_blobs([thresholds[0]])
+            if blobs:
+                for b in blobs:
+                    img.draw_rectangle(b[0:4])
+                    img.draw_cross(b[5], b[6])
+            # 显示FPS和计数
+            img.draw_string_advanced(0, 0, 30, f'FPS: {clock.fps():.3f}    Num: 
+{len(blobs)}', color=(255, 255, 255))
+            Display.show_image(img)
+            print(clock.fps())
+            # 显示FPS和计数
+            img.draw_string_advanced(0, 0, 30, f'FPS: {clock.fps():.3f}    Num: 
+{len(blobs)}', color=(255, 255, 255))
+            Display.show_image(img)
+            print(clock.fps())
+
+
+===== PAGE 25/84 =====
+
+4.4.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 26/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.4.3 颜色阈值设置
+ 
+使用在线运行连接K230模块
+ 
+在线运行：
+本方式是连接后，将本节同目录下的程序“line_patrol.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的
+运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 27/84 =====
+
+帧缓冲区禁用
+对应的色块放在镜头中，并点击右上角的禁用截取色块的图像。
+颜色阈值调试
+1. 点击左上角的工具->机器视觉->阈值编辑器。
+
+
+===== PAGE 28/84 =====
+
+2. 选择帧缓冲区。
+3. 我们需要拖动滑杆，使处理后的图像仅识别用户期望识别的颜色。(右侧识别结果中，仅出现用户期望识别的颜色
+的图像区域为白色，其他区域均为黑色)
+Note
+黑色区域表示未被识别，即当前LAB各阈值不会识别到这些区域的颜色；白色区域表示被识别，即当前LAB各阈
+值能够识别到这些区域的颜色。
+
+
+===== PAGE 29/84 =====
+
+修改识别颜色阈值
+1. 复制调试好的LAB阈值。
+2. 将调试好的LAB阈值复制到对应的颜色阈值。
+
+
+===== PAGE 30/84 =====
+
+4.4.4 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“line_patrol.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的
+运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 31/84 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“line_patrol.py.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，
+选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 32/84 =====
+
+4.4.5 运行效果
+ 
+运行程序，K230实现视觉巡线。
+4.4.6 程序分析
+ 
+导入对应库文件
+初始化参数设置
+1. lcd_width = 800，lcd_height = 480  初始化屏幕分辨率。
+2. BLACK_THRESHOLD = [(0, 24, -128, 4, -128, 7)]  设置巡线阈值
+import time, math
+from media.sensor import *
+from media.display import *
+from media.media import *
+# 3.5寸屏幕分辨率
+lcd_width = 800
+lcd_height = 480
+# 彩色黑线阈值 (LAB)
+BLACK_THRESHOLD = [(0, 24, -128, 4, -128, 7)]
+# 原 ROI (针对320x240)
+ORIGINAL_ROIS = [
+    (0, 200, 320, 40, 0.7),
+    (0, 100, 320, 40, 0.3),
+    (0, 0, 320, 40, 0.1)
+]
+# 放大 ROI 以适应 800x480
+
+
+===== PAGE 33/84 =====
+
+3. ORIGINAL_ROIS = []  初始化ROI设置巡线中巡线的权重。
+摄像头与屏幕初始化
+1. Display.init()  初始化LCD显示屏幕。
+2. sensor = Sensor()  创建传感器对象
+3. sensor.reset()  复位传感器
+4. sensor.set_framesize(width=800, height=480) 设置分辨率为800x480
+5. sensor.set_pixformat(Sensor.RGB565)  设置为彩色模式
+6. MediaManager.init()  初始化多媒体管理
+7. sensor.run() 0 -启动摄像头采集
+8. clock = time.clock()  创建时钟对象，用于FPS计算
+主循环流程
+ROIS = []
+for r in ORIGINAL_ROIS:
+    x = int(r[0] * 800 / 320)
+    y = int(r[1] * 480 / 240)
+    w = int(r[2] * 800 / 320)
+    h = int(r[3] * 480 / 240)
+    ROIS.append((x, y, w, h, r[4]))
+weight_sum = sum([r[4] for r in ROIS])
+# 初始化显示
+Display.init(Display.ST7701, width=lcd_width, height=lcd_height, to_ide=True)
+sensor = Sensor()
+sensor.reset()
+sensor.set_framesize(width=800, height=480)
+sensor.set_pixformat(Sensor.RGB565)  # 彩色
+MediaManager.init()
+sensor.run()
+clock = time.clock()
+fps_list = []  # 用于平滑FPS
+while True:
+    clock.tick()
+    img = sensor.snapshot()
+    centroid_sum = 0
+    for r in ROIS:
+        blobs = img.find_blobs(BLACK_THRESHOLD, roi=r[0:4], merge=True)
+        if blobs:
+            # 取最大面积的 blob
+            largest_blob = max(blobs, key=lambda b: b.pixels())
+
+
+===== PAGE 34/84 =====
+
+1. clock.tick()  记录帧开始时间。
+2. img = sensor.snapshot()  拍摄图像。
+3. for r in ROIS : 遍历每个ROI区域。
+4. blobs = img.find_blobs(GRAYSCALE_THRESHOLD, roi=r\[0:4\], merge=True) 在各个ROI内查找符合阈
+值的区域（黑色线）。
+5. if blobs : 如果找到了黑色区域。
+6. largest_blob = max()  取最大面积的 blob。
+7. img.draw_rectangle()  绘制出对应的三个矩形
+8. img.draw_cross()  绘制出矩形的中心点
+4.5 QR码识别 
+ 
+4.5.1 实验简介
+ 
+本节通过程序学习k230开发板的二维码识别功能，
+二维条码/二维码（2-dimensional bar code）是用某种特定的几何图形按一定规律在平面（二维方向上）分布的、黑
+白相间的、记录数据符号信息的图形；在代码编制上巧妙地利用构成计算机内部逻辑基础的“0”、“1”比特流的概念，使
+用若干个与二进制相对应的几何形体来表示文字数值信息，通过图象输入设备或光电扫描设备自动识读以实现信息自
+动处理。
+            # 绘制矩形和中心点
+            img.draw_rectangle(largest_blob[0:4])
+            img.draw_cross(largest_blob[5], largest_blob[6])
+            centroid_sum += largest_blob.cx() * r[4]
+    # 计算平滑FPS
+    fps = max(clock.fps(), 0)
+    fps_list.append(fps)
+    if len(fps_list) > 10:
+        fps_list.pop(0)
+    avg_fps = sum(fps_list) / len(fps_list)
+    # FPS显示在右上角
+    fps_text = 'FPS: %.2f' % avg_fps
+    text_width = len(fps_text) * 12  # 估算文字宽度，12为字体大小近似
+    img.draw_string_advanced(lcd_width - text_width - 2, 2, 20, fps_text, color=(255, 255, 
+255))
+    # 居中显示图像
+    x_offset = round((lcd_width - sensor.width()) / 2)
+    y_offset = round((lcd_height - sensor.height()) / 2)
+    Display.show_image(img, x=x_offset, y=y_offset)
+    print("FPS: %.2f" % avg_fps)
+
+
+===== PAGE 35/84 =====
+
+4.5.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 36/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.5.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“qrcodes.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 37/84 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“qrcodes.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择
+“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 38/84 =====
+
+4.5.4 运行效果
+ 
+原图：
+摄像头正对二维码，识别成功后可以看到图片出现红色方框，将解码后的文字信息直接显示在二维码的旁边，以及在
+串口终端打印出二维码信息。
+
+
+===== PAGE 39/84 =====
+
+ 
+4.5.5 程序分析
+ 
+导入对应库文件
+主循环
+import time
+import os
+import gc
+from media.sensor import Sensor
+from media.display import Display
+from media.media import MediaManager
+import image
+    while True:
+        fps.tick()
+        img = sensor.snapshot()
+
+
+===== PAGE 40/84 =====
+
+1. img = sensor.snapshot() : 从摄像头获取当前这一帧的图像。
+2. for code in img.find_qrcodes()::  调用image库的find_qrcodes() 函数来分析img图像。该函数会返回
+一个列表，其中包含了所有在图像中找到的二维码对象。
+3. rect = code.rect() : 获取这个二维码在图像中的位置和大小。
+4. img.draw_rectangle() : 在图像上根据rect的位置，画一个红色的粗框，将二维码标记出来。
+5. img.draw_string_advanced() : 解码二维码的内容 ( code.payload() )，并将这段文字绘制在图像上，位置就
+在识别到的二维码框的左上角。
+6. Display.show_image() : 将处理完毕（已经画上框和文字）的图像发送到之前初始化的显示窗口中。
+4.6 条形码识别
+ 
+4.6.1 实验简介
+ 
+本节通过程序学习k230开发板的条形码识别功能，条形码（Barcode）是一种用来表示数据的视觉模式，通过不同宽
+度和间隔的条纹或图案来编码信息
+4.6.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+        # 二维码检测
+        for code in img.find_qrcodes():
+            rect = code.rect()
+            img.draw_rectangle(rect, color=(255, 0, 0), thickness=5)
+            img.draw_string_advanced(rect[0], rect[1], 32, code.payload())
+            print(f"找到二维码内容: {code.payload()}")
+        Display.show_image(img)
+        gc.collect()
+except KeyboardInterrupt:
+    print("用户停止")
+except Exception as e:
+    print(f"异常: {e}")
+finally:
+    if isinstance(sensor, Sensor):
+        sensor.stop()
+    deinit_display()
+    os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+    time.sleep_ms(100)
+    MediaManager.deinit()
+
+
+===== PAGE 41/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 42/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.6.3 程序运行及下载 
+ 
+效果显示修改
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“barcode.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+
+
+===== PAGE 43/84 =====
+
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“barcode.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择
+“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 44/84 =====
+
+4.6.4 运行效果
+ 
+原图：
+摄像头正对条形码，识别成功后可以看到图片出现方框以及在串口终端打印出条形码信息。
+ 
+4.6.5 程序分析
+ 
+导入对应库文件
+定义可识别的标签格式
+import time, math, os, gc
+from media.sensor import *
+from media.display import *
+from media.media import *
+
+
+===== PAGE 45/84 =====
+
+画面获取
+def barcode_name(code):
+    if(code.type() == image.EAN2):
+        return "EAN2"
+    if(code.type() == image.EAN5):
+        return "EAN5"
+    if(code.type() == image.EAN8):
+        return "EAN8"
+    if(code.type() == image.UPCE):
+        return "UPCE"
+    if(code.type() == image.ISBN10):
+        return "ISBN10"
+    if(code.type() == image.UPCA):
+        return "UPCA"
+    if(code.type() == image.EAN13):
+        return "EAN13"
+    if(code.type() == image.ISBN13):
+        return "ISBN13"
+    if(code.type() == image.I25):
+        return "I25"
+    if(code.type() == image.DATABAR):
+        return "DATABAR"
+    if(code.type() == image.DATABAR_EXP):
+        return "DATABAR_EXP"
+    if(code.type() == image.CODABAR):
+        return "CODABAR"
+    if(code.type() == image.CODE39):
+        return "CODE39"
+    if(code.type() == image.PDF417):
+        return "PDF417"
+    if(code.type() == image.CODE93):
+        return "CODE93"
+    if(code.type() == image.CODE128):
+        return "CODE128"
+# 构建摄像头对象
+sensor = Sensor()
+sensor.reset() # 复位和初始化摄像头
+# 定义摄像头分辨率
+CAM_WIDTH = 800
+CAM_HEIGHT = 480
+# 设置帧大小为摄像头分辨率，默认通道0
+sensor.set_framesize(width=CAM_WIDTH, height=CAM_HEIGHT)
+# 设置输出图像格式为RGB565，默认通道0
+sensor.set_pixformat(Sensor.RGB565)
+init_display(select_display, CAM_WIDTH, CAM_HEIGHT)
+MediaManager.init()
+
+
+===== PAGE 46/84 =====
+
+1. sensor.reset()  复位摄像头。
+2. fps_clock = time.clock()  创建时钟对象用于计算帧率。
+主循环
+1. 调用fps_clock.tick()  更新时钟（用于FPS计算）。
+2. img = sensor.snapshot() 获取一帧图像。
+3. Display.show_image(img)  将图像显示到屏幕中。
+异常捕获以及程序退出
+# 启动摄像头
+sensor.run()
+# 创建时钟对象，用于计算帧率
+clock = time.clock()
+try:
+    # 主循环
+    while True:
+        clock.tick() # 更新时钟，用于计算帧率
+        img = sensor.snapshot() # 拍摄一张图片
+        codes = img.find_barcodes() # 在图片中查找所有条形码
+        # 遍历所有找到的条形码
+        for code in codes:
+            # 对条码绘制矩形框以进行标记，颜色默认为白色，线宽2像素
+            img.draw_rectangle(code.rect(), thickness=2)
+            # 打印条码相关信息到控制台，使用中文描述和f-string格式化
+            # rotation() 返回的是弧度，转换为度数
+            print(f"条码类型: {barcode_name(code)}, 内容: \"{code.payload()}\", 旋转角度: {(180 
+* code.rotation()) / math.pi:.2f} 度, 质量: {code.quality()}")
+            img.draw_string_advanced(0, 0, 30, f"类型: {barcode_name(code)}", color = (255, 
+255, 255))
+            img.draw_string_advanced(0, 30, 30, f"内容: {code.payload()}", color = (255, 
+255, 255))
+        Display.show_image(img) # 在显示器上显示处理后的图片
+        print(f"帧率: {clock.fps():.2f} FPS") # 打印当前帧率到控制台
+except KeyboardInterrupt:
+    print("程序中断，正在释放资源...")
+finally:
+    deinit_display()
+    sensor.stop() # 停止摄像头
+    print("资源已释放，程序退出。")
+
+
+===== PAGE 47/84 =====
+
+4.7 DM码识别 
+ 
+4.7.1 实验简介
+ 
+本节通过程序学习k230开发板的DM码识别功能，Data Matrix 码是一种二维条码，广泛用于小型产品的标识和跟踪。
+它由小黑白方块组成，这些方块在矩形或正方形的网格中排列。
+4.7.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 48/84 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.7.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+
+
+===== PAGE 49/84 =====
+
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“Data Matrix.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“Data Matrix.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选
+择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+
+
+===== PAGE 50/84 =====
+
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+4.7.4 运行效果
+ 
+原图：
+在视频画面上用一个红色的方框把 Data Matrix 码标记出来。并且解码码中包含的数据，打印出该码的详细信息，包
+括：尺寸（行x列）、解码后的内容、旋转角度以及当前的程序运行帧率（FPS）。
+
+
+===== PAGE 51/84 =====
+
+ 
+4.7.5 程序分析
+ 
+导入对应库文件
+主循环
+import time
+import math
+import os
+import gc
+import sys
+from media.sensor import *
+from media.display import *
+from media.media import *
+        # 4. 主循环：捕获图像并检测
+        while True:
+            fps_clock.tick()
+            os.exitpoint() # 检查是否应该退出
+            # 从摄像头捕获一帧图像
+            img = sensor.snapshot()
+
+
+===== PAGE 52/84 =====
+
+1. fps.tick() : 计时器，用于计算帧率。
+2. img = sensor.snapshot() : 核心步骤，从摄像头获取一帧图像。
+3. img.find_datamatrices() 调用图像库的 find_datamatrices()  函数来专门搜索和解码图像中的 Data 
+Matrix 码。
+4. img.draw_rectangle() : 在图像上画一个红色方框，标记出识别到的码。
+5. Display.show_image() : 将处理后（已标记）的图像显示出来。
+4.8 AprilTags识别 
+ 
+4.8.1 实验简介
+ 
+本节通过程序学习k230开发板的AprilTags 码识别功能，AprilTags 是一种高效的二进制识别标签，AprilTag 检测软件
+可以计算标签相对于相机的精确3D位置、方向和标识。
+4.8.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+            # 在图像中查找 Data Matrix 码
+            for matrix in img.find_datamatrices():
+                # 用红色矩形框出识别到的码
+                img.draw_rectangle([v for v in matrix.rect()], color=(255, 0, 0))
+                # 准备并打印识别结果
+                print_args = (matrix.rows(), matrix.columns(), matrix.payload(), (180 * 
+matrix.rotation()) / math.pi, fps_clock.fps())
+                print("矩阵 [%d:%d], 内容 \"%s\", 旋转 %.1f (度), FPS %.2f" % print_args)
+            # 将带有检测结果的图像显示出来
+            Display.show_image(img)
+            gc.collect()
+
+
+===== PAGE 53/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 54/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.8.3 AprilTag生成
+ 
+在CanMV IDE生成AprilTag。点击工具->机器视觉->AprilTag生成器->TAG36H11家族
+最小输入0 ，最大输入9 ，制作id从0-9共10张标签。
+
+
+===== PAGE 55/84 =====
+
+点击确认后选择生成的文件夹即可：
+4.8.4 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+ 
+在线运行：
+本方式是连接后，将本节同目录下的程序“AprilTags.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的
+运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 56/84 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“AprilTags.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择
+“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 57/84 =====
+
+4.8.5 运行效果
+ 
+原图：
+在视频画面上用一个红色的方框把 标签的四角码标记出来。在标签的中心画一个绿色的十字。打印出该标签的详细信
+息，包括：标签族、ID号和旋转角度。
+
+
+===== PAGE 58/84 =====
+
+ 
+4.8.6 程序分析
+ 
+导入对应库文件
+family_name
+import time
+import math
+import os
+import gc
+import sys
+from media.sensor import *
+from media.display import *
+from media.media import *
+import image
+
+
+===== PAGE 59/84 =====
+
+find_apriltags()  返回的 tag 对象有一个 family()  方法，函数将这个数字常量转换为可读的字符串（例如，将 
+image.TAG36H11 转换为 "TAG36H11"）。
+主循环
+1. img = sensor.snapshot() : 从摄像头获取一帧图像。
+2. for tag in img.find_apriltags(families=tag_families) 。调用图像库函数，传入之前定义好的 
+tag_families，对图像进行分析，寻找所有受支持的 AprilTag。
+3. img.draw_rectangle() : 在图像上画红色方框标记标签位置。
+4. img.draw_cross() : 在图像上画绿色十字标记标签中心。
+5. Display.show_image() : 将处理完毕（已标记）的图像显示出来。
+4.9 线段检测实验 
+ 
+4.9.1 实验简介
+ 
+本节通过程序学习k230开发板的线段检测功能。
+# 函数: 获取标签族的名称
+def family_name(tag):
+    family_dict = {
+        image.TAG16H5: "TAG16H5",
+        image.TAG25H7: "TAG25H7",
+        image.TAG25H9: "TAG25H9",
+        image.TAG36H10: "TAG36H10",
+        image.TAG36H11: "TAG36H11",
+        image.ARTOOLKIT: "ARTOOLKIT",
+    }
+    return family_dict.get(tag.family(), "未知标签族")
+def main():
+    sensor = None # 初始化 sensor 变量 
+        while True:
+            fps_clock.tick()
+            os.exitpoint() # 检查是否应该退出
+            img = sensor.snapshot()
+            for tag in img.find_apriltags(families=tag_families):
+                img.draw_rectangle([v for v in tag.rect()], color=(255,0,0))
+                img.draw_cross(tag.cx(), tag.cy(), color=(0,255,0))
+                print_args = (family_name(tag), tag.id(), (180 * tag.rotation()) / math.pi)
+                print("标签族 %s, 标签 ID %d, 旋转 %f (度)" % print_args)
+            Display.show_image(img)
+            gc.collect()
+
+
+===== PAGE 60/84 =====
+
+4.9.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 61/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.9.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“Line_segment_detection.py”拖至CanMV IDE K230。代码编辑区中，接
+着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+
+
+===== PAGE 62/84 =====
+
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“Line_segment_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上
+的“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 63/84 =====
+
+4.9.4 运行效果
+ 
+在视频画面上用一个红色的线段把出现的物体外边框标记出来。并且打印该线段中包含的数据。打印出该码的详细信
+息，包括：线段坐标、线段的长度以及当前的程序运行帧率（FPS）。
+4.9.5 程序分析
+ 
+导入对应库文件
+主循环
+import time
+from media.sensor import *  # 导入sensor模块，使用摄像头相关接口
+from media.display import *  # 导入display模块，使用display相关接口
+from media.media import *  # 导入media模块，使用media相关接口
+        while True:
+            clock.tick()
+            img = sensor.snapshot()
+            if enable_lens_corr:
+                img.lens_corr(1.8)  # for 2.8mm lens...
+            for l in img.find_line_segments(merge_distance=0, max_theta_diff=5):
+                img.draw_line(l.line(), color=(255, 0, 0), thickness=2)
+                print(l)
+            x_offset = round((width - sensor.width()) / 2)
+
+
+===== PAGE 64/84 =====
+
+1. clock.tick() ： 计时器，用于计算帧率。
+2. img = sensor.snapshot() : 核心步骤，从摄像头获取一帧图像。
+3. 使用for l in img.find_line_segments=（）；以及img.draw_line() ,在物体表面上画出红色线段。
+4. print(l)  打印直线信息（包含起点、终点、角度等）。
+5. x_offset = round((width - sensor.width()) / 2) ；y_offset = round((height - 
+sensor.height()) / 2)  计算居中显示的偏移量。
+6. Display.show_image(img, x=x_offset, y=y_offset)  显示图像到屏幕（居中）。
+7. print(f"FPS: {clock.fps():.2f}") 打印当前帧率（两位小数）。
+4.10 矩形检测实验
+ 
+4.10.1 实验简介
+ 
+本节通过程序学习k230开发板的矩形检测功能。
+4.10.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+            y_offset = round((height - sensor.height()) / 2)
+            Display.show_image(img, x=x_offset, y=y_offset)
+            print(f"FPS: {clock.fps():.2f}")
+
+
+===== PAGE 65/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 66/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.10.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“rectangular_detection.py”拖至CanMV IDE K230。代码编辑区中，接着
+点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+
+
+===== PAGE 67/84 =====
+
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“rectangular_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的
+“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 68/84 =====
+
+4.10.4 运行效果
+ 
+在视频画面上用一个红色的矩形把出现的矩形物体外边框标记出来，并在矩形四个角画绿圈。打印该线段中包含的数
+据。打印出该码的详细信息，包括：线段坐标、线段的长度以及当前的程序运行帧率（FPS）。
+4.10.5 程序分析
+ 
+导入对应库文件
+主循环
+import time
+from media.sensor import *   # 导入摄像头相关模块
+from media.display import *  # 导入显示相关模块
+from media.media import *    # 导入media资源管理模块
+    try:
+        while True:
+            clock.tick()
+            img = sensor.snapshot()  # 拍摄一帧
+            # 设置阈值过滤噪声，只检测亮度较强的矩形
+            for r in img.find_rects(threshold=10000):
+                # 画出检测到的矩形边框，红色，线宽2
+                img.draw_rectangle(r.rect(), color=(255, 0, 0), thickness=2)
+                # 在矩形四个角画绿圈
+                for p in r.corners():
+
+
+===== PAGE 69/84 =====
+
+1. clock.tick() ： 计时器，用于计算帧率。
+2. img = sensor.snapshot() : 核心步骤，从摄像头获取一帧图像。
+3. 使用for r in img.find_rects() ；以及img.draw_rectangle() ,画出检测到的矩形边框。
+4. img.draw_circle(p\[0\], p\[1\], 5, color=(0, 255, 0))  在矩形四个角画绿圈。
+5. print(R)  打印矩形信息（包含坐标）。
+6. x_offset = round((width - sensor.width()) / 2) ；y_offset = round((height - 
+sensor.height()) / 2)  计算居中显示的偏移量。
+7. Display.show_image(img, x=x_offset, y=y_offset)  显示图像到屏幕（居中）。
+8. print(f"FPS: {clock.fps():.2f}")  打印当前帧率（两位小数）。
+4.11 圆形检测实验 
+ 
+4.11.1 实验简介
+ 
+本节通过程序学习k230开发板的圆形检测功能。
+4.11.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+                    img.draw_circle(p[0], p[1], 5, color=(0, 255, 0))
+                print(r)  # 打印矩形信息
+            # 居中显示图像
+            x_offset = round((lcd_width - sensor.width()) / 2)
+            y_offset = round((lcd_height - sensor.height()) / 2)
+            Display.show_image(img, x=x_offset, y=y_offset)
+            print(f"FPS: {clock.fps():.2f}")  # 打印帧率
+
+
+===== PAGE 70/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 71/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.11.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“circular_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击
+左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+
+
+===== PAGE 72/84 =====
+
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+脱机运行：
+1. 连接后将本节同目录下的程序“circular_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 73/84 =====
+
+4.11.4 运行效果
+ 
+在视频画面上用一个红色的圆圈把出现的矩形物体外边框标记出来，并在矩形四个角画绿圈。打印该线段中包含的数
+据。打印出该码的详细信息，包括：线段坐标、线段的长度以及当前的程序运行帧率（FPS）。
+4.11.5 程序分析
+ 
+导入对应库文件
+主循环
+import time
+from media.sensor import *    # 导入摄像头模块
+from media.display import *   # 导入显示模块
+from media.media import *     # 导入媒体资源管理模块
+select_display = 3  # 1=HDMI，2=LCD，3=IDE虚拟显示
+    try:
+        while True:
+            clock.tick()
+            img = sensor.snapshot()  # 拍摄一帧
+            # 圆形参数解释：
+            # c.x(), c.y(): 圆心坐标
+            # c.r(): 半径
+            # magnitude（量级）：数字越大，检测越可靠
+            # threshold 控制检测数量，越大检测越严格
+            # x_margin, y_margin, r_margin 控制合并检测圆的参数
+            for c in img.find_circles(threshold=2000, x_margin=10, y_margin=10,
+
+
+===== PAGE 74/84 =====
+
+1. clock.tick() ： 计时器，用于计算帧率。
+2. img = sensor.snapshot() : 核心步骤，从摄像头获取一帧图像。
+3. threshold=2000  圆形检测阈值（越大越严格）。
+4. x_margin, y_margin, r_margin  控制合并相似圆的范围。
+5. print(C)  打印圆形信息（包含坐标）。
+6. x_offset = round((width - sensor.width()) / 2) ；y_offset = round((height - 
+sensor.height()) / 2)  计算居中显示的偏移量。
+7. Display.show_image(img, x=x_offset, y=y_offset)  显示图像到屏幕（居中）。
+8. print(f"FPS: {clock.fps():.2f}") 打印当前帧率（两位小数）。
+4.12 特征值检测 
+ 
+4.12.1 实验简介
+ 
+本节通过程序学习k230开发板的图像处理和特征检测功能
+4.12.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+                                      r_margin=10, r_min=2, r_max=100, r_step=2):
+                img.draw_circle(c.x(), c.y(), c.r(), color=(255, 0, 0), thickness=2)  # 画红
+圈指示
+                print(c)  # 打印检测圆信息
+            # 居中显示图像
+            x_offset = round((lcd_width - sensor.width()) / 2)
+            y_offset = round((lcd_height - sensor.height()) / 2)
+            Display.show_image(img, x=x_offset, y=y_offset)
+            print(f"FPS: {clock.fps():.2f}")
+
+
+===== PAGE 75/84 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 76/84 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.12.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“Eigenvalue_detection.py”拖至CanMV IDE K230。代码编辑区中，接着
+点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 77/84 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“Eigenvalue_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的
+“工具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 78/84 =====
+
+4.12.4 运行效果
+ 
+当摄像头视野中出现清晰的直线时（例如桌子边缘、窗框、白纸的边界、尺子等），程序会立刻在该直线上叠加绘制一
+条鲜红色的线。
+4.12.5 程序分析
+ 
+导入对应库文件
+camera_init
+1. 摄像头设置：sensor = Sensor() 创建一个摄像头对象，并设置工作分辨率为 640x480，图像格式为 
+RGB565。
+2. ALIGN_UP(640, 16) ：将数据宽度对齐可以提高处理器的处理效率。
+import time, os, gc
+from media.sensor import *
+from media.display import *
+from media.media import *
+def camera_init():
+    global sensor
+    sensor = Sensor(width=DETECT_WIDTH, height=DETECT_HEIGHT)
+    sensor.reset()
+    # sensor.set_hmirror(False)
+    # sensor.set_vflip(False)
+    sensor.set_framesize(width=DETECT_WIDTH, height=DETECT_HEIGHT)
+    sensor.set_pixformat(Sensor.RGB565)
+    init_display(select_display)
+    MediaManager.init()
+    sensor.run()
+
+
+===== PAGE 79/84 =====
+
+3. 显示设置(init_display) ：根据脚本开头的 select_display  变量的值来初始化对应的显示设备。
+4. 启动：调用 MediaManager.init()  和sensor.run() 来启动底层服务，让摄像头正式开始采集图像。
+capture_picture循环
+1. img = sensor.snapshot() : 从摄像头捕获一帧实时图像。
+2. lines = img.find_lines(...) :在捕获到的 img 图像上执行“霍夫变换（Hough Transform）”，用于在图像中
+检测直线的算法。
+3. threshold=1000 : 阈值参数。一个像素点集要被认为是“直线”，它在霍夫空间中的累加值必须高于这个阈值。值
+越高，检测出的直线越可靠。
+4. theta_margin=25, rho_margin=25 : 这两个参数用于合并距离和角度都很相近的线段，防止算法对同一条物理
+直线输出多个非常相似的检测结果。
+5. img.draw_line(l.line(), color=(255, 0, 0)) : 对于每一条检测到的直线，调用 draw_line  函数，在原
+始图像上用红色把它画出来。l.line() 会返回这条线的两个端点坐标。
+6. Display.show_image(img) : 将这帧画好了红色标记线的图像，发送到显示设备上。
+def capture_picture():
+    global sensor
+    fps = time.clock()
+    while True:
+        fps.tick()
+        try:
+            os.exitpoint()
+            img = sensor.snapshot()
+            lines = img.find_lines(threshold=1000, theta_margin=25, rho_margin=25)
+            for l in lines:
+                if min_degree <= l.theta() <= max_degree:
+                    img.draw_line(l.line(), color=(255, 0, 0),thickness=5)
+                    print(l)
+            Display.show_image(img)
+            del img  # 显式释放引用
+            gc.collect()
+            print("FPS:", fps.fps())
+        except KeyboardInterrupt:
+            print("用户中断，退出。")
+            break
+        except Exception as e:
+            print(f"异常退出: {e}")
+            break
+
+
+===== PAGE 80/84 =====
+
+4.13 物体边缘检测
+ 
+4.13.1 实验简介
+ 
+本节通过程序学习k230开发板的物体边缘检测功能
+4.13.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 81/84 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+4.13.3 程序运行及下载
+ 
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将本节同目录下的程序“edge_detection.py”拖至CanMV IDE K230。代码编辑区中，接着点击左
+下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 82/84 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“edge_detection.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工
+具”，选择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 83/84 =====
+
+4.13.4 运行效果
+ 
+当摄像头视野中出现清晰的物体，程序会立刻在该物体边缘绘制白色的线进行描边。
+4.13.5 程序分析
+ 
+导入对应库文件 
+释放资源
+程序结束时关闭显示模块，释放显存/硬件资源。
+采集图像
+1. 摄像头设置：sensor = Sensor() 创建一个摄像头对象。
+2. sensor.reset()  复位并初始化摄像头。
+3. sensor.set_framesize(width=320, height=240)  设置采集分辨率 。
+4. MediaManager.init()  初始化媒体管理器。
+import time, gc
+from media.sensor import *
+from media.display import *
+from media.media import *
+def deinit_display():
+    Display.deinit()
+    print("释放显示资源")
+    sensor = Sensor()
+    sensor.reset()
+    # 注意：摄像头采集分辨率通常不要超过显示，否则影响性能
+    sensor.set_framesize(width=320, height=240)
+    sensor.set_pixformat(Sensor.GRAYSCALE)
+    MediaManager.init()
+    sensor.run()
+    clock = time.clock()
+
+
+===== PAGE 84/84 =====
+
+5. sensor.run() 启动摄像头采集。
+6. clock = time.clock()  创建时钟对象，用来计算 FPS。
+主循环
+1. clock.tick()  更新时钟。
+2. img = sensor.snapshot()  拍摄一帧图像。
+3. Display.show_image(img, x=x_offset, y=y_offset) 在屏幕绘画出图像边缘。
+1. print(f"FPS: {clock.fps():.2f}")  显示帧率。
+    try:
+        while True:
+            clock.tick()
+            img = sensor.snapshot()
+            # 使用Canny边缘检测
+            img.find_edges(image.EDGE_CANNY, threshold=(50, 80))
+            # 居中显示
+            x_offset = round((width - sensor.width()) / 2)
+            y_offset = round((height - sensor.height()) / 2)
+            Display.show_image(img, x=x_offset, y=y_offset)
+            print(f"FPS: {clock.fps():.2f}")

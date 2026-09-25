@@ -100,11 +100,24 @@ kaifaban/
 若希望在任何工作区都能自动加载本技能：
 
 ```bash
-python skills/canmv-k230/scripts/install_skill.py            # 安装到所有检测到的 agent
-python skills/canmv-k230/scripts/install_skill.py --list     # 查看检测情况
+python skills/canmv-k230/scripts/install_skill.py                    # 安装到所有用户级目录
+python skills/canmv-k230/scripts/install_skill.py --target repo      # 同步到本仓库 .agents/skills（Codex 项目级）
+python skills/canmv-k230/scripts/install_skill.py --list             # 查看检测情况
 ```
 
-安装位置：`~/.codebuddy/skills/canmv-k230`、`~/.claude/skills/canmv-k230`、`~/.agents/skills/canmv-k230`。
+安装位置（各 agent 官方规范）：
+
+| Agent | 用户级安装位置 |
+|---|---|
+| CodeBuddy | `~/.codebuddy/skills/canmv-k230` |
+| Claude Code | `~/.claude/skills/canmv-k230` |
+| OpenAI Codex | `~/.agents/skills/canmv-k230`（官方规范；`.codex/` 只放 config） |
+
+**OpenAI Codex 说明**（依据官方文档 developers.openai.com/codex/skills）：
+- 技能目录是 **`.agents/skills`**：仓库级 `$REPO_ROOT/.agents/skills`（本仓库已内置镜像，clone 即用）、
+  用户级 `~/.agents/skills`；
+- 隐式触发靠 `SKILL.md` 的 `description` 语义匹配；显式调用用 **`$canmv-k230`** 或 `/skills` 选择器；
+- 技能名 `canmv-k230`；可选元数据在 `skills/canmv-k230/agents/openai.yaml`。
 
 ---
 
@@ -114,6 +127,7 @@ python skills/canmv-k230/scripts/install_skill.py --list     # 查看检测情�
 |---|---|---|
 | 通用（推荐） | `AGENTS.md` | 本文件 |
 | Claude Code | `CLAUDE.md` | 指向 AGENTS.md + 技能 |
+| **OpenAI Codex** | `AGENTS.md`（原生指令文件）+ `.agents/skills/canmv-k230/`（项目级技能，clone 即用）；用户级 `~/.agents/skills/` | 完整技能（SKILL.md 格式） |
 | Cursor | `.cursor/rules/canmv-k230.mdc` | 技能摘要与索引 |
 | GitHub Copilot | `.github/copilot-instructions.md` | 技能摘要与索引 |
 | Cline / Roo Code | `.clinerules/canmv-k230.md` | 技能摘要与索引 |

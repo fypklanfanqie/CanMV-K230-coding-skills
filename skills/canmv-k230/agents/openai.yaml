@@ -1,0 +1,10 @@
+# OpenAI Codex 技能元数据（可选文件，官方规范：<技能目录>/agents/openai.yaml）
+# 文档：https://developers.openai.com/codex/skills
+interface:
+  display_name: "CanMV K230 开发技能"
+  short_description: "K230 开发板 MicroPython 全流程开发：视觉/AI/外设/网络/大模型"
+  default_prompt: "使用 canmv-k230 技能帮我开发一个 K230 程序"
+
+# 保持隐式调用开启（根据任务描述自动匹配触发）
+policy:
+  allow_implicit_invocation: true

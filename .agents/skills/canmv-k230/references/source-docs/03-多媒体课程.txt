@@ -1,0 +1,688 @@
+
+
+===== PAGE 1/29 =====
+
+3. 多媒体课程
+ 
+3. 多媒体课程
+3.1 Sensor实验说明 
+3.1.1 实验简介
+3.1.2 准备工作
+3.1.3 程序运行及下载
+3.1.4 运行效果
+3.1.5 程序分析
+3.2 Display说明 
+3.2.1 实验简介
+3.2.2 准备工作
+3.2.3 程序运行及下载
+3.2.4 运行效果
+3.2.5 程序分析
+3.3 Audio说明
+3.3.1 实验简介
+3.3.2 准备工作
+3.3.3 程序运行及下载
+3.3.4 运行效果
+3.3.5 程序分析
+3.4 Video说明 
+3.4.1 实验简介
+3.4.2 准备工作
+3.4.3 程序运行及下载
+3.4.4 运行效果
+3.4.5 程序分析
+3.5 LVGL说明 
+3.5.1 实验简介
+3.5.2 准备工作
+3.5.3 程序运行及下载
+3.5.4 运行效果
+3.5.5 程序分析
+ 
+3.1 Sensor实验说明 
+ 
+3.1.1 实验简介
+ 
+本节通过程序学习利用 K230 的三通道输出能力，把同一摄像头画面同时以三种不同分辨率/格式送到三块显示区域，
+实时对比效果。
+K230 具备 3 路 MIPI-CSI 输入（3x2 lane/1x4+1x2 lane），最多可连接 3 路摄像头，每路摄像头支持输出 3 个通道，
+提供不同的分辨率和图像格式。
+
+
+===== PAGE 2/29 =====
+
+3.1.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230视觉模块连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 3/29 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+3.1.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+程序
+在线运行：
+本方式是连接后，将程序“Sensor.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，
+即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在视觉模块中。
+
+
+===== PAGE 4/29 =====
+
+脱机运行：
+1. 连接后将程序“Sensor.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开的脚
+本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230视觉模块里。
+以这种方式下载，后续只给K230视觉模块上电，不连接，视觉模块就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 5/29 =====
+
+3.1.4 运行效果
+ 
+实现同一摄像头画面同时以三种不同分辨率/格式送到HDIM屏幕三块显示区域，实时对比效果。
+3.1.5 程序分析
+ 
+导入对应所需库文件。
+主循环
+# Camera 示例
+import time
+import os
+import sys
+from media.sensor import *
+from media.display import *
+from media.media import *
+sensor = None
+    while True:
+        os.exitpoint()
+        img = sensor.snapshot(chn=CAM_CHN_ID_1)
+        Display.show_image(img, alpha=128)
+        img = sensor.snapshot(chn=CAM_CHN_ID_2)
+        Display.show_image(img, x=1920 - 640, layer=Display.LAYER_OSD1)
+except KeyboardInterrupt as e:
+    print("用户停止: ", e)
+except BaseException as e:
+    print(f"异常: {e}")
+finally:
+    # 停止 sensor
+
+
+===== PAGE 6/29 =====
+
+1. img = sensor.snapshot(chn=CAM_CHN_ID_1) : 从通道1摄像头获取当前这一帧的图像。
+2. Display.show_image(img, alpha=128) ：在默认显示层显示该图像，设置透明度为128（半透明）。
+3. img = sensor.snapshot(chn=CAM_CHN_ID_2) ：从通道2摄像头获取当前这一帧的图像。
+4. Display.show_image(img, x=1920 - 640, layer=Display.LAYER_OSD1) ：把图像显示到屏幕右下角
+（1920-640 = 1280 处），显示在 OSD1 图层。
+3.2 Display说明 
+ 
+3.2.1 实验简介
+ 
+本节通过程序学习利用 K230 调用 CanMV Display 模块，实现图像显示功能。
+3.2.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230视觉模块连接到PC端，如下图所示：
+    if isinstance(sensor, Sensor):
+        sensor.stop()
+    # 销毁显示
+    Display.deinit()
+    os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+    time.sleep_ms(100)
+    # 释放媒体缓冲区
+    MediaManager.deinit()
+
+
+===== PAGE 7/29 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 8/29 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+3.2.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“Display.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在视觉模块中。
+
+
+===== PAGE 9/29 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“Display.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保
+存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230视觉模块里。
+以这种方式下载，后续只给K230视觉模块上电，不连接，视觉模块就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 10/29 =====
+
+3.2.4 运行效果
+ 
+屏幕上每秒钟都会涌现出10个“Helle Hiwonder”字符串，它们的大小、颜色和位置都是杂乱无章、完全随机的。创造
+出一种五彩斑斓、不断闪烁变化的动态文字万花筒效果。
+3.2.5 程序分析
+ 
+导入对应所需库文件
+主循环
+import time, os, urandom, sys
+from media.display import *
+from media.media import *
+import image
+    try:
+        # --- 步骤 3: 主循环，用于绘制和显示 ---
+        while True:
+            # 清空画布，准备重新绘制
+            img.clear()
+            # 在画布的随机位置绘制10个彩色的字符串
+            for i in range(10):
+                x = (urandom.getrandbits(11) % img.width())
+                y = (urandom.getrandbits(11) % img.height())
+                r = (urandom.getrandbits(8))
+                g = (urandom.getrandbits(8))
+                b = (urandom.getrandbits(8))
+                size = (urandom.getrandbits(30) % 64) + 32
+
+
+===== PAGE 11/29 =====
+
+1. img.clear() : 在每一帧绘制开始前，将内存画布完全清空。
+2. urandom.getrandbits() : 获取高质量的随机数，用来决定字符串的位置(x, y)、颜色(r, g, b)和大小(size)，带来
+了不可预测的动态性。
+3. img.draw_string_advanced() : 在内存画布 img 上执行实际的绘制操作。
+4. Display.show_image(img) : 它将内存画布 img 中已经绘制好的完整图像，一次性地“推送”或“刷新”到物理屏幕
+上。这种“先在内存中画好，再一次性显示”的机制，被称为双缓冲，可以防止画面撕裂和闪烁。
+5. time.sleep(1) : 让程序暂停1秒。它控制着动画的帧率（此处为1 FPS），使得可以清晰地看清每一帧的画面。
+3.3 Audio说明
+ 
+3.3.1 实验简介
+ 
+本节通过程序学习利用 K230 调用麦克风模块，录音和播放。
+3.3.2 准备工作
+ 
+硬件介绍
+Note
+本司并无配备对应声音外放设备，请自行准备。外接音响设备，请接入下图中3.5毫米耳机接口处即可。
+模块连接
+1. 使用Type-C数据线将K230视觉模块连接到PC端，如下图所示：
+                # 调用高级绘图函数来绘制中英文字符串
+                img.draw_string_advanced(x, y, size, "Helle Hiwonder", color=(r, g, b))
+            # 将绘制好的图像内容显示到屏幕上
+            Display.show_image(img)
+            time.sleep(1)
+            os.exitpoint()
+
+
+===== PAGE 12/29 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 13/29 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+3.3.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+程序
+在线运行：
+本方式是连接后，将程序“audio.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，
+即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在视觉模块中。
+
+
+===== PAGE 14/29 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“audio.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存
+当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230视觉模块里。
+以这种方式下载，后续只给K230视觉模块上电，不连接，视觉模块就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 15/29 =====
+
+3.3.4 运行效果
+ 
+程序启动 -> 自动开始录音5秒 -> 录音文件自动保存 -> 自动播放刚刚录制的声音 -> 播放完毕后程序结束。
+3.3.5 程序分析
+ 
+导入对应所需库文件 
+录音主循环分析
+import os
+from media.media import *   #导入media模块，用于初始化vb buffer
+from media.pyaudio import * #导入pyaudio模块，用于采集和播放音频
+import media.wave as wave   #导入wav模块，用于保存和加载wav音频文件
+def record_audio(filename, duration):
+    CHUNK = 44100//25  #设置音频chunk值
+    FORMAT = paInt16       #设置采样精度,支持16bit(paInt16)/24bit(paInt24)/32bit(paInt32)
+    CHANNELS = 2           #设置声道数,支持单声道(1)/立体声(2)
+    RATE = 44100           #设置采样率
+    try:
+        p = PyAudio()
+        p.initialize(CHUNK)    #初始化PyAudio对象
+        MediaManager.init()    #vb buffer初始化
+        #创建音频输入流
+        stream = p.open(format=FORMAT,
+                        channels=CHANNELS,
+                        rate=RATE,
+                        input=True,
+                        frames_per_buffer=CHUNK)
+        stream.volume(vol=70, channel=LEFT)
+        stream.volume(vol=85, channel=RIGHT)
+        print("volume :",stream.volume())
+        #启用音频3A功能：自动噪声抑制(ANS)
+        stream.enable_audio3a(AUDIO_3A_ENABLE_ANS)
+        frames = []
+        #采集音频数据并存入列表
+        for i in range(0, int(RATE / CHUNK * duration)):
+            data = stream.read()
+            frames.append(data)
+            if exit_check():
+                break
+        #将列表中的数据保存到wav文件中
+        wf = wave.open(filename, 'wb') #创建wav 文件
+        wf.set_channels(CHANNELS) #设置wav 声道数
+        wf.set_sampwidth(p.get_sample_size(FORMAT))  #设置wav 采样精度
+        wf.set_framerate(RATE)  #设置wav 采样率
+
+
+===== PAGE 16/29 =====
+
+1. for i in range(0, int(RATE / CHUNK * duration)) 这是一个精确控制录音时长的计数循环。它通过音频
+的采样率(RATE)、块大小(CHUNK)和总时长(duration)预先计算出需要执行的总次数，以确保录音达到指定的秒
+数。
+2. data = stream.read() 作用：执行核心的录音操作。音频设备从输入流（即麦克风）的硬件缓冲区中读取一个
+数据块（CHUNK）的原始音频数据。
+3. frames.append(data) 作用：将刚刚从麦克风捕获到的音频数据块 data  添加到一个名为 frames  的 Python 
+列表中。此操作将所有音频数据按顺序暂存在内存里，为录音结束后一次性写入文件做准备。
+播放主循环分析
+        wf.write_frames(b''.join(frames)) #存储wav音频数据
+        wf.close() #关闭wav文件
+    except BaseException as e:
+            print(f"Exception {e}")
+    finally:
+        stream.stop_stream() #停止采集音频数据
+        stream.close()#关闭音频输入流
+        p.terminate()#释放音频对象
+        MediaManager.deinit() #释放vb buffer
+def play_audio(filename):
+    try:
+        wf = wave.open(filename, 'rb')#打开wav文件
+        CHUNK = int(wf.get_framerate()/25)#设置音频chunk值
+        p = PyAudio()
+        p.initialize(CHUNK) #初始化PyAudio对象
+        MediaManager.init()    #vb buffer初始化
+        #创建音频输出流，设置的音频参数均为wave中获取到的参数
+        stream = p.open(format=p.get_format_from_width(wf.get_sampwidth()),
+                    channels=wf.get_channels(),
+                    rate=wf.get_framerate(),
+                    output=True,frames_per_buffer=CHUNK)
+        #设置音频输出流的音量
+        stream.volume(vol=85)
+        data = wf.read_frames(CHUNK)#从wav文件中读取数一帧数据
+        while data:
+            stream.write(data)  #将帧数据写入到音频输出流中
+            data = wf.read_frames(CHUNK) #从wav文件中读取数一帧数据
+            if exit_check():
+                break
+    except BaseException as e:
+            print(f"Exception {e}")
+    finally:
+        stream.stop_stream() #停止音频输出流
+        stream.close()#关闭音频输出流
+        p.terminate()#释放音频对象
+
+
+===== PAGE 17/29 =====
+
+1. wf = wave.open(filename, 'rb') : 打开之前保存的 .wav 音频文件。
+2. p = PyAudio() 和 MediaManager.init() : 与录音时一样，再次初始化音频核心接口和底层媒体硬件，为播
+放做准备。
+3. stream = p.open(...) : 打开一个音频输出流。从 .wav 文件的动态读取
+4. data = wf.read_frames(CHUNK) : 预加载第一块数据。在进入循环前，先从文件中读取一小块音频数据到 
+data 变量中，为播放循环做好启动准备。
+5. while data : 循环 -> stream.write(data) :命令将 data 变量中的音频数据块“推送”到硬件的播放缓冲区，由
+从扬声器发出声音。
+3.4 Video说明 
+ 
+3.4.1 实验简介
+ 
+本节通过程序学习利用 K230 对视频流进行 H264 或 H265 编码录制和播放。
+3.4.2 准备工作
+ 
+硬件介绍
+Note
+本司并无配备对应声音外放设备，请自行准备。外接音响设备，请接入下图中3.5毫米耳机接口处即可。
+模块连接
+1. 使用Type-C数据线将K230视觉模块连接到PC端，如下图所示：
+        wf.close()#关闭wav文件
+        MediaManager.deinit() #释放vb buffer
+
+
+===== PAGE 18/29 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 19/29 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+3.4.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+程序
+在线运行：
+本方式是连接后，将程序“Video_Recording.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在视觉模块中。
+
+
+===== PAGE 20/29 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“audio.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存
+当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230视觉模块里。
+以这种方式下载，后续只给K230视觉模块上电，不连接，视觉模块就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 21/29 =====
+
+3.4.4 运行效果
+ 
+Note
+本次课程是由两个程序合并组成的，其中Video_Recording.py 为Video的录制程序而Video_play.py为Video
+的播放程序。
+下载Video_Recording.py程序->程序启动 -> 自动开始录制MP4文件5秒（200帧） -> 录制MP4文件自动保存 -> 下载
+Video_play.py程序->程序启动 ->自动播放刚刚录制的MP4文件-> 播放完毕后程序结束。
+3.4.5 程序分析
+ 
+录制Video_Recording.py程序分析
+1. 导入MP4以及操作系统库
+2. 配置MP4封装器
+(1) 定义输入分辨率width = 1280 height = 720 。
+(2) 实例化实例化mp4 container mp4_muxer = Mp4Container() 。
+(3) 设置输出路径file_name = "/sdcard/app/tests/test.mp4" 。
+3. 创建并启动MUXER
+准备好 MP4 封装环境，开始写入数据。
+4. 处理数据写入
+from media.mp4format import *
+import os
+def mp4_muxer_test():
+    print("mp4_muxer_test start")
+    width = 1280
+    height = 720
+    # 实例化mp4 container
+    mp4_muxer = Mp4Container()
+    mp4_cfg = Mp4CfgStr(mp4_muxer.MP4_CONFIG_TYPE_MUXER)
+    if mp4_cfg.type == mp4_muxer.MP4_CONFIG_TYPE_MUXER:
+        file_name = "/sdcard/app/tests/test.mp4"
+        mp4_cfg.SetMuxerCfg(file_name, mp4_muxer.MP4_CODEC_ID_H265, width, height, 
+mp4_muxer.MP4_CODEC_ID_G711U)
+    # 创建mp4 muxer
+    mp4_muxer.Create(mp4_cfg)
+    # 启动mp4 muxer
+    mp4_muxer.Start()
+    # 创建mp4 muxer
+    mp4_muxer.Create(mp4_cfg)
+    # 启动mp4 muxer
+    mp4_muxer.Start()
+
+
+===== PAGE 22/29 =====
+
+(1) os.exitpoint()  用于检测是否有退出请求，保证程序可被安全中断。
+(2) 循环调用 mp4_muxer.Process() ，处理音视频数据并写入文件
+(3) if frame_count >= 200 :这里写了 200 帧后停止，相当于录制一段短视频。
+播放Video_play.py程序分析
+1. 导入播放器模块以及操作系统库
+2. 定义播放结束回调
+当播放器播放到文件末尾（EOF）时，设置 start_play = False ，用于结束等待循环。
+3. 定义播放函数
+(1) 创建播放器对象 player=Player() 。
+(2) 加载mp4文件 player.load(filename) 。
+(3) 设置播放器事件回调 player.set_event_callback(player_event) 。
+(4) 开始播放 player.start() 。
+    frame_count = 0
+    try:
+        while True:
+            os.exitpoint()
+            # 处理音视频数据，按MP4格式写入文件
+            mp4_muxer.Process()
+            frame_count += 1
+            print("frame_count = ", frame_count)
+            if frame_count >= 200:
+                break
+    except BaseException as e:
+        print(e)
+from media.player import * #导入播放器模块，用于播放mp4文件
+import os
+start_play = False #播放结束flag
+def player_event(event,data):
+    global start_play
+    if(event == K_PLAYER_EVENT_EOF): #播放结束标识
+        start_play = False #设置播放结束标识
+def play_mp4_test(filename):
+    global start_play
+    player=Player() #创建播放器对象
+    player.load(filename) #加载mp4文件
+    player.set_event_callback(player_event) #设置播放器事件回调
+    player.start() #开始播放
+    start_play = True
+
+
+===== PAGE 23/29 =====
+
+(5) 修改播放结束标识 start_play = True 。
+4. 同时允许用户中断或捕获异常，保证程序能安全退出
+5. 播放结束处理
+(1) 循环退出后调用 player.stop()  停止播放器。
+(2) 打印 "play over" 表示播放完成。
+3.5 LVGL说明 
+ 
+3.5.1 实验简介
+ 
+本节通过程序学习利用 K230 对LVGL图形界面演示程序。
+3.5.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230视觉模块连接到PC端，如下图所示：
+    try:
+        while(start_play):
+            time.sleep(0.1)
+            os.exitpoint()
+    except KeyboardInterrupt as e:
+        print("user stop: ", e)
+    except BaseException as e:
+        sys.print_exception(e)
+    player.stop() #停止播放
+    print("play over")
+    #等待播放结束
+    try:
+        while(start_play):
+            time.sleep(0.1)
+            os.exitpoint()
+    except KeyboardInterrupt as e:
+        print("user stop: ", e)
+    except BaseException as e:
+        sys.print_exception(e)
+    player.stop() #停止播放
+    print("play over")
+
+
+===== PAGE 24/29 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 25/29 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+3.5.3 程序运行及下载
+ 
+效果显示修改：
+程序可以通过select_display=“” 参数选择"hdmi"、"LCD"或"IDE虚拟"显示方式。
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+程序
+在线运行：
+本方式是连接后，将程序“Lvgl.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即
+可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在视觉模块中。
+
+
+===== PAGE 26/29 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“Lvgl.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存
+当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230视觉模块里。
+以这种方式下载，后续只给K230视觉模块上电，不连接，视觉模块就会运行该MicroPython文件，可实现脱机运
+行。
+
+
+===== PAGE 27/29 =====
+
+3.5.4 运行效果
+ 
+运行程序，K230平台的LVGL图形界面演示程序，展示英文文本和动态动画效果。
+3.5.5 程序分析
+ 
+导入音频、媒体及操作系统库
+初始化LVGL
+from media.display import *
+from media.media import *
+import time, os, sys, gc
+import lvgl as lv
+import uos
+
+
+===== PAGE 28/29 =====
+
+初始化LVGL并配置双缓冲，使用disp_create() 创建显示驱动，set_flush_cb() 注册渲染回调。
+资源管理函数
+用来验证字体/图片资源完整性，遍历required_files 列表尝试打开每个文件统计缺失文件数量。
+图形渲染函数
+VGL渲染回调，当LVGL完成帧缓冲更新时，判断当前活动缓冲区，调用底层show_image() 显示并且通知LVGL刷新完
+成。
+用户界面函数
+def lvgl_init(display_width, display_height):
+    """Initialize LVGL"""
+    global disp_img1, disp_img2
+    lv.init()
+    disp_drv = lv.disp_create(display_width, display_height)
+    disp_drv.set_flush_cb(disp_drv_flush_cb)
+    disp_img1 = image.Image(display_width, display_height, image.ARGB8888)
+    disp_img2 = image.Image(display_width, display_height, image.ARGB8888)
+    disp_drv.set_draw_buffers(disp_img1.bytearray(), disp_img2.bytearray(),
+                             disp_img1.size(), lv.DISP_RENDER_MODE.DIRECT)
+def verify_resources():
+    """验证所有需要的资源文件是否存在"""
+    required_files = {
+        "fonts": [
+            "font/montserrat-16.fnt",
+            "font/lv_font_simsun_16_cjk.fnt"
+        ],
+        "images": [
+            "img/animimg001.png",
+            "img/animimg002.png",
+            "img/animimg003.png"
+        ]
+    }
+    missing_files = []
+def disp_drv_flush_cb(disp_drv, area, color):
+    """LVGL display flush callback"""
+    global disp_img1, disp_img2
+    if disp_drv.flush_is_last():
+        if disp_img1.virtaddr() == uctypes.addressof(color.__dereference__()):
+            Display.show_image(disp_img1)
+        else:
+            Display.show_image(disp_img2)
+    disp_drv.flush_ready()
+
+
+===== PAGE 29/29 =====
+
+加载字体资源，创建文本标签，初始化动画控件。
+def user_gui_init():
+    """Initialize user interface"""
+    print("\n=== Loading resources ===")
+    if not verify_resources():
+        print("Warning: Some resource files are missing, UI may be incomplete")
+    # Load fonts
+    font_montserrat = load_resource("font/montserrat-16.fnt", "font")
+    font_simsun = load_resource("font/lv_font_simsun_16_cjk.fnt", "font")
+    # Create text labels
+    if font_montserrat:
+        ltr_label = lv.label(lv.scr_act())
+        ltr_label.set_text("LVGL demo running...\nSystem is working properly")
+        ltr_label.set_style_text_font(font_montserrat, 0)
+        ltr_label.set_width(300)
+        ltr_label.align(lv.ALIGN.TOP_MID, 0, 20)
+    if font_simsun:
+        cz_label = lv.label(lv.scr_act())
+        cz_label.set_style_text_font(font_simsun, 0)
+        cz_label.set_text("hello hiwonder\nResource path: " + RESOURCE_PATH)
+        cz_label.set_width(300)
+        cz_label.align(lv.ALIGN.BOTTOM_MID, 0, -20)

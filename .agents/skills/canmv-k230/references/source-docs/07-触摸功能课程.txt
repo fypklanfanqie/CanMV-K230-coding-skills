@@ -1,0 +1,453 @@
+
+
+===== PAGE 1/19 =====
+
+7. 触摸功能课程
+ 
+7. 触摸功能课程
+7.1 触摸检测 
+7.1.1 实验简介
+7.1.2 准备工作
+7.1.3 程序运行及下载
+7.1.4 运行效果
+7.1.5 程序分析
+7.2 触摸画板 
+7.2.1 实验简介
+7.2.2 准备工作
+7.2.3 程序运行及下载
+7.2.4 运行效果
+7.2.5 程序分析
+7.3 触摸拍照 
+7.3.1 实验简介
+7.3.2 准备工作
+7.3.3 程序运行及下载
+7.3.4 运行效果
+7.3.5 程序分析
+ 
+7.1 触摸检测 
+ 
+7.1.1 实验简介
+ 
+本节通过程序学习k230开发板中LCD屏幕中的触摸玩法。
+7.1.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+
+
+===== PAGE 2/19 =====
+
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+
+
+===== PAGE 3/19 =====
+
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+7.1.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“touch.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，
+即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 4/19 =====
+
+脱机运行：
+1. 连接后将程序“touch.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选择“保存当前打开的脚本
+为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 5/19 =====
+
+7.1.4 运行效果
+ 
+手指在K230开发版中的LCD屏幕触摸，LCD屏出现对应触屏的坐标同时IDE同步打印坐标。
+7.1.5 程序分析
+ 
+导入对应库文件
+初始化
+from machine import TOUCH
+import time
+from media.display import Display
+from media.media import MediaManager
+import image
+
+
+===== PAGE 6/19 =====
+
+1. DISPLAY_WIDTH ，DISPLAY_HEIGHT  初始化显示分辨率。
+2. Display.init()  初始化显示模式，定义显示屏幕为LCD。
+创建画布
+创建一个画布用于在LCD屏幕中显示触摸的坐标，并定义显示的文本颜色为红色。
+主循环
+1. for i , point in enumerate(p) : 遍历每个触摸点，并将触摸点的坐标传给text。
+2. print()  定义在IDE的终端显示串口打印的触摸点坐标。
+3. img.draw_string_advanced()  将坐标显示到LCD屏幕中。
+4. Display.show_image(img)  将画布内容刷新到屏幕。
+# 初始化显示器(示例按LCD模式)
+DISPLAY_WIDTH = 800
+DISPLAY_HEIGHT = 480
+Display.init(Display.ST7701, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT, to_ide=False)
+MediaManager.init()
+# 画布
+img = image.Image(DISPLAY_WIDTH, DISPLAY_HEIGHT, image.RGB565)
+red = (255, 0, 0)
+# 实例化TOUCH设备0
+tp = TOUCH(0)
+# 画布
+img = image.Image(DISPLAY_WIDTH, DISPLAY_HEIGHT, image.RGB565)
+red = (255, 0, 0)
+try:
+    while True:
+        p = tp.read()  # 读取所有触摸点
+        img.clear()  # 清空画布背景默认黑色，可按需修改
+        if p != ():
+            for i, point in enumerate(p):
+                text = f'x{i}={point.x} y{i}={point.y}'
+                print('x'+str(i)+'=',p[i].x, 'y'+str(i)+'=',p[i].y)
+                # 在屏幕左上方依次向下显示
+                img.draw_string_advanced(10, 30 + i*40, 30, text, color=red, scale=3)
+        Display.show_image(img)
+        time.sleep_ms(50)
+
+
+===== PAGE 7/19 =====
+
+7.2 触摸画板 
+ 
+7.2.1 实验简介
+ 
+本节通过程序学习k230开发板中LCD屏幕中的触摸画板功能。
+7.2.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 8/19 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+7.2.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+在线运行：
+本方式是连接后，将程序“touch_draw.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 9/19 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“touch_draw.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选
+择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 10/19 =====
+
+7.2.4 运行效果
+ 
+可以使用手指，实现画布画画功能。同时可以点击上面的功能按键切换对应画笔，比如右上角的“随机”，可以随机切
+换画笔颜色。点击右上角的“保存”，可以将画布中图画保存在SD卡的根目录中。点击上方的“橡皮擦”可以使画笔变
+成“橡皮擦”功能，删除手指划过的地方。下方的滑动条则可以修改画笔的颜色。右上角的“清除”可以将画布全部清除干
+净。
+7.2.5 程序分析
+ 
+导入对应库文件
+定义屏幕大小以及画布大小
+初始化
+import time, os, sys, urandom
+from media.display import *
+from media.media import *
+from machine import TOUCH
+from collections import namedtuple
+# 屏幕大小
+DISPLAY_WIDTH = 800
+DISPLAY_HEIGHT = 480
+# 绘图区域大小（画布）
+CANVAS_W = 800
+CANVAS_H = 400
+CANVAS_X = 0
+CANVAS_Y = 120   # 从屏幕 y=80 开始
+
+
+===== PAGE 11/19 =====
+
+1. background_color = (255, 255, 255)  初始化背景颜色为白色。
+2. canvas_img.clear()  清空画布。
+3. canvas_img.draw_rectangle()  填充白色背景。
+UI区域的定义
+1. 初始化current_color  定义当前画笔颜色。
+2. 初始化brush_size  定义画笔大小（半径）。
+3. tp = TOUCH(0)  初始化触摸屏对象。
+4. last_point = None  上一个触摸点（用于画连续线）。
+5. eraser_mode = False  橡皮擦模式开关。
+try:
+    # 初始化显示器
+    Display.init(Display.ST7701, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT, to_ide=False)
+    # 初始化媒体管理器
+    MediaManager.init()
+    # --- 两张图像 ---
+    ui_img = image.Image(DISPLAY_WIDTH, DISPLAY_HEIGHT, image.RGB565)   # 全屏UI层
+    canvas_img = image.Image(CANVAS_W, CANVAS_H, image.RGB565)          # 绘画层
+    background_color = (255, 255, 255)
+    canvas_img.clear()
+    canvas_img.draw_rectangle(0, 0, CANVAS_W, CANVAS_H, color=background_color, fill=True)
+    # UI 按钮与滑杆区域
+    clear_button_area = (DISPLAY_WIDTH - 130, 0, 130, 50)
+    color_button_area = (0, 0, 130, 50)
+    save_button_area = (0, 60, 130, 50)
+    eraser_button_area = (DISPLAY_WIDTH // 2 - 80, 0, 220, 50)
+    slider_area = (DISPLAY_WIDTH // 2 - 150, 70, 300, 40)
+    forbidden_draw_areas = [
+        clear_button_area,
+        color_button_area,
+        save_button_area,
+        eraser_button_area,
+        slider_area
+    ]
+    tp = TOUCH(0)
+    last_point = None
+    eraser_mode = False
+    threshold_value = 128
+    
+    # --- 消抖控制变量 ---
+    last_click_time = 0
+    DEBOUNCE_MS = 300  # 按钮防抖时间（毫秒）
+
+
+===== PAGE 12/19 =====
+
+6. threshold_value = 128  阈值滑杆的默认值（范围 0-255）。
+7. 定义一个消抖时间用于点击按键判断消抖。
+UI绘制函数
+使用draw_button() : 绘制出对应的按钮。
+阈值滑杆函数
+1. apply_threshold_color  根据阈值计算RGB值。
+    # --- UI 绘制函数 ---
+    def draw_button(x, y, w, h, text, bg_color, text_color):
+        ui_img.draw_rectangle(x, y, w, h, color=bg_color, fill=True)
+        ui_img.draw_string_advanced(x + (w - len(text) * 15) // 2, y + 12, 30,
+                                    text, color=text_color, scale=2)
+    def draw_clear_button():
+        draw_button(*clear_button_area, "清除", (255, 0, 0), (255, 255, 255))
+    def draw_color_buttons():
+        draw_button(*color_button_area, "随机", (255, 255, 0), (0, 0, 0))
+        ui_img.draw_circle(color_button_area[0] + 170, 25, 20,
+                           color=current_color, thickness=3, fill=True)
+    def draw_save_button():
+        draw_button(*save_button_area, "保存", (0, 128, 255), (255, 255, 255))
+    def draw_eraser_button():
+        bg = (128, 128, 128) if eraser_mode else (0, 200, 200)
+        text = "橡皮擦 ON" if eraser_mode else "橡皮擦 OFF"
+        draw_button(*eraser_button_area, text, bg, (255, 255, 255))
+    def apply_threshold_color(base1, base2, threshold):
+        r = base1[0] + (base2[0] - base1[0]) * threshold / 255
+        g = base1[1] + (base2[1] - base1[1]) * threshold / 255
+        b = base1[2] + (base2[2] - base1[2]) * threshold / 255
+        return (int(r), int(g), int(b))
+    def draw_slider():
+        x, y, w, h = slider_area
+        ui_img.draw_rectangle(x, y + h // 3, w, h // 3,
+                              color=(200, 200, 200), fill=True)
+        knob_x = x + int((threshold_value / 255) * w)
+        knob_y = y + h // 2
+        knob_color = apply_threshold_color(base_color_1, base_color_2, threshold_value)
+        ui_img.draw_circle(knob_x, knob_y, 12, color=knob_color, fill=True)
+        txt = f'阈值: {threshold_value}'
+        ui_img.draw_string_advanced(x + w + 10, y + 8, 30,
+                                    txt, color=(0, 0, 0), scale=2)
+
+
+===== PAGE 13/19 =====
+
+2. draw_rectangle  绘制出阈值拖动条。
+3. txt = f' 阈值: {threshold_value}' 显示阈值的对应数值。
+按键交互逻辑
+下面按键交互逻辑以橡皮檫的开关作为例子
+1. 定义两个变量global eraser_mode, last_click_time 一个橡皮此时的状态一个是按键的消抖时间。
+2. 通过判断按下的时间实现按键消抖，并根据按下屏幕状态判断是否按下并切换对应的状态。
+主循环
+1. os.exitpoint()  系统退出点（防止卡死）。
+2. p = tp.read(1)  读取触摸点（一次最多一个）。
+3. if p != ():  判断是否存在触摸点。
+    def check_eraser_button(x, y, event):
+        global eraser_mode, last_click_time
+        if is_in_area(x, y, eraser_button_area) and event == 1:
+            now = time.ticks_ms()
+            # 利用 ticks_diff 进行安全的毫秒时间差计算
+            if time.ticks_diff(now, last_click_time) > DEBOUNCE_MS:
+                eraser_mode = not eraser_mode
+                print(f"橡皮擦模式 {'开启' if eraser_mode else '关闭'}")
+                last_click_time = now
+    # --- 主循环 ---
+    while True:
+        os.exitpoint()
+        p = tp.read(1)
+        if p != ():
+            for point in p:
+                x, y = point.x, point.y
+                # UI 交互
+                select_color(x, y)
+                check_clear_button(x, y)
+                check_save_button(x, y)
+                check_eraser_button(x, y)
+                check_slider_touch(x, y)
+                # 画布区域 (触摸点减去偏移量 CANVAS_Y)
+                if y >= CANVAS_Y:
+                    cp = Point(x, y - CANVAS_Y)
+                    draw_line_between_points(last_point, cp)
+                    last_point = cp
+                else:
+                    last_point = None
+        else:
+            last_point = None
+
+
+===== PAGE 14/19 =====
+
+7.3 触摸拍照 
+ 
+7.3.1 实验简介
+ 
+本节通过程序学习k230开发板中LCD屏幕中的触摸拍照玩法。
+7.3.2 准备工作
+ 
+模块连接
+1. 使用Type-C数据线将K230开发板连接到PC端，如下图所示：
+2. 双击打开CanMV IDE K230；
+3. 点击左下角的连接按钮；
+
+
+===== PAGE 15/19 =====
+
+4. 连接成功，CanMV IDE软件左下方会变为下图所示图标。
+5. 若连接超过10s，则为连接失败，点击“取消”按钮，会出现以下弹窗，点击“OK”。重新检查连接。
+Note
+连接失败原因及其解决方法：
+连接线不是数据线：有Type-C线为充电线，没有数据传输功能，请使用有数据传输功能的Type-C线进行连
+接（我司出厂配备的为Type-C数据线）。
+烧录了其他的K230固件：重新烧录出厂固件，之后进行连接即可。
+7.3.3 程序运行及下载
+ 
+K230程序有2种运行方式，一种是在线运行，另一种为脱机运行。
+ 
+在线运行：
+本方式是连接后，将程序“touch_photo.py”拖至CanMV IDE K230。代码编辑区中，接着点击左下角的运行按钮
+，即可在线运行程序，如下图所示：
+Note
+以此步骤运行的程序，在断开连接或者关机后，程序会丢失，不保存在开发板中。
+
+
+===== PAGE 16/19 =====
+
+脱机运行：
+1. 连接后将本节同目录下的程序“touch_photo.py”拖至CanMV IDE K230代码编辑区，点击工具栏上的“工具”，选
+择“保存当前打开的脚本为（main.py）到CanMV Cam”如下图所示：
+2. 接着点击“Yes”。
+3. 写入成功后会提示，点击“OK”。这样即可将MicroPython文件保存到K230开发板里。
+以这种方式下载，后续只给K230开发板上电，不连接，开发板就会运行该MicroPython文件，可实现脱机运行。
+
+
+===== PAGE 17/19 =====
+
+7.3.4 运行效果
+ 
+点击屏幕中的拍摄按钮后，K230调用摄像头拍下当前的画面。并将拍下的画面转换成图片保存。
+7.3.5 程序分析
+ 
+导入对应库文件
+初始化
+import uos
+import sys
+import time
+from media.sensor import Sensor
+from media.display import Display
+from media.media import MediaManager
+from machine import TOUCH
+sensor = Sensor()
+sensor.reset()
+sensor.set_framesize(width=800, height=480)
+sensor.set_pixformat(Sensor.RGB565)
+Display.init(Display.ST7701, to_ide=False)
+MediaManager.init()
+sensor.run()
+
+
+===== PAGE 18/19 =====
+
+1. sensor = Sensor()  创建摄像头对象。
+2. sensor.reset()  重置摄像头。
+3. sensor.set_framesize(width=800, height=480)  设置分辨率 800x480。
+4. sensor.set_pixformat(Sensor.RGB565)  设置图像格式。
+5. Display.init()  初始化 LCD 屏幕。
+6. MediaManager.init()  初始化多媒体管理器。
+7. sensor.run()  启动摄像头采集。
+定义保存目录
+定义按下按键后保存图片的目录。
+主循环
+# 保存照片的目录
+save_dir = "/sdcard"
+def ensure_dir_exists(path):
+    try:
+        uos.listdir(path)
+    except OSError:
+        print("目录 {} 不存在，正在创建...".format(path))
+        uos.mkdir(path)
+        print("目录 {} 创建完成".format(path))
+while True:
+    img = sensor.snapshot()
+    img.draw_circle(720, 240, 25, color=(255, 255, 255), thickness=1, fill=True)
+    img.draw_circle(720, 240, 40, color=(200, 200, 200), thickness=10)
+    p = tp.read(1)
+    if p != ():
+        print(p)
+        x, y, event = p[0].x, p[0].y, p[0].event
+        if event == 2 or event == 3:
+            img.draw_cross(x, y, color=(255, 0, 0), size=10, thickness=6)
+        if 720 - 40 < x < 720 + 40 and 240 - 40 < y < 240 + 40 and event == 2:
+            timestamp = time.ticks_ms()
+            filename = "{}/photo_{}.jpg".format(save_dir, timestamp)
+            img = sensor.snapshot()
+            img.save(filename)
+            print("照片已保存:", filename)
+            time.sleep(1)
+    # 显示实时图像
+
+
+===== PAGE 19/19 =====
+
+1. img = sensor.snapshot()  获取一帧图像（摄像头实时画面）。
+2. img.draw_circle()  绘制屏幕中的拍照按键。
+3. p = tp.read(1)  读取触摸点。
+4. print(p)  在IDE终端打印输出触摸点坐标。
+5. x, y, event = p[0].x, p[00].y, p[0].eve nt 将获取到的触摸坐标点，进行赋值。
+6. 根据触摸点判断是否点击到屏幕中绘制的拍照按键，并将照片保存到SD卡中。
+7. Display.show_image(img) ** 将画布内容刷新到屏幕。
+    Display.show_image(img)

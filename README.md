@@ -59,12 +59,22 @@ AI 助手会自动读取 `AGENTS.md` → 技能文档 → 找到最接近的官�
 项目内使用不需要安装。若想让技能在任何工作区都能被自动加载：
 
 ```bash
-python skills/canmv-k230/scripts/install_skill.py          # 安装/同步到所有检测到的 agent
+python skills/canmv-k230/scripts/install_skill.py          # 安装/同步到所有用户级目录
 python skills/canmv-k230/scripts/install_skill.py --list   # 查看安装状态
+python skills/canmv-k230/scripts/install_skill.py --target repo   # 同步 Codex 项目级镜像
 ```
 
-> 已安装的位置：`~/.codebuddy/skills/canmv-k230`、`~/.claude/skills/canmv-k230`。
-> 每次修改 `skills/canmv-k230/` 里的内容后，重新运行一次上面的命令即可同步。
+各 agent 的安装位置与调用方式（按官方规范）：
+
+| Agent | 安装位置 | 调用方式 |
+|---|---|---|
+| CodeBuddy | `~/.codebuddy/skills/canmv-k230` | 自动识别（按 description 匹配） |
+| Claude Code | `~/.claude/skills/canmv-k230` | 自动识别 |
+| **OpenAI Codex** | `~/.agents/skills/canmv-k230`（用户级）；`.agents/skills/canmv-k230`（本仓库已内置，clone 即用） | 隐式匹配，或 **`$canmv-k230`** / `/skills` 显式调用 |
+| Cursor / Copilot / Cline / Windsurf | 直接读根目录的兼容文件（无需安装） | 自动读取 |
+
+> 每次修改 `skills/canmv-k230/` 里的内容后，重新运行安装命令即可同步
+> （含仓库内的 `.agents/skills/canmv-k230` Codex 项目级镜像）。
 
 ## 技能包结构
 
@@ -86,11 +96,17 @@ skills/canmv-k230/
 │   ├── 12-example-index.md #   官方例程全量索引
 │   ├── 13-troubleshooting.md # 排错 + 性能优化
 │   └── source-docs/        #   全部教程 PDF 文本提取
+├── agents/
+│   └── openai.yaml         # Codex 技能元数据（显示名/调用策略）
 ├── templates/              # 8 个可运行模板（外设/视觉/AI/网络/大模型/触摸）
 └── scripts/
-    ├── install_skill.py    # 安装技能到各 agent
+    ├── install_skill.py    # 安装技能到各 agent（含 Codex ~/.agents/skills 与仓库镜像）
     └── extract_pdfs.py     # 重新提取教程 PDF 文本
 ```
+
+> **Codex 用户**：本仓库根目录内置了 `.agents/skills/canmv-k230/`（Codex 官方项目级技能位置），
+> 在仓库目录内启动 Codex 即可自动发现；在其它目录使用请先运行安装脚本（见上）。
+> 显式调用：`$canmv-k230`。
 
 ## 硬件参数一句话版
 
