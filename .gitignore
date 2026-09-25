@@ -18,6 +18,8 @@ venv/
 # ============================================================
 _tmp_*
 _pdf_extract/
+_commit_msg.txt
+_verify.py
 *.tmp
 *.log
 *.bak
