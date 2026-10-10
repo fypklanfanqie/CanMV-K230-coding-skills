@@ -6,7 +6,7 @@
 > 都能"看懂"这块板子，按官方例程的方法论帮你写代码。
 
 [![Skill](https://img.shields.io/badge/Agent%20Skills-canmv--k230-blue)](skills/canmv-k230/SKILL.md)
-[![Docs](https://img.shields.io/badge/reference-13%20docs-green)](skills/canmv-k230/references/)
+[![Docs](https://img.shields.io/badge/reference-14%20docs-green)](skills/canmv-k230/references/)
 [![Templates](https://img.shields.io/badge/templates-8-orange)](skills/canmv-k230/templates/)
 
 ---
@@ -27,7 +27,7 @@
 | 目录 | 说明 |
 |---|---|
 | `CanMV K230/` | 官方全套资料（教程 PDF + 174 个例程源码 + 镜像 + 53 个 AI 模型 + 工具） |
-| `skills/canmv-k230/` | **AI 开发技能包**：主技能 + 13 篇深度文档 + 8 个代码模板 + 教程全文提取 |
+| `skills/canmv-k230/` | **AI 开发技能包**：主技能 + 14 篇深度文档 + 8 个代码模板 + 教程全文提取 |
 | `projects/` | 你自己的开发项目（AI 助手会在这里开工） |
 | `AGENTS.md` | 所有 AI 助手的入口说明（CodeBuddy/Claude/Cursor/Copilot/Cline/Windsurf 通用） |
 
@@ -81,7 +81,7 @@ python skills/canmv-k230/scripts/install_skill.py --target repo   # 同步 Codex
 ```
 skills/canmv-k230/
 ├── SKILL.md                # ★ 主技能：工作流 / 骨架 / 导航 / 高频坑
-├── references/             # 13 篇深度参考
+├── references/             # 14 篇深度参考
 │   ├── 01-hardware.md      #   硬件 / 引脚 / 40PIN
 │   ├── 02-workflow.md      #   烧录 / IDE / 运行 / 脱机
 │   ├── 03-media.md         #   摄像头 / 显示 / 音频 / 视频
@@ -95,6 +95,7 @@ skills/canmv-k230/
 │   ├── 11-model-inventory.md # 53 个模型清单
 │   ├── 12-example-index.md #   官方例程全量索引
 │   ├── 13-troubleshooting.md # 排错 + 性能优化
+│   ├── 16-firmware-display-lessons.md # 精确固件版本、A/B/RTAPP 与显示排障经验
 │   └── source-docs/        #   全部教程 PDF 文本提取
 ├── agents/
 │   └── openai.yaml         # Codex 技能元数据（显示名/调用策略）

@@ -21,7 +21,7 @@
 | 步骤 | 文件 | 作用 |
 |---|---|---|
 | ① | `skills/canmv-k230/SKILL.md` | **主技能文件**：工作流、代码骨架、导航表、高频坑 —— 必读 |
-| ② | `skills/canmv-k230/references/` | 13 篇深度参考（硬件/环境/外设/视觉/AI/网络/触摸/大模型/训练/模型清单/例程索引/排错） |
+| ② | `skills/canmv-k230/references/` | 14 篇深度参考（硬件/环境/外设/视觉/AI/网络/触摸/大模型/训练/模型清单/例程索引/排错/固件显示经验） |
 | ③ | `skills/canmv-k230/templates/` | 8 个可直接复制修改的代码模板 |
 | ④ | `skills/canmv-k230/references/source-docs/` | 全部教程 PDF 的文本提取（深度检索用） |
 

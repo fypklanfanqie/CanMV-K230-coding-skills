@@ -2,6 +2,8 @@
 
 > 来源：教程《3.多媒体课程》全文 + 例程源码（Sensor.py / Display.py / audio.py / Video_*.py / Lvgl.py）。
 > 所有视觉程序的地基：**摄像头采集 → 图像处理 → 显示**，以及衍生出的音频与视频能力。
+>
+> 遇到条纹、滚动刷新或显示 API 报错，先读 [`16-firmware-display-lessons.md`](16-firmware-display-lessons.md)，按板上精确版本对照官方例程。
 
 ---
 
@@ -89,13 +91,14 @@ while True:
 ```python
 # HDMI（LT9611）
 Display.init(Display.LT9611, width=1920, height=1080, to_ide=True)
-# LCD（ST7701，800x480，参数可省）
-Display.init(Display.ST7701, to_ide=True)
+# LCD（ST7701，800x480；厂商 f57cc2c 版本也可显式传尺寸）
+Display.init(Display.ST7701, width=800, height=480, to_ide=True)
 # IDE 虚拟显示（推荐无屏调试）
 Display.init(Display.VIRT, width=1280, height=720, fps=100, to_ide=True)
 ```
 - `to_ide=True`：把画面同时回传到 CanMV IDE 预览区。
 - `osd_num=N`：需要叠加 OSD 图层时指定数量。
+- 具体版本可能移除旧的 `mpp.vo/connector` Python 绑定；厂商 `f57cc2c` 树的 `show_image` 没有 `direct_show` 参数。不要跨版本复制该参数。
 
 ### 2.2 图层与显示
 
@@ -123,9 +126,10 @@ img.draw_string_advanced(x, y, size, "文字", color=(255,255,255), scale=2)
 Display.show_image(img)
 ```
 > `draw_string_advanced(x, y, 字号, 文本, color=(r,g,b), scale=倍数)` 支持**中英文字符串**。
+> `image.Image` 构造时必须提供格式；外部缓冲区还要核对长度、格式、宽度和生命周期，普通堆内存不自动等于可直通显示的 VB 缓冲区。
 
 ### 2.4 显示刷新机制
-"内存中画好 → `Display.show_image()` 一次性推送"（双缓冲），避免画面撕裂。
+先在内存中画好，再用 `Display.show_image()` 提交。缓冲复制/旋转和刷新行为依固件实现而定；调用返回不证明实屏无撕裂/条纹，仍要通过官方同版本例程和实际屏幕验收。
 
 ---
 
@@ -145,6 +149,7 @@ img.to_numpy_ref()                       # 转 numpy（AI 用，RGBP888 时）
 ## 4. 音频（media.pyaudio + media.wave）
 
 > 需要 SD 卡（保存/读取 wav）；外放需 3.5mm 耳机口接音箱。
+> 官方接口为 `media.pyaudio.PyAudio`；不要凭其他平台经验臆造 `Audio(0)`。
 
 ### 4.1 录音（保存 wav）
 

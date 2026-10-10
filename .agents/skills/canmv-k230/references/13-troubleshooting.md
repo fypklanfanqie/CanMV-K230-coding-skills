@@ -2,6 +2,8 @@
 
 > 汇总自官方教程的所有 Note 段落 + 例程实践。
 > 使用方式：**按现象查表 → 按顺序排除 → 用最小复现程序验证**。
+>
+> 固件、启动链、条纹和版本差异的实测边界见 [`16-firmware-display-lessons.md`](16-firmware-display-lessons.md)。
 
 ---
 
@@ -11,7 +13,7 @@
 |---|---|
 | IDE 连接失败（超过 10s） | ① 换 **数据线**（充电线无数据芯，最常见原因）② 板子烧过其它固件 → 重烧官方镜像 ③ 换 USB 口（主板直出）④ 看设备管理器有无串口/USB 设备 |
 | 电脑看不到 CanMV 盘符 | ① SD 卡插紧 ② 换读卡器重烧 ③ 换数据线 ④ 换电脑 USB 口 |
-| Rufus 写入失败/镜像损坏 | 重新格式化 SD 卡（SD Card Formatter）后再写；校验 .img 文件完整 |
+| Rufus 写入失败/镜像损坏 | 重新格式化 SD 卡（SD Card Formatter）后再写；校验 .img 文件 SHA256；不要把复制到 FAT 的文件当作 fastboot 更新 |
 | 串口助手连不上 | 波特率必须 **115200**；确认 COM 号（拔插对比）；换 PuTTY/串口工具 |
 | 板子上电无反应 | 检查 SD 卡（系统在卡里）；Type-C 供电是否足够（5V/2A）；电源灯亮否 |
 
@@ -28,6 +30,8 @@
 | 第二次运行黑屏/报错 | **资源没释放**：按 SKILL §5.3 顺序（sensor.stop→Display.deinit→exitpoint sleep→MediaManager.deinit）；检查是否在 finally 中 |
 | 图像颜色不对 | 像素格式不匹配（RGB565 vs RGB888 vs YUV）；AI 用 `RGBP888`，展示用 `RGB565` |
 | 画面上下颠倒/镜像 | `sensor.set_hmirror(True)` / `sensor.set_vflip(True)` |
+| 条纹或 CRT 式滚动刷新 | 先确认是否 BER/测试图案、分辨率/像素格式/缓冲区生命周期问题；用官方同版本镜像和纯显示例程建立基线。27 MHz 滚动是一次测试结果，不是通用结论 |
+| `direct_show`/`mpp.vo` 导入失败 | 检查 CanMV/MPP 精确 revision；厂商 `f57cc2c` 的 C Display 树移除了旧 Python 绑定，`show_image` 不接受 `direct_show` |
 
 ---
 
@@ -86,8 +90,8 @@
 
 | 现象 | 处理 |
 |---|---|
-| 触摸无反应 | 屏幕是否带触摸（3.5 寸款）；`TOUCH(0)` 实例；`read()` 是否返回空 |
-| 点击不灵敏/连击 | 加防抖（`ticks_diff > 300ms`） |
+| 触摸无反应 | 屏幕是否带触摸（3.5 寸款）；`TOUCH(0)` 实例；`read()` 是否返回空；读取点对象 `.x/.y/.event` |
+| 点击不灵敏/连击 | 加防抖（`ticks_diff > 300ms`）；优先使用当前固件的 `TOUCH.EVENT_*` 常量，不要硬编码数字事件 |
 | 坐标偏移 | 触摸坐标是屏幕坐标（800×480），注意画布偏移（如减去 CANVAS_Y） |
 | LVGL 白屏 | 资源文件缺失（字体/图片）→ 检查 `/sdcard/examples/15-LVGL/data/` |
 | LVGL 卡顿 | 降低刷新需求；减少动画；确认双缓冲配置正确 |
@@ -110,6 +114,8 @@
 | 场景 | 操作 |
 |---|---|
 | main.py 死循环，板子"变砖" | ① 上电瞬间连 PuTTY 按 Ctrl+C ② 或 SD 卡插电脑删 `sdcard/main.py` |
+| 复制 `micropython` 后版本没变 | Fastboot 运行裸区 `rtapp`；记录 `revision.txt`/`os.uname()`，按实际 MBR/TOC/OTA 重新打包或烧录 |
+| A/B 镜像写入后无法启动 | 新旧镜像布局不同；解析槽、边界和包 CRC/uImage/private-gzip 校验，禁止套旧固定偏移脚本 |
 | 程序跑飞、REPL 无响应 | 按板载 RST 键；或将 SD 卡重烧 |
 | 想看精细日志 | IDE 终端长期开启；关键路径加 `print`；异常处 `sys.print_exception(e)` |
 | 断电后时间复位 | RTC 无电池，正常；联网后可用 NTP/手动 `rtc.init` |

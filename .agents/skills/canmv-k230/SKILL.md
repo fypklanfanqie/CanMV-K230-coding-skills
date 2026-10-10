@@ -32,6 +32,7 @@ description: >
    - 关键配置集中放在文件顶部（`select_display`、WiFi 账号、模型路径等），方便用户改；
    - 每段核心逻辑配中文注释。
 5. **新项目落盘位置**：约定放在工作区 `projects/<项目名>/`（见 §7）。每个项目至少包含 `main.py`（板端入口）+ `README.md`（接线/烧录/使用说明）。
+6. **先确定固件版本**：遇到镜像移植、原生模块或屏幕异常，先记录 `revision.txt`、`os.uname()`、`sys.version`，读取 [`references/16-firmware-display-lessons.md`](references/16-firmware-display-lessons.md)。不要把 nncase 标签当成 API 版本，也不要用开发分支替代厂商精确提交。
 
 ---
 
@@ -84,7 +85,7 @@ select_display = 2   # 1=HDMI 1920x1080  2=LCD 800x480  3=IDE虚拟显示
 - **在线运行**：程序不落盘，断电丢失。**脱机运行**：另存为 `main.py` 到板子。
 - **REPL 终端**：PuTTY / 串口工具，波特率 **115200**；回车出 `>>>` 即进入交互；死循环卡住时按 **Ctrl+C**。
 - **救砖**：如果保存的 `main.py` 是死循环且影响了启动，把 SD 卡插回电脑（或板子当 U 盘），删除 `CanMV/sdcard/main.py`。
-- **文件路径映射**：板子内 `/sdcard` ↔ 电脑 `CanMV/sdcard`；板子内 `/data` ↔ 电脑 `CanMV/data`。模型、图片、音频等资源直接放进去。
+- **文件路径映射**：USB 导出视图可能是 `CanMV/sdcard`，读卡器则可能直接将 SDCARD 卷根目录映射到 `/sdcard`。先核对分区/目录，避免多建一层 `sdcard`；`/data` 是否存在以镜像挂载为准。
 
 ### agent 写代码的强制约定（重要）
 1. 文件顶部集中配置区：`select_display`、WiFi 账号密码、API Key、模型路径、阈值，全部用醒目注释块。
@@ -114,6 +115,7 @@ select_display = 2   # 1=HDMI 1920x1080  2=LCD 800x480  3=IDE虚拟显示
 | 查某个 kmodel 是干什么的 | `ref/11-model-inventory.md` | `3.芯片资料&镜像&AI模型文件/02 AI模型文件/` |
 | 找一个功能对应的官方例程文件 | `ref/12-example-index.md` | `5.程序源码/`（96 个）+ 各课程源码 |
 | 报错、跑不起来、屏幕不亮、连不上 | `ref/13-troubleshooting.md` | 各教程的 "Note" 段落 |
+| 固件版本、A/B 镜像、启动链、条纹和显示 API 差异 | `ref/16-firmware-display-lessons.md` | 精确版本源码与官方显示例程 |
 | 要一份能直接改的代码骨架 | `templates/`（本技能内） | — |
 | 需要教程 PDF 原文 | `references/source-docs/`（本技能内，全部 PDF 已提取为 txt） | 原始 PDF 在各教程目录 |
 
@@ -128,9 +130,9 @@ select_display = 2   # 1=HDMI 1920x1080  2=LCD 800x480  3=IDE虚拟显示
 | 蓝色 LED | GPIO52，**高电平点亮** | `fpioa.set_function(52, FPIOA.GPIO52); Pin(52, Pin.OUT).value(1)` |
 | 用户按键 KEY | GPIO21，按下为低电平，需上拉 | `Pin(21, Pin.IN, Pin.PULL_UP)`，`value()==0` 表示按下 |
 | 蜂鸣器 | GPIO43 复用 PWM1 | `fpioa.set_function(43, FPIOA.PWM1); PWM(1).freq(200); .duty(50)` |
-| 触摸屏 | `TOUCH(0)`，I2C3 总线 | `tp.read()` 返回触摸点列表 `(x, y, event)` |
+| 触摸屏 | `TOUCH(0)`，I2C3 总线 | `tp.read()` 返回点对象；用 `point.x/.y/.event`，事件常量以当前固件为准 |
 | 摄像头 | `Sensor()` / `Sensor(width=, height=)`，支持 3 通道输出 | `sensor.reset() → set_framesize → set_pixformat → snapshot()` |
-| ADC 通道 | ADC0-3 引出到 40PIN（ADC0/1 量程 0–3.6V，ADC2/3 量程 0–1.8V） | `ADC(0).read_u16()`（12bit，0–4095） |
+| ADC 通道 | ADC0-3 引出到 40PIN（ADC0/1 量程 0–3.6V，ADC2/3 量程 0–1.8V） | `ADC(0).read_u16()`；返回宽度/量程按精确固件源码和校准确认 |
 | UART | 芯片共 5 组，**UART0/UART3 已被系统占用，可用 UART1/2/4** | UART1 例程用引脚 3(TX)/4(RX)，115200 |
 | I2C | 5 组硬件模块 | 例程：`I2C(2, scl=11, sda=12, freq=40000)` |
 | SPI | 3 组，支持片选极性和可调时钟 | `SPI(1, baudrate=5000000, polarity=0, phase=0, bits=8)` |
@@ -253,7 +255,7 @@ os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
 time.sleep_ms(100)                   # 3. 等待硬件真正释放
 MediaManager.deinit()                # 4. 释放媒体缓冲
 ```
-放在 `finally:` 里；**少一步就会导致下一次运行黑屏/报错**。
+放在 `finally:` 里，初始化失败也要释放已成功申请的资源。以上是配套教程的兼容顺序；厂商 `f57cc2c` 中 `MediaManager.init/deinit` 已是 deprecated 空壳，显示仍需 `Display.deinit()`，不能据此省略官方例程清理。
 
 ### 5.4 OpenMV 视觉骨架（找色块示例）
 
@@ -451,7 +453,7 @@ kaifaban/
 
 ---
 
-## 8. 高频坑 Top 15（详见 `ref/13-troubleshooting.md`）
+## 8. 高频坑（详见 `ref/13-troubleshooting.md` 和 `ref/16-firmware-display-lessons.md`）
 
 1. **显示模式选错**：没屏幕还用 `select_display=2` → 看不到画面；HDMI 分辨率与显示器不符 → 跑死。
 2. **忘记资源释放** → 第二次运行黑屏。见 §5.3 契约。
@@ -465,9 +467,12 @@ kaifaban/
 10. **`nncase` 版本要与固件匹配**：本资料镜像是 **local nncase v2.9.0**；训练导出/转换时注意（见 `ref/10`）。
 11. **TLS 不兼容**：K230 直连部分云服务（如 DashScope 某些接口）会握手失败 → 用 PC 中转（`ref/09` §6）。
 12. **WiFi 只支持 2.4G**；5G 热点连不上不是板子坏了。
-13. **触摸事件值**：先 `print(p)` 观察 `event` 字段实际值再写逻辑（不同固件版本可能不同）。
-14. **`main.py` 死循环上不了手**：断电→SD 卡删 `sdcard/main.py`→重新插入。
+13. **触摸事件值**：读取点对象的 `.x/.y/.event`，优先使用当前固件提供的事件/旋转常量，不要硬编码数字含义。
+14. **`main.py` 死循环上不了手**：断电→SD 卡删 `sdcard/main.py`→重新插入；冷启动验收，不能用 `machine.reset()` 代替。
 15. **拍照/录像要 SD 卡**；无卡时 `img.save()`/`wave.open('wb')` 类操作会失败。
+16. **FAT 文件不是 fastboot 固件**：复制 `micropython` 或脚本不会替换裸区 `rtapp`，先记录精确版本并按实际 MBR/TOC/OTA 解析镜像。
+17. **A/B 镜像不能套旧固定偏移脚本**：新旧布局、包校验和槽选择都可能不同，写卡前逐包校验并回读。
+18. **条纹先做官方基线**：确认是否 BER 测试图案、分辨率/格式/缓冲区问题；27 MHz 滚动刷新只是一次实验结果，不能作为通用结论。
 
 ---
 
@@ -488,6 +493,7 @@ kaifaban/
 | `ref/11-model-inventory.md` | 53 个 kmodel 的用途/输入尺寸/配套例程 |
 | `ref/12-example-index.md` | 全部官方例程 → 文件路径索引（教程 ↔ 源码 ↔ 板端） |
 | `ref/13-troubleshooting.md` | 故障速查表 + 性能优化清单 |
+| `ref/16-firmware-display-lessons.md` | 精确版本、A/B/RTAPP、显示条纹、触摸/ADC 和原生扩展验收 |
 | `references/source-docs/` | 16 个教程 PDF 的全文提取（txt），深度检索用 |
 
 ---

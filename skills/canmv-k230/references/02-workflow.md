@@ -2,6 +2,8 @@
 
 > 来源：教程《1.快速使用》《快速使用向导(必看)》全文。
 > 覆盖：工具清单 → 烧镜像 → 装驱动/IDE → 连接调试 → 在线/脱机运行 → REPL → 文件传输 → 目录映射。
+>
+> 固件版本、A/B 镜像和显示异常的项目实测经验见 [`16-firmware-display-lessons.md`](16-firmware-display-lessons.md)。
 
 ---
 
@@ -17,7 +19,7 @@
 | 通讯猫 MQTT 助手 | `2.5 通讯猫MQTT助手/` | MQTT（资料包附带） |
 
 镜像文件：`3.芯片资料&镜像&AI模型文件/01 镜像/CanMV_K230_Hiwonder_micropython_local_nncase_v2.9.0.img`
-（**记住这个版本号：local nncase v2.9.0，模型转换/固件行为都以此为准**）
+（资料包的模型工具链标签为 **local nncase v2.9.0**；固件 API/驱动版本另查 `revision.txt`、`os.uname()` 和 `sys.version`。）
 
 ---
 
@@ -37,6 +39,8 @@ CanMV/
 ```
 
 > 如果电脑看不到 CanMV 盘符：换数据线、检查 SD 卡是否插好、重新烧录。
+
+上表描述教程中的 USB 导出视图。读卡器挂载的 SDCARD 卷根目录可能直接对应板内 `/sdcard`，且一些镜像没有 `/data` 分区；核对实际 MBR/挂载，避免多复制一层 `sdcard`。
 
 ---
 
@@ -90,6 +94,13 @@ CanMV/
 3. 之后**只给板子上电**（不连电脑），板子自动运行 `main.py`。
 > 想更换/停用：把板子当 U 盘，覆盖/删除 `CanMV/sdcard/main.py`。
 > 如果脱机程序是死循环且想重新接管：上电瞬间按 Ctrl+C（REPL 方式）或直接删 main.py。
+
+### 脱机运行和固件更新的边界
+
+- Fastboot 执行的是裸区 `rtapp`，向 FAT 分区复制 `micropython`、`boot.py` 或脚本不会替换运行中的固件。
+- 验收 `/sdcard/main.py` 要冷启动，并关闭 IDE/REPL 的中断；`machine.reset()` 在所查版本中可能抑制 main 自动运行。不要通过随意改名 `boot.py` 配置自动运行。
+- 新版厂商镜像可能采用 A/B 槽和不同分区布局。写卡前解析实际 MBR、TOC、OTA 元数据和包头，不要套用旧单槽固定偏移工具。
+- 必须保存镜像 SHA256、`revision.txt`、`os.uname()` 和 `sys.version`；模型转换器/nncase 标签不能代替固件版本。
 
 ### 5.3 三种文件传输方式
 | 方式 | 做法 | 适用 |
@@ -157,7 +168,7 @@ CanMV/
 | `ImportError: no module named 'xxx'` | 板端没有该库（libs 缺失或路径错） | 检查 /sdcard/libs；AI 例程需要官方镜像自带 |
 | `OSError: [Errno 2] ENOENT` | 文件/模型路径不存在 | 核对 /sdcard 下的实际文件名 |
 | `MemoryError` | 内存不足（大分辨率 + 大模型） | 降分辨率、gc.collect()、换小模型 |
-| 画面冻结/花屏/跑死 | 显示分辨率不匹配 / 资源未释放 | 按 §显示模式 检查；遵守释放契约 |
+| 画面冻结/花屏/跑死 | 显示分辨率/像素格式不匹配、资源未释放或镜像版本不配 | 按 §显示模式 检查；遵守释放契约；再读 `ref/16` 建立官方同版本基线 |
 | 第二次运行必挂 | 上次没释放 Sensor/Display/Media | 用 try/finally 完整释放（见 SKILL §5.3） |
 | 摄像头报错/无图 | 排线松动 / 被占用 | 断电重插 FPC；确认没有其它程序占用 |
 
